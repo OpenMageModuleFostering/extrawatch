@@ -308,12 +308,11 @@ th {
      -moz-box-sizing: border-box;
           box-sizing: border-box;
 }
+
 html {
-	font-family: Verdana;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 body {
-  font-family: Verdana !important;
   //font-size: 14px;
   line-height: 1.42857143;
   color: #2c3e50;
@@ -6089,7 +6088,7 @@ width: 100% !importnant;
 }
 
 .linkDisabled  {
-    color: grey !important;
+    color: #909090 !important;
 }
 
 /*TODO: colision with joomla 3.2 and tablesorter
@@ -6122,7 +6121,6 @@ background-color: #fafafa !important;
 }
 
 TD, .container {
-	font-family: Verdana !important;
 	font-size: 10px;
 }
 
@@ -6189,4 +6187,8 @@ display: none;
 .extrawatchadmin #main #content {
 padding-top: 35px;
 margin-left: 0px;
+}
+
+.ew-navbar, .main, .nav-sidebar, .ew-container {
+	font-family: Verdana !important;
 }

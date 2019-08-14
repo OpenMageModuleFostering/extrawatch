@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @package ExtraWatch  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @version 2.3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
- * @revision 1918  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @revision 1962  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @copyright (C) 2014 by CodeGravity.com - All rights reserved!  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @website http://www.codegravity.com  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -30,11 +30,24 @@ $rows = $extraWatchTrendHTML->findLatestGraphDataRecursively($group, $date, FALS
 $i=0;
 if (@$rows)
 foreach($rows as $row) {
-?>
+
+switch ($group) {
+
+    case EW_DB_KEY_OS: {
+        $osDecoded = @json_decode($row->name);
+        $rowName = $osDecoded->name;
+        break;
+    }
+        default: {
+            $rowName = $row->name;
+            break;
+        }
+}
+    ?>
 <table width="100%">
     <tr>
         <td colspan="2">
-            <b><?php echo htmlentities($row->name);?></b>
+            <b><?php echo htmlentities($rowName);?></b>
         </td>
     </tr>
     <tr>
@@ -50,7 +63,11 @@ foreach($rows as $row) {
 </table>
 
 
+
+
 <script type='text/javascript'>
+window.addEventListener('load', function() {
+
     Morris.Area ({
   element: 'trendChartDaily_<?php echo($i);?>',
   data: [<?php echo $extraWatchTrendHTML->renderDayTrendData($group, $row->name, $date); ?>],
@@ -64,6 +81,7 @@ data: [<?php echo $extraWatchTrendHTML->renderWeekTrendData($group, $row->name, 
 xkey: 'period',
 ykeys: ['value'],
 labels: ['Value', 'SORN']
+});
 });
 </script>
 

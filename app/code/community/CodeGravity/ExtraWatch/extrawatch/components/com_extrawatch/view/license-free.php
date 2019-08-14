@@ -51,7 +51,7 @@ function extrawatch_renderLicenseFree($extraWatch)
         font-weight: normal;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     }
 </style>
-<h1>ExtraWatch 2.3.1918 FREE</h1>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+<h1>ExtraWatch 2.3.1962 FREE</h1>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
 <script type='text/javascript'>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     function toggleNoKeyForm() {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -159,7 +159,7 @@ function extrawatch_renderLicenseFree($extraWatch)
 
 		$env = @get_class($extraWatch->env);
 		
-		$output .= "<iframe src='http://www.extrawatch.com/track/extrawatch/2.3/install/?domain=".$domain."&license=FREE&version=2.3.1918&ip=".$ip."&env=".$env."&market=codecanyon.net' width='1px' frameborder='0' height='1px'>
+		$output .= "<iframe src='http://www.extrawatch.com/track/extrawatch/2.3/install/?domain=".$domain."&license=FREE&version=2.3.1962&ip=".$ip."&env=".$env."&market=codecanyon.net' width='1px' frameborder='0' height='1px'>
         </iframe>";			
 
 		$output .= "		

@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @package ExtraWatch  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @version 2.3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
- * @revision 1918  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @revision 1962  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @copyright (C) 2014 by CodeGravity.com - All rights reserved!  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @website http://www.extrawatch.com  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -117,9 +117,7 @@ class ExtraWatchVisit
   function insertIntoHistory()  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   {
 
-    if (time()%10 == 0) {   //performance optimization - inserting into history in few cases
-
-    $query = sprintf("select id as maxid from #__extrawatch where browser is not NULL order by id desc limit 1");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    $query = sprintf("select id as maxid from #__extrawatch where browser is not NULL order by id desc limit 1");
     $rows = @ $this->database->objectListQuery($query);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     $row = @ $rows[0];  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     $maxidvisitors = @ $row->maxid - $this->config->getConfigValue('EXTRAWATCH_MAXID_VISITORS');  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -136,8 +134,6 @@ class ExtraWatchVisit
     /*      omitting fk < '%d'   $query = sprintf("INSERT IGNORE INTO #__extrawatch_uri_history SELECT * from #__extrawatch_uri where fk < '%d' and fk > (select ifnull(max(fk),0) from #__extrawatch_uri_history ) ", (int) $maxidvisitors);*/  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     $query = sprintf("INSERT IGNORE INTO #__extrawatch_uri_history SELECT * from #__extrawatch_uri where fk > %d ", (int) $maxidvisitors, (int) $maxFk);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     $this->database->executeQuery($query);
-
-    }
 
   }
 
@@ -812,9 +808,7 @@ function insertSearchResultPage($uri, $phrase, $referer, $title)
           }
       }
 
-      $this->insertIntoHistory();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-
-      if ($this->date->getUTCTimestamp() % 10 == 0) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+      if ($this->date->getUTCTimestamp() % 10 == 0) {
           $this->deleteOldVisits();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
           $this->seo->cleanUnimportantKeyphrases();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
       }

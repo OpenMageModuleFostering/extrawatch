@@ -4,7 +4,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @package ExtraWatch  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @version 2.3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
- * @revision 1918  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @revision 1962  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @copyright (C) 2014 by CodeGravity.com - All rights reserved!  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @website http://www.codegravity.com  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -22,7 +22,7 @@ defined('_JEXEC') or die('Restricted access'); ?>
 
 <footer class="panel-footer" id="ew-footer">
     <div class="ew-container">
-        <span class="col-md-5">ExtraWatch 2.3.1918 Copyright &copy;2006-<?php echo(date("Y"));?> by CodeGravity.com</span>
+        <span class="col-md-5">ExtraWatch 2.3.1962 Copyright &copy;2006-<?php echo(date("Y"));?> by CodeGravity.com</span>
         <span class="col-md-7 text-right">
             <a href='http://www.extrawatch.com/support/' target='_blank'><?php echo _EW_MENU_FAQ;?></a> &nbsp;&nbsp;&nbsp;&nbsp;
             <a href='http://www.extrawatch.com/support/' target='_blank'><?php echo _EW_MENU_REPORT_BUG;?></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

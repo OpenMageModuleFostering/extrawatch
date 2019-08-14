@@ -5,9 +5,9 @@
                 `id` int unsigned auto_increment primary key,
                 `ip` varchar(255) default NULL,
                 `country` varchar(2) default NULL,
-                `browser` varchar(255) default NULL COLLATE utf8_unicode_ci,
-                `referer` varchar(255) default NULL COLLATE utf8_unicode_ci,
-                `username` varchar(255) default NULL COLLATE utf8_unicode_ci,
+                `browser` varchar(255) default NULL COLLATE utf8_general_ci,
+                `referer` varchar(255) default NULL COLLATE utf8_general_ci,
+                `username` varchar(255) default NULL COLLATE utf8_general_ci,
 				  KEY `ip` (`ip`),
 				  KEY `browser` (`browser`),
 				  KEY `country` (`country`)
@@ -16,18 +16,18 @@
 
                 CREATE TABLE IF NOT EXISTS `#__extrawatch_config` (
                 `id` int unsigned auto_increment primary key,
-                `name` varchar(255) default NULL COLLATE utf8_unicode_ci,
-                `value` TEXT default NULL COLLATE utf8_unicode_ci
+                `name` varchar(255) default NULL COLLATE utf8_general_ci,
+                `value` TEXT default NULL COLLATE utf8_general_ci
 				);
 
   			    ALTER IGNORE TABLE #__extrawatch_config ADD UNIQUE INDEX(name);
 
                 CREATE TABLE IF NOT EXISTS `#__extrawatch_info` (
                 `id` int unsigned auto_increment primary key,
-                `group` int(3) default NULL COLLATE utf8_unicode_ci,
-                `date` int(6) default NULL COLLATE utf8_unicode_ci,
-                `name` varchar(255) default NULL COLLATE utf8_unicode_ci,
-                `value` int unsigned default NULL COLLATE utf8_unicode_ci,
+                `group` int(3) default NULL COLLATE utf8_general_ci,
+                `date` int(6) default NULL COLLATE utf8_general_ci,
+                `name` varchar(255) default NULL COLLATE utf8_general_ci,
+                `value` int unsigned default NULL COLLATE utf8_general_ci,
 				  KEY `group` (`group`),
 				  KEY `name` (`name`),
 				  KEY `date` (`date`)
@@ -47,8 +47,8 @@
                 `id` int unsigned auto_increment primary key,
                 `fk` int unsigned default NULL,
                 `timestamp` int unsigned default NULL,
-                `uri` varchar(255) default NULL COLLATE utf8_unicode_ci,
-                `title` varchar(255) default NULL COLLATE utf8_unicode_ci,
+                `uri` varchar(255) default NULL COLLATE utf8_general_ci,
+                `title` varchar(255) default NULL COLLATE utf8_general_ci,
 				  KEY `fk` (`fk`),
 				  KEY `timestamp` (`timestamp`)
                 );
@@ -60,7 +60,7 @@
                 `ip` varchar(255) default NULL,
                 `hits` int unsigned default NULL,
                 `date` int(5) default NULL,
-                `reason` varchar(255) default NULL COLLATE utf8_unicode_ci,
+                `reason` varchar(255) default NULL COLLATE utf8_general_ci,
 				`country` char(2) DEFAULT NULL,
 				`badWord` varchar(255) NOT NULL,
 				  KEY `ip` (`ip`),
@@ -70,28 +70,28 @@
 
                 CREATE TABLE IF NOT EXISTS `#__extrawatch_goals` (
                 `id` int(11) NOT NULL auto_increment primary key,
-                `name` varchar(255) default NULL COLLATE utf8_unicode_ci,
+                `name` varchar(255) default NULL COLLATE utf8_general_ci,
                 `username_inversed` varchar(3) DEFAULT NULL,
                 `parentId` int(11) default NULL,
-                `uri_condition` varchar(255) default NULL COLLATE utf8_unicode_ci,
+                `uri_condition` varchar(255) default NULL COLLATE utf8_general_ci,
                 `uri_inversed` varchar(3) DEFAULT NULL,
-                `get_var` varchar(255) default NULL COLLATE utf8_unicode_ci,
-                `get_condition` varchar(255) default NULL COLLATE utf8_unicode_ci,
+                `get_var` varchar(255) default NULL COLLATE utf8_general_ci,
+                `get_condition` varchar(255) default NULL COLLATE utf8_general_ci,
                 `get_inversed` varchar(3) DEFAULT NULL,
-                `post_var` varchar(255) default NULL COLLATE utf8_unicode_ci,
-                `post_condition` varchar(255) default NULL COLLATE utf8_unicode_ci,
+                `post_var` varchar(255) default NULL COLLATE utf8_general_ci,
+                `post_condition` varchar(255) default NULL COLLATE utf8_general_ci,
                 `post_inversed` varchar(3) DEFAULT NULL,
-                `title_condition` varchar(255) default NULL COLLATE utf8_unicode_ci,
+                `title_condition` varchar(255) default NULL COLLATE utf8_general_ci,
                 `title_inversed` varchar(3) DEFAULT NULL,
-                `username_condition` varchar(255) default NULL COLLATE utf8_unicode_ci,
-                `ip_condition` varchar(255) default NULL COLLATE utf8_unicode_ci,
+                `username_condition` varchar(255) default NULL COLLATE utf8_general_ci,
+                `ip_condition` varchar(255) default NULL COLLATE utf8_general_ci,
                 `ip_inversed` varchar(3) DEFAULT NULL,
-                `came_from_condition` varchar(255) default NULL COLLATE utf8_unicode_ci,
+                `came_from_condition` varchar(255) default NULL COLLATE utf8_general_ci,
                 `came_from_inversed` varchar(3) DEFAULT NULL,
-                `country_condition` varchar(255) default NULL COLLATE utf8_unicode_ci,
+                `country_condition` varchar(255) default NULL COLLATE utf8_general_ci,
                 `country_inversed` varchar(3) DEFAULT NULL,
-                `block` varchar(255) default NULL COLLATE utf8_unicode_ci,
-                `redirect` varchar(255) default NULL COLLATE utf8_unicode_ci,
+                `block` varchar(255) default NULL COLLATE utf8_general_ci,
+                `redirect` varchar(255) default NULL COLLATE utf8_general_ci,
                 `disabled` tinyint(1) default NULL
                 );
 
@@ -99,9 +99,9 @@
 
                 CREATE TABLE IF NOT EXISTS `#__extrawatch_cache` (
                 `id` int(11) NOT NULL auto_increment primary key,
-                `key` varchar(255) default NULL COLLATE utf8_unicode_ci,
+                `key` varchar(255) default NULL COLLATE utf8_general_ci,
                 `lastUpdate` int(11) default NULL,
-                `cache` mediumtext COLLATE utf8_unicode_ci,
+                `cache` mediumtext COLLATE utf8_general_ci,
 				KEY `key` (`key`)
                 );
 
@@ -358,8 +358,8 @@
 
                 CREATE TABLE IF NOT EXISTS `#__extrawatch_uri2title` (
                 `id` int(11) NOT NULL auto_increment primary key,
-                `uri` varchar(255) default NULL COLLATE utf8_unicode_ci,
-                `title` varchar(255) default NULL COLLATE utf8_unicode_ci,
+                `uri` varchar(255) default NULL COLLATE utf8_general_ci,
+                `title` varchar(255) default NULL COLLATE utf8_general_ci,
                 `count` int(11) default 0,
                 `timestamp` int(11) default NULL,
 				KEY `uri` (`uri`)
@@ -369,8 +369,8 @@
 
                 CREATE TABLE IF NOT EXISTS `#__extrawatch_internal` (
                 `id` int(11) NOT NULL auto_increment primary key,
-                `from` varchar(255) default NULL COLLATE utf8_unicode_ci,
-                `to` varchar(255) default NULL COLLATE utf8_unicode_ci,
+                `from` varchar(255) default NULL COLLATE utf8_general_ci,
+                `to` varchar(255) default NULL COLLATE utf8_general_ci,
                 `timestamp` int(11) default NULL,
 				KEY `from` (`from`),
 				KEY `to` (`to`)
@@ -382,9 +382,9 @@
                 `id` int unsigned auto_increment primary key,
                 `ip` varchar(255) default NULL,
                 `country` varchar(2) default NULL,
-                `browser` varchar(255) default NULL COLLATE utf8_unicode_ci,
-                `referer` varchar(255) default NULL COLLATE utf8_unicode_ci,
-                `username` varchar(255) default NULL COLLATE utf8_unicode_ci,
+                `browser` varchar(255) default NULL COLLATE utf8_general_ci,
+                `referer` varchar(255) default NULL COLLATE utf8_general_ci,
+                `username` varchar(255) default NULL COLLATE utf8_general_ci,
 				  KEY `ip` (`ip`),
 				  KEY `browser` (`browser`),
 				  KEY `country` (`country`)
@@ -397,8 +397,8 @@
                 `id` int unsigned auto_increment primary key,
                 `fk` int unsigned default NULL,
                 `timestamp` int unsigned default NULL,
-                `uri` varchar(255) default NULL COLLATE utf8_unicode_ci,
-                `title` varchar(255) default NULL COLLATE utf8_unicode_ci,
+                `uri` varchar(255) default NULL COLLATE utf8_general_ci,
+                `title` varchar(255) default NULL COLLATE utf8_general_ci,
 				  KEY `fk` (`fk`),
 				  KEY `timestamp` (`timestamp`)
                 );

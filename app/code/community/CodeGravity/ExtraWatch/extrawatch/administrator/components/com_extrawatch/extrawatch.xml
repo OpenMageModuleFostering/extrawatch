@@ -7,7 +7,7 @@
     <copyright>Copyright 2006-2014 by CodeGravity.com</copyright>
     <authorEmail>support@extrawatch.com</authorEmail>
     <authorUrl>http://www.extrawatch.com</authorUrl>
-    <version>2.3.1918 FREE</version>
+    <version>2.3.1962 FREE</version>
     <license>http://www.gnu.org/licenses/gpl-3.0.txt GNU/GPLv3</license>
     <description>
         ExtraWatch is an AJAX component and module for Joomla CMS that allows you to watch
@@ -141,8 +141,9 @@ in this section are copied from /site/ in the package -->
 
     <scriptfile>script.extrawatch.php</scriptfile>
 
+
     <updateservers>
-        <server type="extension" priority="1" name="ExtraWatch Update Site">http://www.extrawatch.com/update/extrawatch/2.3/FREE/extrawatch-update.xml</server>
+        <server type="collection" name="ExtraWatch FREE update">http://www.extrawatch.com/update/extrawatch/2.3/FREE/list.xml</server>
     </updateservers>
 
 </extension>

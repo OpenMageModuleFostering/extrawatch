@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.3
- * @revision 1918
+ * @revision 1962
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2014 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -13,7 +13,7 @@
 -->
 <package>
     <name>ExtraWatch</name>
-    <version>2.3.1918</version>
+    <version>2.3.1962</version>
     <stability>stable</stability>
     <license>GPL</license>
     <channel>community</channel>

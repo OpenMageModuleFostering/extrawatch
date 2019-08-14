@@ -7,7 +7,7 @@
     <authorEmail>support@extrawatch.com</authorEmail>
     <authorUrl>http://www.extrawatch.com</authorUrl>
     <packagename>ExtraWatch</packagename>
-    <version>2.3.1918 FREE</version>
+    <version>2.3.1962 FREE</version>
     <license>http://www.gnu.org/licenses/gpl-3.0.txt GNU/GPLv3</license>
     <url>http://www.extrawatch.com</url>
     <packager>CodeGravity.com - http://www.extrawatch.com</packager>
@@ -15,7 +15,6 @@
     <description>
         <b>ExtraWatch component and modules installed successfully</b>
     </description>
-    <update>http://www.extrawatch.com/update/extrawatch/2.3/FREE/extrawatch-update.xml</update>
     <files>
         <file type="component" id="extrawatch" >com_extrawatch.zip</file>
         <file type="module" id="extrawatch" client="site">mod_extrawatch_agent.zip</file>

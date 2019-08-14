@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @package ExtraWatch  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @version 2.3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
- * @revision 1918  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @revision 1962  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @copyright (C) 2014 by CodeGravity.com - All rights reserved!  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @website http://www.extrawatch.com  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -44,7 +44,7 @@ function extrawatch_sureRemoveDir($dir, $DeleteMe)
   if (!$dh = @opendir($dir)) return;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   while (FALSE !== ($obj = readdir($dh))) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     if ($obj == '.' || $obj == '..') continue;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-    if (!@unlink($dir . '/' . $obj)) extrawatch_sureRemoveDir($dir . '/' . $obj, TRUE);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    if (!unlink($dir . '/' . $obj)) extrawatch_sureRemoveDir($dir . '/' . $obj, TRUE);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   }
   if ($DeleteMe) {
     closedir($dh);
@@ -57,36 +57,47 @@ function extrawatch_initialize_ip2country($rootDir, $database)
   $i = 0;
 
   $numberOfFiles = 220;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-  for ($j = 1; $j <= $numberOfFiles; $j++) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-    $fileName = $rootDir . DIRECTORY_SEPARATOR . "components" . DIRECTORY_SEPARATOR . "com_extrawatch" . DIRECTORY_SEPARATOR . "sql" . DIRECTORY_SEPARATOR . "extrawatch-$j.sql";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-    $lines = @file($fileName);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-    if (!$lines) {
-      //die("<span style='color: red'>Error reading file: $fileName, your joomla site path is set to: ".$rootDir." what is probably not correct, check configuration.php</span><br/>");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-    }
+  $ipToCountryDir = realpath($rootDir . DIRECTORY_SEPARATOR . "components" . DIRECTORY_SEPARATOR . "com_extrawatch" . DIRECTORY_SEPARATOR . "sql" . DIRECTORY_SEPARATOR . "ip-to-country");
 
-    $query = "";
-    foreach ($lines as $line_num => $line) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-      $query .= trim($line);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-      if (strstr($line, ");")) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        if ($j % 20 == 0) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-          //sprintf("%d%%",((floor((($j) / $numberOfFiles) * 100))));  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+  set_time_limit(0);
+
+  if (defined('EXTRAWATCH_DEBUG') && EXTRAWATCH_DEBUG) echo("<!-- ip to country dir: ".$ipToCountryDir." -->\n");
+
+    for ($j = 1; $j <= $numberOfFiles; $j++) {
+        $fileName =  $ipToCountryDir.DIRECTORY_SEPARATOR ."extrawatch-$j.sql";
+        if (@file_exists($fileName)) {
+            if (defined('EXTRAWATCH_DEBUG') && EXTRAWATCH_DEBUG) echo("<!-- opening file: ".$fileName." -->\n");
+            $lines = file($fileName);
+            if (!$lines) {
+                //die("<span style='color: red'>Error reading file: $fileName, your joomla site path is set to: ".$rootDir." what is probably not correct, check configuration.php</span><br/>");
+            }
+
+            $query = "";
+            foreach ($lines as $line_num => $line) {
+                $query .= trim($line);
+                if (strstr($line, ");")) {
+                    if ($j % 20 == 0) {
+                        //sprintf("%d%%",((floor((($j) / $numberOfFiles) * 100))));
+                    }
+                    elseif ($j % 2 == 0) {
+                        //echo (".");
+                    }
+                    $database->setQuery(trim($query));
+                    $result = @$database->query();
+                    //flush();
+                    $query = "";
+                    $i++;
+                }
+            }
         }
-        elseif ($j % 2 == 0) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-          //echo (".");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        }
-        $database->setQuery(trim($query));  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        $result = @$database->query();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        //flush();
-        $query = "";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        $i++;
-      }
     }
-  }
   try {
-    // @sureRemoveDir(dirname($fileName), FALSE);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    if (defined('EXTRAWATCH_DEBUG') && EXTRAWATCH_DEBUG) echo '<!-- Removing ip-to-country SQL directory: ', $ipToCountryDir, "-->\n";
+     @extrawatch_sureRemoveDir($ipToCountryDir, FALSE);
   } catch (Exception $e) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-    echo 'Cannot remove directory with SQL files: ', $e->getMessage(), "\n";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    if (defined('EXTRAWATCH_DEBUG') && EXTRAWATCH_DEBUG)echo 'Cannot remove directory with SQL files: ', $e->getMessage(), "\n";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   }
+@ob_clean();
 }
 
 function extrawatch_initialize_menu($database)  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -236,7 +247,7 @@ function com_install()
 
 		?>
 		
-			<iframe src="http://www.extrawatch.com/track/extrawatch/2.3/install/?domain=<?php echo($domain);?>&license=FREE&version=2.3.1918&ip=<?php echo $ip;?>&env=ExtraWatchJoomlaEnv" width="1px" frameborder="0"  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        <iframe src="http://www.extrawatch.com/track/extrawatch/2.3/install/?domain=<?php echo($domain);?>&license=PRO&version=2.3.1863&ip=<?php echo $ip;?>&env=ExtraWatchJoomlaEnv" width="1px" frameborder="0"  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                 height="1px">  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         </iframe>
 
