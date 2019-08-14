@@ -7,12 +7,13 @@
     <license>http://www.gnu.org/licenses/gpl-3.0.txt GNU/GPLv3</license>
     <authorEmail>support@extrawatch.com</authorEmail>
     <authorUrl>www.extrawatch.com</authorUrl>
-    <version>2.2.1550 FREE</version>
+    <version>2.3.1918 FREE</version>
     <description>
         INSTRUCTIONS: This is the basic 'agent' module, which has to be inserted everywhere, where you want the visit to
         be recorded. It's best to place it into the footer of your Joomla website template.
     </description>
     <files>
+        <filename module="mod_extrawatch_agent">helper.php</filename>
         <filename module="mod_extrawatch_agent">mod_extrawatch_agent.php</filename>
     </files>
     <config>
@@ -24,7 +25,7 @@
         </fields>
     </config>
     <updateservers>
-        <server type="extension" priority="1" name="ExtraWatch Update Site">http://www.extrawatch.com/update/extrawatch/2.2/FREE/extrawatch-update.xml</server>
+        <server type="extension" priority="1" name="ExtraWatch Update Site">http://www.extrawatch.com/update/extrawatch/2.3/PRO/extrawatch-update.xml</server>
     </updateservers>
 
 </extension>

@@ -32,6 +32,17 @@ to "Primary widget area" or any other widget area which is there. This is where 
 13. Click on ExtraWatch icon in the back-end and you should be able to see new visitors in "Live Stats" section
 
 
+Installation of ExtraWatch into Prestashop:
+========================================
+
+1. Log in to admin back-end
+2. From main menu choose Modules -> Modules
+3. Click "Add new module", 
+4. from "Browse.." choose the file from prestashop folder: ExtraWatch-for-PrestaShop-2.0.zip
+5. Click "Upload this module".
+
+Then, you can access the extension main menu Stats -> ExtraWatch Stats
+
 Installation of ExtraWatch into Magento:
 ========================================
 1. Unzip the package you purchased,

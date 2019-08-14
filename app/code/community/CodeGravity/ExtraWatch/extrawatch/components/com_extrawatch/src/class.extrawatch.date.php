@@ -2,215 +2,215 @@
 
 /**
  * @file
- * ExtraWatch - A real-time ajax monitor and live stats
- * @package ExtraWatch
- * @version 2.2
- * @revision 1550
- * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
- * @copyright (C) 2014 by CodeGravity.com - All rights reserved!
- * @website http://www.extrawatch.com
+ * ExtraWatch - A real-time ajax monitor and live stats  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @package ExtraWatch  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @version 2.3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @revision 1918  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @copyright (C) 2014 by CodeGravity.com - All rights reserved!  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @website http://www.extrawatch.com  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  */
 
-defined('_JEXEC') or die('Restricted access');
+defined('_JEXEC') or die('Restricted access');  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
-class ExtraWatchDate
+class ExtraWatchDate  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 {
 
   public $env;
   public $database;
   public $config;
 
-  function __construct($database)
+  function __construct($database)  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   {
-    $this->env = ExtraWatchEnvFactory::getEnvironment();
-    $this->database = $database;
-    $this->config = new ExtraWatchConfig($this->database);
+    $this->env = ExtraWatchEnvFactory::getEnvironment();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    $this->database = $database;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    $this->config = new ExtraWatchConfig($this->database);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   }
 
   /**
    * date
    */
-  static function getActualDateTime()
+  static function getActualDateTime()  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   {
-    $date = ExtraWatchDate::date("d.m.Y", ExtraWatchDate::getUTCTimestamp());
-    $time = ExtraWatchDate::date("H:i:s", ExtraWatchDate::getUTCTimestamp());
-    return "$date $time";
+    $date = ExtraWatchDate::date("d.m.Y", ExtraWatchDate::getUTCTimestamp());  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    $time = ExtraWatchDate::date("H:i:s", ExtraWatchDate::getUTCTimestamp());  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    return "$date $time";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   }
 
-    static function getActualDate()
+    static function getActualDate()  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     {
-        $date = ExtraWatchDate::date("Y-m-d", ExtraWatchDate::getUTCTimestamp());
-        return "$date";
+        $date = ExtraWatchDate::date("Y-m-d", ExtraWatchDate::getUTCTimestamp());  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        return "$date";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     }
 
-    static function getDateTimeFromUTC($utcTimestamp)
+    static function getDateTimeFromUTC($utcTimestamp)  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     {
-        $date = ExtraWatchDate::date("d.m.Y", $utcTimestamp);
-        $time = ExtraWatchDate::date("H:i:s", $utcTimestamp);
-        return "$date $time";
+        $date = ExtraWatchDate::date("d.m.Y", $utcTimestamp);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        $time = ExtraWatchDate::date("H:i:s", $utcTimestamp);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        return "$date $time";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     }
 
 
     /**
    * date
    */
-  static function dayOfWeek()
+  static function dayOfWeek()  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   {
-    //date_default_timezone_set(ExtraWatchDate::getTimezone());
-    return ExtraWatchDate::date("N", ExtraWatchDate::getUserTimestamp()); //OK
-    //return ExtraWatchDate::date("w", $this->getUTCTimestamp());
+    //date_default_timezone_set(ExtraWatchDate::getTimezone());  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    return ExtraWatchDate::date("N", ExtraWatchDate::getUserTimestamp()); //OK  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    //return ExtraWatchDate::date("w", $this->getUTCTimestamp());  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   }
 
   /**
    * date
    */
-  static function dayOfMonth()
+  static function dayOfMonth()  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   {
-    //date_default_timezone_set(ExtraWatchDate::getTimezone());
-    //return ExtraWatchDate::date("d", $this->getUTCTimestamp());
-    return gmdate("d", ExtraWatchDate::getUserTimestamp());
+    //date_default_timezone_set(ExtraWatchDate::getTimezone());  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    //return ExtraWatchDate::date("d", $this->getUTCTimestamp());  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    return gmdate("d", ExtraWatchDate::getUserTimestamp());  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   }
 
   /**
    * date
-   * @return unknown
+   * @return unknown  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
    */
-  static function jwDateToday()
+  static function jwDateToday()  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   {
-    return ExtraWatchDate::jwDateFromTimestamp(ExtraWatchDate::getUTCTimestamp());
+    return ExtraWatchDate::jwDateFromTimestamp(ExtraWatchDate::getUTCTimestamp());  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   }
 
   /**
    * date
-   * @return unknown
+   * @return unknown  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
    */
-  static function jwDateFromTimestamp($timestamp)
+  static function jwDateFromTimestamp($timestamp)  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   {
     // this is ok
-    $seconds = gmdate("U", $timestamp + ExtraWatchDate::getUserTimezone() * 3600);
-    $diff = floor($seconds / 86400);
+    $seconds = gmdate("U", $timestamp + ExtraWatchDate::getUserTimezone() * 3600);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    $diff = floor($seconds / 86400);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     return $diff;
   }
 
   /**
    * date
    */
-  static function getDateByDay($day, $format = "d.m.Y")
+  static function getDateByDay($day, $format = "d.m.Y")  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   {
-    $timestamp = $day * 3600 * 24;
-    if (EXTRAWATCH_DEBUG) ExtraWatchLog::debug("Date by day: " . $timestamp);
-    $date = gmdate($format, $timestamp);
-    $output = $date;
-    if ($format == "d.m.Y" && ($day == ExtraWatchDate::jwDateToday()))
-      $output .= " (" . _EW_STATS_TODAY . ")";
+    $timestamp = $day * 3600 * 24;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    if (EXTRAWATCH_DEBUG) ExtraWatchLog::debug("Date by day: " . $timestamp);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    $date = gmdate($format, $timestamp);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    $output = $date;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    if ($format == "d.m.Y" && ($day == ExtraWatchDate::jwDateToday()))  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+      $output .= " (" . _EW_STATS_TODAY . ")";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
     return $output;
   }
 
   /**
    * date
-   * @return mixed|string|void
+   * @return mixed|string|void  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
    */
-  static function getUserTimezone()
+  static function getUserTimezone()  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   {
-    $env = ExtraWatchEnvFactory::getEnvironment();
+    $env = ExtraWatchEnvFactory::getEnvironment();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
-    //	    if we have an anonymous user, then use global config, instead of the user params
-    if ($env->getUsersCustomTimezoneOffset()) {
-      $userTimezone = $env->getTimezoneOffset();
+    //	    if we have an anonymous user, then use global config, instead of the user params  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    if ($env->getUsersCustomTimezoneOffset()) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+      $userTimezone = $env->getTimezoneOffset();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     } else {
-      $userTimezone = $env->getTimezoneOffset();
+      $userTimezone = $env->getTimezoneOffset();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     }
-    /* if the user has no timezone defined, use the timezone from server configuratio */
-    if (!isset($userTimezone)) {
-      $config = new JConfig();
-      $userTimezone = $config->offset;
+    /* if the user has no timezone defined, use the timezone from server configuratio */  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    if (!isset($userTimezone)) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+      $config = new JConfig();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+      $userTimezone = $config->offset;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     }
 
-    if ($userTimezone && !is_numeric($userTimezone)) {
-		$userTimezone = ExtraWatchHelper::getTimezoneOffsetByTimezoneName($userTimezone);
+    if ($userTimezone && !is_numeric($userTimezone)) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+		$userTimezone = ExtraWatchHelper::getTimezoneOffsetByTimezoneName($userTimezone);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     }
-    return $userTimezone;
+    return $userTimezone;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   }
 
   /**
    * date
    */
-  static function getUTCTimestamp()
+  static function getUTCTimestamp()  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   {
-    return time(); //return gmdate('U', time());
+    return time(); //return gmdate('U', time());  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   }
 
   /**
    * date
    */
-  static function UTCTimestampToUserTimestamp($timestamp)
+  static function UTCTimestampToUserTimestamp($timestamp)  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   {
-    return ($timestamp + ExtraWatchDate::getUserTimezone() * 3600);
+    return ($timestamp + ExtraWatchDate::getUserTimezone() * 3600);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   }
 
   /**
    * date
    * @return
    */
-  static function getUserTimestamp()
+  static function getUserTimestamp()  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   {
-    return ExtraWatchDate::UTCTimestampToUserTimestamp(ExtraWatchDate::getUTCTimestamp());
+    return ExtraWatchDate::UTCTimestampToUserTimestamp(ExtraWatchDate::getUTCTimestamp());  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   }
 
-  function getWeekSince1970($timestamp)
+  function getWeekSince1970($timestamp)  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   {
-    //date_default_timezone_set(ExtraWatchDate::getTimezone());
-    //return ExtraWatchDate::date("W", $timestamp);
-    return floor(($timestamp + ExtraWatchDate::getUserTimezone() * 3600 - 4 * 3600 * 24) / 3600 / 24 / 7) + 1; //4 because 1.1.1970 is Thursday, +1 because there is no week 0
+    //date_default_timezone_set(ExtraWatchDate::getTimezone());  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    //return ExtraWatchDate::date("W", $timestamp);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    return floor(($timestamp + ExtraWatchDate::getUserTimezone() * 3600 - 4 * 3600 * 24) / 3600 / 24 / 7) + 1; //4 because 1.1.1970 is Thursday, +1 because there is no week 0  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   }
 
-  static function getWeekFromTimestamp($timestamp)
+  static function getWeekFromTimestamp($timestamp)  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   {
-    //date_default_timezone_set(ExtraWatchDate::getTimezone());
-    //return ExtraWatchDate::date("W", $timestamp);
-    return gmdate("W", $timestamp + ExtraWatchDate::getUserTimezone() * 3600);
+    //date_default_timezone_set(ExtraWatchDate::getTimezone());  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    //return ExtraWatchDate::date("W", $timestamp);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    return gmdate("W", $timestamp + ExtraWatchDate::getUserTimezone() * 3600);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   }
 
-  function getYearFromTimestamp($timestamp)
+  function getYearFromTimestamp($timestamp)  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   {
-    //date_default_timezone_set(ExtraWatchDate::getTimezone());
-    //        return ExtraWatchDate::date("Y", $timestamp);
-    return gmdate("y", $timestamp + ExtraWatchDate::getUserTimezone() * 3600);
+    //date_default_timezone_set(ExtraWatchDate::getTimezone());  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    //        return ExtraWatchDate::date("Y", $timestamp);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    return gmdate("y", $timestamp + ExtraWatchDate::getUserTimezone() * 3600);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   }
 
   /**
-   * Used as replacement for date to use joomla timezone
-   * @param  $format
-   * @param  $timestamp
+   * Used as replacement for date to use joomla timezone  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+   * @param  $format  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+   * @param  $timestamp  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
    * @return string
    */
-  //TODO: refactor: rename to dateToLocal
-  static function date($format, $timestamp)
+  //TODO: refactor: rename to dateToLocal  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+  static function date($format, $timestamp)  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   {
-    //toto je dobre, do not change
-    //$tz = ExtraWatchDate::getJoomlaTimezoneOffset() - ExtraWatchDate::getUserTimezone();
-    return gmdate($format, $timestamp + ExtraWatchDate::getUserTimezone() * 3600);
+    //toto je dobre, do not change  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    //$tz = ExtraWatchDate::getJoomlaTimezoneOffset() - ExtraWatchDate::getUserTimezone();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    return gmdate($format, $timestamp + ExtraWatchDate::getUserTimezone() * 3600);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   }
 
-  static function getCurrentWeek()
+  static function getCurrentWeek()  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   {
-    return ExtraWatchDate::getWeekFromTimestamp(ExtraWatchDate::getUserTimestamp());
+    return ExtraWatchDate::getWeekFromTimestamp(ExtraWatchDate::getUserTimestamp());  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   }
 
-  static function getWeekStartingDay($week = 0)
+  static function getWeekStartingDay($week = 0)  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   {
-    ExtraWatchLog::debug("getting week starting day: " . $week);
+    ExtraWatchLog::debug("getting week starting day: " . $week);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     if (!$week) {
-      $weekDiff = 0;
+      $weekDiff = 0;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     } else {
-      $currentWeek = ExtraWatchDate::getCurrentWeek(); // OK
-      $weekDiff = $currentWeek - $week; // difference between selected week number since 1.1.1970 and current week number
-      ExtraWatchLog::debug("current week: $currentWeek weekDiff: $weekDiff");
+      $currentWeek = ExtraWatchDate::getCurrentWeek(); // OK  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+      $weekDiff = $currentWeek - $week; // difference between selected week number since 1.1.1970 and current week number  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+      ExtraWatchLog::debug("current week: $currentWeek weekDiff: $weekDiff");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     }
-    $dayOfWeek = ExtraWatchDate::dayOfWeek();
-    $dateToday = ExtraWatchDate::jwDateToday();
-    return $dateToday - $dayOfWeek - $weekDiff * 7 + 1; // +1 to make it start on monday
+    $dayOfWeek = ExtraWatchDate::dayOfWeek();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    $dateToday = ExtraWatchDate::jwDateToday();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    return $dateToday - $dayOfWeek - $weekDiff * 7 + 1; // +1 to make it start on monday  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   }
 
 

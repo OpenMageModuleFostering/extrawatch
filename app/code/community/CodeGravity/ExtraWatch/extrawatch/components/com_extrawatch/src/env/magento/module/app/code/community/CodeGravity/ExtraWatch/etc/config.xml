@@ -4,8 +4,8 @@
  * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
- * @version 2.2
- * @revision 1550
+ * @version 2.3
+ * @revision 1918
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2014 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -14,7 +14,7 @@
 <config>
     <modules>
         <CodeGravity_ExtraWatch>
-            <version>0.1.0</version>
+            <version>2.3.1918</version>
         </CodeGravity_ExtraWatch>
     </modules>
     <frontend>
@@ -37,80 +37,6 @@
             </extrawatch>
         </routers>
     </admin>
-    <adminhtml>
-        <menu>
-            <extrawatch module="extrawatch">
-                <title>ExtraWatch</title>
-                <action>extrawatch/adminhtml_extrawatch</action>
-                <sort_order>999</sort_order>
-                <children>
-                    <extrawatchLiveStats translate="title" module="extrawatch">
-                        <title>Live Stats</title>
-                        <sort_order>1</sort_order>
-                        <action>extrawatch/adminhtml_extrawatch</action>
-                    </extrawatchLiveStats>
-					
-                    <extrawatchGraphs translate="title" module="extrawatch">
-                        <title>Graphs</title>
-                        <sort_order>5</sort_order>
-                        <action>extrawatch/adminhtml_extrawatch/graphs</action>
-                    </extrawatchGraphs>
-                    <extrawatchGoals translate="title" module="extrawatch">
-                        <title>Goals</title>
-                        <sort_order>6</sort_order>
-                        <action>extrawatch/adminhtml_extrawatch/goals</action>
-                    </extrawatchGoals>
-                    <extrawatchHistory translate="title" module="extrawatch">
-                        <title>History</title>
-                        <sort_order>7</sort_order>
-                        <action>extrawatch/adminhtml_extrawatch/history</action>
-                    </extrawatchHistory>
-                    <extrawatchAntiSpam translate="title" module="extrawatch">
-                        <title>Anti-Spam</title>
-                        <sort_order>8</sort_order>
-                        <action>extrawatch/adminhtml_extrawatch/antispam</action>
-                    </extrawatchAntiSpam>
-                    <extrawatchEmails translate="title" module="extrawatch">
-                        <title>Emails</title>
-                        <sort_order>9</sort_order>
-                        <action>extrawatch/adminhtml_extrawatch/emails</action>
-                    </extrawatchEmails>
-					
-                    <extrawatchSettings translate="title" module="extrawatch">
-                        <title>Settings</title>
-                        <sort_order>12</sort_order>
-                        <action>extrawatch/adminhtml_extrawatch/settings</action>
-                    </extrawatchSettings>
-                    <extrawatchCredits translate="title" module="extrawatch">
-                        <title>Credits</title>
-                        <sort_order>13</sort_order>
-                        <action>extrawatch/adminhtml_extrawatch/credits</action>
-                    </extrawatchCredits>
-                    <extrawatchLicense translate="title" module="extrawatch">
-                        <title>License</title>
-                        <sort_order>14</sort_order>
-                        <action>extrawatch/adminhtml_extrawatch/license</action>
-                    </extrawatchLicense>
-                </children>
-            </extrawatch>
-
-        </menu>
-        <acl>
-            <resources>
-                <all>
-                    <title>Allow Everything</title>
-                </all>
-                <admin>
-                    <children>
-                        <CodeGravity_ExtraWatch>
-                            <title>ExtraWatch Module</title>
-                            <sort_order>10</sort_order>
-                        </CodeGravity_ExtraWatch>
-                    </children>
-                </admin>
-            </resources>
-        </acl>
-    </adminhtml>
     <global>
         <models>
             <extrawatch>

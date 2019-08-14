@@ -1,4 +1,4 @@
-ExtraWatch FREE 2.2 - Real-time joomla monitor and live stats
+ExtraWatch FREE 2.3 - Real-time joomla monitor and live stats
 ========================================================================
 by CodeGravity.com http://www.codegravity.com
 

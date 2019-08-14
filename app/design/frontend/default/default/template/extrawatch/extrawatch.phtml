@@ -10,7 +10,7 @@
  * @website http://www.extrawatch.com
  */
 
-defined('_JEXEC') or die('Restricted access');
+
 
 define("_JEXEC",1);
 define("ENV",1);
@@ -21,6 +21,14 @@ $pathSuffix = realpath(".").DS."app".DS."code".DS."community".DS."CodeGravity".D
 if (!defined("JPATH_BASE")) {
     define("JPATH_BASE", $pathSuffix);
 }
+
+$GLOBALS['extrawatch_page_title'] = $this->getLayout()->getBlock('head')->getTitle();
+
+require_once($pathSuffix.DS."modules".DS."mod_extrawatch_agent".DS."mod_extrawatch_agent.php");
+echo renderExtraWatchAgent();
+
+
+
 require_once($pathSuffix.DS."modules".DS."mod_extrawatch_users".DS."mod_extrawatch_users.php");
 $extraWatchUsersOutput = renderExtraWatchUsers();
 

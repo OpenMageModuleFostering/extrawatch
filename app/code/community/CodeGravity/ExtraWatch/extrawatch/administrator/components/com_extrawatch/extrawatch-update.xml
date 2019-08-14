@@ -5,10 +5,10 @@
       <description>ExtraWatch</description>
       <element>com_extrawatch</element>
       <type>component</type>
-      <version>2.2.1550 FREE</version>
+      <version>2.3.1918 FREE</version>
        <infourl title="ExtraWatch URL">http://www.extrawatch.com</infourl>
       <downloads>
-         <downloadurl type="full" format="gz">http://www.extrawatch.com/update/extrawatch/2.2/FREE/com_extrawatch.zip</downloadurl>
+         <downloadurl type="full" format="gz">http://www.extrawatch.com/update/extrawatch/2.3/FREE/com_extrawatch.zip</downloadurl>
       </downloads>
       <maintainer>extrawatch.com</maintainer>
       <maintainerurl>http://www.extrawatch.com</maintainerurl>
@@ -19,10 +19,10 @@
       <description>ExtraWatch</description>
       <element>com_extrawatch</element>
       <type>component</type>
-      <version>2.2.1550 FREE</version>
+      <version>2.3.1918 FREE</version>
        <infourl title="ExtraWatch URL">http://www.extrawatch.com</infourl>
       <downloads>
-         <downloadurl type="full" format="gz">http://www.extrawatch.com/update/extrawatch/2.2/FREE/com_extrawatch.zip</downloadurl>
+         <downloadurl type="full" format="gz">http://www.extrawatch.com/update/extrawatch/2.3/FREE/com_extrawatch.zip</downloadurl>
       </downloads>
       <maintainer>extrawatch.com</maintainer>
       <maintainerurl>http://www.extrawatch.com</maintainerurl>
@@ -33,10 +33,10 @@
       <description>ExtraWatch</description>
       <element>com_extrawatch</element>
       <type>component</type>
-      <version>2.2.1550 FREE</version>
+      <version>2.3.1918 FREE</version>
        <infourl title="ExtraWatch URL">http://www.extrawatch.com</infourl>
       <downloads>
-         <downloadurl type="full" format="gz">http://www.extrawatch.com/update/extrawatch/2.2/FREE/com_extrawatch.zip</downloadurl>
+         <downloadurl type="full" format="gz">http://www.extrawatch.com/update/extrawatch/2.3/FREE/com_extrawatch.zip</downloadurl>
       </downloads>
       <maintainer>extrawatch.com</maintainer>
       <maintainerurl>http://www.extrawatch.com</maintainerurl>
@@ -47,10 +47,10 @@
       <description>ExtraWatch</description>
       <element>com_extrawatch</element>
       <type>component</type>
-      <version>2.2.1550 FREE</version>
+      <version>2.3.1918 FREE</version>
        <infourl title="ExtraWatch URL">http://www.extrawatch.com</infourl>
       <downloads>
-         <downloadurl type="full" format="gz">http://www.extrawatch.com/update/extrawatch/2.2/FREE/com_extrawatch.zip</downloadurl>
+         <downloadurl type="full" format="gz">http://www.extrawatch.com/update/extrawatch/2.3/FREE/com_extrawatch.zip</downloadurl>
       </downloads>
       <maintainer>extrawatch.com</maintainer>
       <maintainerurl>http://www.extrawatch.com</maintainerurl>
@@ -63,10 +63,10 @@
         <description>ExtraWatch</description>
         <element>com_extrawatch</element>
         <type>module</type>
-        <version>2.2.1550 FREE</version>
+        <version>2.3.1918 FREE</version>
         <infourl title="ExtraWatch URL">http://www.extrawatch.com</infourl>
         <downloads>
-            <downloadurl type="full" format="gz">http://www.extrawatch.com/update/extrawatch/2.2/FREE/mod_extrawatch_agent.zip</downloadurl>
+            <downloadurl type="full" format="gz">http://www.extrawatch.com/update/extrawatch/2.3/FREE/mod_extrawatch_agent.zip</downloadurl>
         </downloads>
         <maintainer>extrawatch.com</maintainer>
         <maintainerurl>http://www.extrawatch.com</maintainerurl>
@@ -77,10 +77,10 @@
         <description>ExtraWatch</description>
         <element>com_extrawatch</element>
         <type>module</type>
-        <version>2.2.1550 FREE</version>
+        <version>2.3.1918 FREE</version>
         <infourl title="ExtraWatch URL">http://www.extrawatch.com</infourl>
         <downloads>
-            <downloadurl type="full" format="gz">http://www.extrawatch.com/update/extrawatch/2.2/FREE/mod_extrawatch_agent.zip</downloadurl>
+            <downloadurl type="full" format="gz">http://www.extrawatch.com/update/extrawatch/2.3/FREE/mod_extrawatch_agent.zip</downloadurl>
         </downloads>
         <maintainer>extrawatch.com</maintainer>
         <maintainerurl>http://www.extrawatch.com</maintainerurl>
@@ -91,10 +91,10 @@
         <description>ExtraWatch</description>
         <element>com_extrawatch</element>
         <type>module</type>
-        <version>2.2.1550 FREE</version>
+        <version>2.3.1918 FREE</version>
         <infourl title="ExtraWatch URL">http://www.extrawatch.com</infourl>
         <downloads>
-            <downloadurl type="full" format="gz">http://www.extrawatch.com/update/extrawatch/2.2/FREE/mod_extrawatch_agent.zip</downloadurl>
+            <downloadurl type="full" format="gz">http://www.extrawatch.com/update/extrawatch/2.3/FREE/mod_extrawatch_agent.zip</downloadurl>
         </downloads>
         <maintainer>extrawatch.com</maintainer>
         <maintainerurl>http://www.extrawatch.com</maintainerurl>
@@ -105,10 +105,10 @@
         <description>ExtraWatch</description>
         <element>com_extrawatch</element>
         <type>module</type>
-        <version>2.2.1550 FREE</version>
+        <version>2.3.1918 FREE</version>
         <infourl title="ExtraWatch URL">http://www.extrawatch.com</infourl>
         <downloads>
-            <downloadurl type="full" format="gz">http://www.extrawatch.com/update/extrawatch/2.2/FREE/mod_extrawatch_agent.zip</downloadurl>
+            <downloadurl type="full" format="gz">http://www.extrawatch.com/update/extrawatch/2.3/FREE/mod_extrawatch_agent.zip</downloadurl>
         </downloads>
         <maintainer>extrawatch.com</maintainer>
         <maintainerurl>http://www.extrawatch.com</maintainerurl>
@@ -122,10 +122,10 @@
         <description>ExtraWatch</description>
         <element>com_extrawatch</element>
         <type>module</type>
-        <version>2.2.1550 FREE</version>
+        <version>2.3.1918 FREE</version>
         <infourl title="ExtraWatch URL">http://www.extrawatch.com</infourl>
         <downloads>
-            <downloadurl type="full" format="gz">http://www.extrawatch.com/update/extrawatch/2.2/FREE/mod_extrawatch_users.zip</downloadurl>
+            <downloadurl type="full" format="gz">http://www.extrawatch.com/update/extrawatch/2.3/FREE/mod_extrawatch_users.zip</downloadurl>
         </downloads>
         <maintainer>extrawatch.com</maintainer>
         <maintainerurl>http://www.extrawatch.com</maintainerurl>
@@ -136,10 +136,10 @@
         <description>ExtraWatch</description>
         <element>com_extrawatch</element>
         <type>module</type>
-        <version>2.2.1550 FREE</version>
+        <version>2.3.1918 FREE</version>
         <infourl title="ExtraWatch URL">http://www.extrawatch.com</infourl>
         <downloads>
-            <downloadurl type="full" format="gz">http://www.extrawatch.com/update/extrawatch/2.2/FREE/mod_extrawatch_users.zip</downloadurl>
+            <downloadurl type="full" format="gz">http://www.extrawatch.com/update/extrawatch/2.3/FREE/mod_extrawatch_users.zip</downloadurl>
         </downloads>
         <maintainer>extrawatch.com</maintainer>
         <maintainerurl>http://www.extrawatch.com</maintainerurl>
@@ -150,10 +150,10 @@
         <description>ExtraWatch</description>
         <element>com_extrawatch</element>
         <type>module</type>
-        <version>2.2.1550 FREE</version>
+        <version>2.3.1918 FREE</version>
         <infourl title="ExtraWatch URL">http://www.extrawatch.com</infourl>
         <downloads>
-            <downloadurl type="full" format="gz">http://www.extrawatch.com/update/extrawatch/2.2/FREE/mod_extrawatch_users.zip</downloadurl>
+            <downloadurl type="full" format="gz">http://www.extrawatch.com/update/extrawatch/2.3/FREE/mod_extrawatch_users.zip</downloadurl>
         </downloads>
         <maintainer>extrawatch.com</maintainer>
         <maintainerurl>http://www.extrawatch.com</maintainerurl>
@@ -164,10 +164,10 @@
         <description>ExtraWatch</description>
         <element>com_extrawatch</element>
         <type>module</type>
-        <version>2.2.1550 FREE</version>
+        <version>2.3.1918 FREE</version>
         <infourl title="ExtraWatch URL">http://www.extrawatch.com</infourl>
         <downloads>
-            <downloadurl type="full" format="gz">http://www.extrawatch.com/update/extrawatch/2.2/FREE/mod_extrawatch_users.zip</downloadurl>
+            <downloadurl type="full" format="gz">http://www.extrawatch.com/update/extrawatch/2.3/FREE/mod_extrawatch_users.zip</downloadurl>
         </downloads>
         <maintainer>extrawatch.com</maintainer>
         <maintainerurl>http://www.extrawatch.com</maintainerurl>
@@ -181,10 +181,10 @@
         <description>ExtraWatch</description>
         <element>com_extrawatch</element>
         <type>module</type>
-        <version>2.2.1550 FREE</version>
+        <version>2.3.1918 FREE</version>
         <infourl title="ExtraWatch URL">http://www.extrawatch.com</infourl>
         <downloads>
-            <downloadurl type="full" format="gz">http://www.extrawatch.com/update/extrawatch/2.2/FREE/mod_extrawatch_visitors.zip</downloadurl>
+            <downloadurl type="full" format="gz">http://www.extrawatch.com/update/extrawatch/2.3/FREE/mod_extrawatch_visitors.zip</downloadurl>
         </downloads>
         <maintainer>extrawatch.com</maintainer>
         <maintainerurl>http://www.extrawatch.com</maintainerurl>
@@ -195,10 +195,10 @@
         <description>ExtraWatch</description>
         <element>com_extrawatch</element>
         <type>module</type>
-        <version>2.2.1550 FREE</version>
+        <version>2.3.1918 FREE</version>
         <infourl title="ExtraWatch URL">http://www.extrawatch.com</infourl>
         <downloads>
-            <downloadurl type="full" format="gz">http://www.extrawatch.com/update/extrawatch/2.2/FREE/mod_extrawatch_visitors.zip</downloadurl>
+            <downloadurl type="full" format="gz">http://www.extrawatch.com/update/extrawatch/2.3/FREE/mod_extrawatch_visitors.zip</downloadurl>
         </downloads>
         <maintainer>extrawatch.com</maintainer>
         <maintainerurl>http://www.extrawatch.com</maintainerurl>
@@ -209,10 +209,10 @@
         <description>ExtraWatch</description>
         <element>com_extrawatch</element>
         <type>module</type>
-        <version>2.2.1550 FREE</version>
+        <version>2.3.1918 FREE</version>
         <infourl title="ExtraWatch URL">http://www.extrawatch.com</infourl>
         <downloads>
-            <downloadurl type="full" format="gz">http://www.extrawatch.com/update/extrawatch/2.2/FREE/mod_extrawatch_visitors.zip</downloadurl>
+            <downloadurl type="full" format="gz">http://www.extrawatch.com/update/extrawatch/2.3/FREE/mod_extrawatch_visitors.zip</downloadurl>
         </downloads>
         <maintainer>extrawatch.com</maintainer>
         <maintainerurl>http://www.extrawatch.com</maintainerurl>
@@ -223,10 +223,10 @@
         <description>ExtraWatch</description>
         <element>com_extrawatch</element>
         <type>module</type>
-        <version>2.2.1550 FREE</version>
+        <version>2.3.1918 FREE</version>
         <infourl title="ExtraWatch URL">http://www.extrawatch.com</infourl>
         <downloads>
-            <downloadurl type="full" format="gz">http://www.extrawatch.com/update/extrawatch/2.2/FREE/mod_extrawatch_visitors.zip</downloadurl>
+            <downloadurl type="full" format="gz">http://www.extrawatch.com/update/extrawatch/2.3/FREE/mod_extrawatch_visitors.zip</downloadurl>
         </downloads>
         <maintainer>extrawatch.com</maintainer>
         <maintainerurl>http://www.extrawatch.com</maintainerurl>

@@ -4,8 +4,8 @@
  * @file
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
- * @version 2.2
- * @revision 1550
+ * @version 2.3
+ * @revision 1918
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2014 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com
@@ -13,7 +13,7 @@
 -->
 <package>
     <name>ExtraWatch</name>
-    <version>2.2.1550</version>
+    <version>2.3.1918</version>
     <stability>stable</stability>
     <license>GPL</license>
     <channel>community</channel>
@@ -71,16 +71,17 @@
                     </dir>
                     <dir name="etc">
                         <file name="config.xml" hash="b5b1ba890aea4b8236d696de1295d791"/>
+                        <file name="adminhtml.xml" hash="b5b1ba890fea4b8236d696de1295d791"/>
                     </dir>
                     <dir name="extrawatch">
                         <dir name="administrator">
                             <dir name="components">
                                 <dir name="com_extrawatch">
                                     <file name="README.TXT" hash="bc31cf8dcf76de133fd717a2359da190"/>
-                                    <file name="admin.extrawatch.php" hash="aa3419c9d861cd514c101b7cd6075943"/>
+                                    <file name="admin.extrawatch.php" hash="99e187c65c53b897653e6878e273d96b"/>
                                     <file name="extrawatch-update.xml" hash="6698965eb1599a91ccf8f7e98c6fd96b"/>
                                     <file name="extrawatch.j15.xml" hash="bd829947292203e86b9488b8d67cba58"/>
-                                    <file name="extrawatch.php" hash="3950948e6ff90b5b1d16b4846f2e1f0a"/>
+                                    <file name="extrawatch.php" hash="aa9ec6c469172f17ff8dc3bb950ab36b"/>
                                     <file name="extrawatch.xml" hash="fa92f163ab6179c1e018e4298903d14c"/>
                                     <dir name="img">
                                         <dir name="icons">
@@ -105,56 +106,63 @@
                                         </dir>
                                     </dir>
                                     <file name="index.html" hash="9c1c685a9162b461ecf6ddb69d03f96c"/>
-                                    <file name="install.extrawatch.php" hash="5c8712536414ee2836d72343eb0bc37f"/>
+                                    <file name="install.extrawatch.php" hash="9757794c06a874dd2b414ad0f6c3d755"/>
                                     <dir name="log">
                                         <file name="index.html" hash="9c1c685a9162b461ecf6ddb69d03f96c"/>
                                     </dir>
                                     <file name="pkg_ExtraWatch.xml" hash="a8c5f40273c257bcc74feede91a6feeb"/>
-                                    <file name="script.extrawatch.php" hash="fd830df70f67a8280ff8c887fb5f3928"/>
-                                    <file name="script.pkg.extrawatch.php" hash="f6e9f0b5514a321568620e065826098d"/>
+                                    <file name="script.extrawatch.php" hash="301b2467a3ff2bcecbe63323ce0cc803"/>
+                                    <file name="script.pkg.extrawatch.php" hash="3bb36e4872f90c65c47894d80371121f"/>
                                     <file name="security_certificate.pdf" hash="3db6d7ed185e69522cb6bc12406a5105"/>
                                     <dir name="sql">
                                         <file name="index.html" hash="9c1c685a9162b461ecf6ddb69d03f96c"/>
                                     </dir>
-                                    <file name="uninstall.extrawatch.php" hash="904b1cdc5ffccc12841e0090403bbbbb"/>
+                                    <file name="uninstall.extrawatch.php" hash="6bf67c8350c6bf021e816f10704b926e"/>
                                 </dir>
                             </dir>
                         </dir>
                         <dir name="components">
                             <dir name="com_extrawatch">
-                                <file name="INSTALL.txt" hash="156fca960e1df4a4bb3cb458101358c2"/>
+                                <file name="INSTALL.txt" hash="3ccb96b638d515343ce0d576cfbf19a9"/>
                                 <file name="LICENSE.txt" hash="d32239bcb673463ab874e80d47fae504"/>
                                 <file name="README.txt" hash="31c1ee3a061da7bd210a88c09189c3fc"/>
                                 <file name="TERMS_AND_CONDITIONS.txt" hash="e6a2e03925398bf709ef77b461e72d88"/>
                                 <dir name="ajax">
-                                    <file name="block.php" hash="aa8940cb03f2ac2284f1c7f0345bc671"/>
-                                    <file name="clicks.php" hash="f2991a2bfeca9b10b4f34e26b45b16ca"/>
-                                    <file name="download.php" hash="f640a721bcb268900f77038a6e93e2de"/>
-                                    <file name="elementclicks.php" hash="9e8ba91605a34ec26ffe7f4a07e729cb"/>
-                                    <file name="heatmap.include.js.php" hash="d98cdc0587481601d45acf52cd4676cf"/>
-                                    <file name="heatmap.php" hash="a962e4f3ca0831e3a73bd8ea46024d89"/>
-                                    <file name="img.php" hash="3db3d97dde61ac60fecf5ff0c3f91a1c"/>
+                                    <file name="block.php" hash="4605a0bda0ed20e6597d64dbaaa011d0"/>
+                                    <file name="clicks.php" hash="b63c063f3dad65f4577540c41f8cd1f1"/>
+                                    <file name="download.php" hash="4f009e4e4e56b9cfb3cad4bf4708a41a"/>
+                                    <file name="elementclicks.php" hash="f3138c77c8150383b390a872f6671ceb"/>
+                                    <file name="heatmap.include.js.php" hash="7e9b530b6918e1897c6b1bc0540e9111"/>
+                                    <file name="heatmap.php" hash="ef3c05c5e44372a2a88dffc06ded4a84"/>
+                                    <file name="img.php" hash="f6c2e12936a812e1f4b42e85c8db12dd"/>
                                     <file name="index.html" hash="0a01cc8d78a41d8f71fd171bd2a95406"/>
-                                    <file name="last.php" hash="1fb622a79a490a029bd37231688d9c19"/>
-                                    <file name="lastclick.php" hash="d7e67504c119d4cc292f2c1958dfc480"/>
-                                    <file name="lastvisit.php" hash="b0eb4cdc72aa960c50cc0da664cc7b9a"/>
-                                    <file name="sizequery.php" hash="84d13696ed8211d443ca96091357e7cf"/>
-                                    <file name="sizequerytotal.php" hash="a54b90c46bec1098a0d33fb27a22bd89"/>
-                                    <file name="stats.php" hash="58f005e42c2102c375d5c9a3b667a4ea"/>
-                                    <file name="tooltip.php" hash="e883f5aaf8ddf93264092b5b5a1d651e"/>
-                                    <file name="trendtooltip.php" hash="722e2636191cf3e6cbd5f9209898c998"/>
-                                    <file name="unloaded.php" hash="52309379cf823f9b5675132ed504f180"/>
-                                    <file name="vars.php" hash="4fd548e4afbbc63a34db17f90a5c37f2"/>
-                                    <file name="visits.php" hash="c0e407aeaeaf9695c05d511059a70937"/>
-                                    <file name=".htaccess" hash="7b15cb52f9b1c0fba36de3516aeec3bb"/>
+                                    <file name="last.php" hash="f37049e59e5202abb98b4ef7c3a6a30d"/>
+                                    <file name="lastclick.php" hash="4d068cc08ab5ed86dda882bd89948e54"/>
+                                    <file name="lastvisit.php" hash="abcbe0bd5998b485b4b63fa0b2063ede"/>
+                                    <file name="sizequery.php" hash="dc8201667bb6b69ba29bea94e268b800"/>
+                                    <file name="sizequerytotal.php" hash="ee801735779a42cc62f99934f1dd0031"/>
+                                    <file name="stats.php" hash="221bbb3299526888818af8200088c9de"/>
+                                    <file name="tooltip.php" hash="eda30934548fab636bae01dc24a55492"/>
+                                    <file name="trendtooltip.php" hash="729ed9847f37bde18fdc819094572ac3"/>
+                                    <file name="unloaded.php" hash="bc6ebb5e8b7a1d738d0d2550ab47c7cf"/>
+                                    <file name="vars.php" hash="19d677f64a98cbae9e332a7b9b58e2a7"/>
+                                    <file name="visits.php" hash="3d2ba97379f4ac80553e5ddd58dea2b4"/>
                                 </dir>
-                                <file name="config.php" hash="c39155c5ee4b51967e9ce8b6f3e5cb6e"/>
-                                <file name="controller.php" hash="434e3f5cddf925fb0f56396144ef0a0a"/>
+                                <file name="config.php" hash="07b58427b9622508597ec471be44107c"/>
+                                <file name="controller.php" hash="a5bc42a039350100afbff8e227e063b2"/>
                                 <dir name="css">
                                     <file name="ajax-tooltip.css" hash="f4e94af3b8b8ce7d1cf739e80c241021"/>
-                                    <file name="coda-slider.css" hash="d1c7847cfce78e3896fe189205e8bfd6"/>
-                                    <file name="extrawatch.css" hash="c76e6d9c302ba2fc81722c819feff135"/>
-                                    <file name="general.css" hash="4b314f1b4d744c4598ed425949d4ad8c"/>
+                                    <file name="bootstrap.css.map" hash="d41d8cd98f00b204e9800998ecf8427e"/>
+                                    <file name="coda-slider.css" hash="7ee8d539d0e0c87fe020ddf2b0277c12"/>
+                                    <file name="dashboard.css.php" hash="69e5744089dee1afb32336b3f73bbaf9"/>
+                                    <file name="extrawatch.css" hash="36c1ecdecd8be7a6fa03409b7e12526e"/>
+                                    <dir name="fonts">
+                                        <file name="glyphicons-regular.eot" hash="66389e0821c969a25739fc2cb0c0d65f"/>
+                                        <file name="glyphicons-regular.svg" hash="6e77f244661f0bac173ce977bc9259c5"/>
+                                        <file name="glyphicons-regular.ttf" hash="03ab70cf5263ebec91a5c637aa913a3e"/>
+                                        <file name="glyphicons-regular.woff" hash="64610dbdf459573b251d344111a5dea5"/>
+                                    </dir>
+                                    <file name="general.css" hash="d82b45eb52ece77f1054783f8bb3fe9e"/>
                                     <dir name="images">
                                         <file name="index.html" hash="0a01cc8d78a41d8f71fd171bd2a95406"/>
                                     </dir>
@@ -170,13 +178,14 @@
                                     <file name="index.html" hash="0a01cc8d78a41d8f71fd171bd2a95406"/>
                                     <dir name="mp3">
                                         <file name="click.mp3" hash="17f6e712bf12f0d4976c32fe4f77d08d"/>
+                                        <file name=".htaccess" hash="7b15cb52f9b1c0fba36de3516aeec3bb"/>
                                     </dir>
                                     <dir name="user-agent">
                                         <file name="index.html" hash="0a01cc8d78a41d8f71fd171bd2a95406"/>
                                         <file name="uasdata.ini" hash="7745401bdbd9d9973d194ccd6a6ee562"/>
                                     </dir>
                                 </dir>
-                                <file name="extrawatch.php" hash="95d62ecafbc00a46437571da31016da0"/>
+                                <file name="extrawatch.php" hash="183d21f9d833046420a753897ecbc461"/>
                                 <dir name="img">
                                     <dir name="flags">
                                         <file name="ad.png" hash="c1f1062f04b8a7e79ea1ac593ebda078"/>
@@ -226,7 +235,7 @@
                                         <file name="ck.png" hash="9af2ea8075f3595c8eaf988956378a6b"/>
                                         <file name="cl.png" hash="3af01d9c1f5e302278ef0c99ba559d13"/>
                                         <file name="cm.png" hash="cd7da134d7bcd818fcec4634a09e6599"/>
-                                        <file name="cn.png" hash="9e60afae0f6143438ac937f2457fa760"/>
+                                        <file name="cn.png" hash="5faafb055c42b4e36ced9b1b4256f1bd"/>
                                         <file name="co.png" hash="e3454e8f1383a691c1684db3c0e51375"/>
                                         <file name="cr.png" hash="1031562b9c0ca027af028c8d28bc2e43"/>
                                         <file name="cs.png" hash="2c53432e0d8c5edc4a12f0a2356fe6d0"/>
@@ -234,7 +243,7 @@
                                         <file name="cv.png" hash="ad3387e68aa44657d4c49b0fdb65fbce"/>
                                         <file name="cx.png" hash="96863e4bd652bf43a9059aff840dc347"/>
                                         <file name="cy.png" hash="121e15dd8407eac1ccaf9c6295eab9a9"/>
-                                        <file name="cz.png" hash="7657a79b7a5d65a93bcc9ee679e38573"/>
+                                        <file name="cz.png" hash="e7803d4ceedbf4ddea0268789f8b9782"/>
                                         <file name="de.png" hash="a83e5af5379627024eb0bc630e0fb07e"/>
                                         <file name="dj.png" hash="754e7a2b29fb920b83c03cd2f37d90fc"/>
                                         <file name="dk.png" hash="d068205580ece3f4b5f57b5b1eeb91a8"/>
@@ -283,7 +292,7 @@
                                         <file name="hu.png" hash="47abb9ee3bdcc9c68d618672c816dad2"/>
                                         <file name="id.png" hash="1b3a138e35d54ef5f6525edea0a2e4dd"/>
                                         <file name="ie.png" hash="1780527626179a89540313f7c0dc0e01"/>
-                                        <file name="il.png" hash="70c4b51c7713b96ed85497d7d6795374"/>
+                                        <file name="il.png" hash="f376cbaedcf1920b1a6ee4d057e5af06"/>
                                         <file name="in.png" hash="e162050b101740876a513bd51ca206e8"/>
                                         <file name="index.html" hash="0a01cc8d78a41d8f71fd171bd2a95406"/>
                                         <file name="io.png" hash="3a1f7dceb8b62c280d2c08f89377d61b"/>
@@ -384,7 +393,7 @@
                                         <file name="sh.png" hash="350059eb6376d0549f51ec3856d1adca"/>
                                         <file name="si.png" hash="0934058c22669c630791e2f42a206c2b"/>
                                         <file name="sj.png" hash="3a71de52b7b6ff72068795b78316a6ce"/>
-                                        <file name="sk.png" hash="206027687f00b58edaa1b16351d8c50d"/>
+                                        <file name="sk.png" hash="8e7bc2b9d687a2146f48d7cbefe9ef83"/>
                                         <file name="sl.png" hash="1e585a91b7a7446f8cc05440a4795893"/>
                                         <file name="sm.png" hash="16384be806ebee95aa6462cf3a858c2d"/>
                                         <file name="sn.png" hash="3b9599cc4acc9005c876ff1458eba365"/>
@@ -414,7 +423,7 @@
                                         <file name="ua.png" hash="979c6de787882918b72bb479fd998009"/>
                                         <file name="ug.png" hash="2b539aee90f5f8fa04ef9921fb21a4ab"/>
                                         <file name="um.png" hash="6c11798d5f8b8741257884b5915527e8"/>
-                                        <file name="us.png" hash="6c11798d5f8b8741257884b5915527e8"/>
+                                        <file name="us.png" hash="0002366f49a6ed7832e6bbc2e006d844"/>
                                         <file name="uy.png" hash="e8d541e1222cc9f507b0f39b79d8f127"/>
                                         <file name="uz.png" hash="06902ce58ab8d0df30b24bbe13e1255b"/>
                                         <file name="va.png" hash="9227d84d90b8084da6bd21236fd8a31e"/>
@@ -434,7 +443,6 @@
                                         <file name="za.png" hash="9b3a3bc7472ca842cabf17acca7a103b"/>
                                         <file name="zm.png" hash="b4b6999df8da58c9113c4449462b0b16"/>
                                         <file name="zw.png" hash="befe1168f765136c4de481389a7f8037"/>
-                                        <file name=".htaccess" hash="7b15cb52f9b1c0fba36de3516aeec3bb"/>
                                     </dir>
                                     <dir name="icons">
                                         <file name="Thumbs.db" hash="dafcd36a2b736ebf29717bec1e231a09"/>
@@ -453,31 +461,31 @@
                                         <file name="bg.gif" hash="1d9ed8c3f2e209e8455c2e4f9288e426"/>
                                         <file name="bing.png" hash="ca63563b919989fcf2153e5fce90f5e1"/>
                                         <file name="blank.gif" hash="19517fb39a31be6b8d7ccf53ad84908f"/>
-                                        <file name="block.png" hash="31180e2709aabdb84c89f54a2ed6f4f3"/>
+                                        <file name="block.png" hash="5b876471316dae82009446b2cdd7904f"/>
                                         <file name="bsd.gif" hash="6f697823db475664d9c670758a7a6e1a"/>
                                         <file name="cafemom.png" hash="a00a4858526965145ef6a252b4c213e6"/>
-                                        <file name="calendar.gif" hash="b9da4bdaf4ec859fed8c867c4a9b7419"/>
-                                        <file name="chrome.gif" hash="864cb9389002fc7ca5a40d62bc6ea63e"/>
+                                        <file name="calendar.gif" hash="46e1863a6569e5c565d9674c5127aa91"/>
+                                        <file name="chrome.gif" hash="3e0d3f57aabf5ff1b978dfeb75b0071d"/>
                                         <file name="chromiumos.png" hash="02147059d3ceed2b130e856c4570c0ca"/>
-                                        <file name="click-disabled.png" hash="a0219f73be20c48302c24dcaa9e07e21"/>
-                                        <file name="click.png" hash="438c7cfa093870b7c27d7865a04d1810"/>
+                                        <file name="click-disabled.png" hash="16b5ddda0c51e174dc212592ace3a824"/>
+                                        <file name="click.png" hash="16b5ddda0c51e174dc212592ace3a824"/>
                                         <file name="clock.png" hash="1228ce80411be8d9d952657b6775ac50"/>
-                                        <file name="collapse.gif" hash="f74262f767723fea983881519a1b944a"/>
+                                        <file name="collapse.gif" hash="a4d918be9c6c1596b79fa9d04cc2800b"/>
                                         <file name="credits-background.png" hash="1ae1392ebdac48d6ea0218c6a15c2c4e"/>
-                                        <file name="credits.png" hash="6d025b14848319a1d50cee5e51758c5e"/>
+                                        <file name="credits.png" hash="962126159193193c016c5fc00f72e8e5"/>
                                         <file name="dangeros.png" hash="717820c3b7f9b587cf28569da73002ad"/>
                                         <file name="delete.gif" hash="23c4a2b9f4d4f7d31fd79988356e4fdb"/>
-                                        <file name="delete.png" hash="8b48e7e9b9a6e2158fd4850ed5f2df0b"/>
+                                        <file name="delete.png" hash="b87f54e186d6ac6165818f4ce6e0cdfc"/>
                                         <file name="desc.gif" hash="a54846803de3cc786eec3d69f9ac2d38"/>
                                         <file name="deviantart.png" hash="05a98024100adc1b8a85863d7abaa796"/>
-                                        <file name="downloads-disabled.png" hash="54b951ff2bdfd291e2b616a3abb95cc6"/>
-                                        <file name="downloads.png" hash="ea8b15724dfbfff9c77b1be0ed24251a"/>
+                                        <file name="downloads-disabled.png" hash="c5055431919d7ca4e5ea39678ab28130"/>
+                                        <file name="downloads.png" hash="1658a0ba43ea7db392a2b15b67a47f82"/>
                                         <file name="dragonflybsd.png" hash="8869f2656b64c4102983ed0355235015"/>
-                                        <file name="edit.gif" hash="5dca92edef3f5fa3065aefd997da220c"/>
-                                        <file name="edit.png" hash="8b0d0be230ade1025e74f01a4f76f2ee"/>
-                                        <file name="emails.png" hash="6106e79a2baeee6be1b36c254c307807"/>
+                                        <file name="edit.gif" hash="07db14a42a69a7aabef1592b4b946590"/>
+                                        <file name="edit.png" hash="40fd55ff78248b87a844f297e25cd147"/>
+                                        <file name="emails.png" hash="95cf30dccbd8477e58f69432255e9daf"/>
                                         <file name="expand.gif" hash="e514362659d368863f7be53fc1284def"/>
-                                        <file name="explorer.gif" hash="3c0bae2e7088450b554ab1e872ea20a3"/>
+                                        <file name="explorer.gif" hash="53102fffc83c6a42aacf2584e9a78bea"/>
                                         <file name="external.gif" hash="6ca38fdbc29a08e57ba644b9ab6427ef"/>
                                         <file name="extrawatch-demo-pro.png" hash="1db755cf7dedb48ace9d789ff7bf895f"/>
                                         <file name="extrawatch-logo-1.2.11.png"
@@ -491,24 +499,24 @@
                                         <file name="extrawatch-logo-48x48.png" hash="ae64f3a0c3ffcb632ad5fe92b49ec477"/>
                                         <file name="extrawatch-logo.png" hash="5764c7e68728b8188ccfb511181e65f5"/>
                                         <file name="facebook.png" hash="2d9003164e4648511b78526e5a3a7d45"/>
-                                        <file name="firefox.gif" hash="ef3279331b3149ba403d2ac8ff3d8d42"/>
+                                        <file name="firefox.gif" hash="4029fd13d48e19e532e9c4ed6312dbac"/>
                                         <file name="firefox.png" hash="e7437f1b348c3423be4f15bc8e8d50ad"/>
                                         <file name="firefoxos.png" hash="e7437f1b348c3423be4f15bc8e8d50ad"/>
                                         <file name="flow-disabled.png" hash="001215bf5feb661b1596c4045eb9493f"/>
                                         <file name="flow.png" hash="60c75df26a07b28b4037aa179aced1c0"/>
                                         <file name="freebsd.png" hash="7de69b5c9a085fe672f50c816b8b30e7"/>
                                         <file name="gnu_os.png" hash="402fb644d47d368f22979b2dfcad9593"/>
-                                        <file name="goal-add.gif" hash="da989429e270001d4550bce431b3052b"/>
-                                        <file name="goal.gif" hash="6884b6987d072d73d14d03d4e72ab8a3"/>
-                                        <file name="goals-export.png" hash="174d065489bba82a4658b9bc386908f0"/>
-                                        <file name="goals-import.png" hash="b800dcaab313837820cf45a34eace02b"/>
+                                        <file name="goal-add.gif" hash="3616a6695cdc9582a8793edcbc8825bd"/>
+                                        <file name="goal.gif" hash="fed735f0b8f376f10c24f4b2ab9dfee3"/>
+                                        <file name="goals-export.png" hash="a18d0e88017982c3d28cc836a3f4703a"/>
+                                        <file name="goals-import.png" hash="3441c84fca9cdb3fa5af18cc3459fa81"/>
                                         <file name="google+.png" hash="ea4ff2f299d502e8c9beea2b4a4e37d7"/>
                                         <file name="google.png" hash="87a5e1e40ea1dfff1e862cc06ec22e6e"/>
                                         <file name="google_plus.png" hash="ea4ff2f299d502e8c9beea2b4a4e37d7"/>
                                         <file name="haiku.png" hash="8c38cf80863b85d0a76075e9a09f2c7d"/>
                                         <file name="heatmap-disabled.png" hash="735a62bb8e6f7e87a0803be6ed346c2d"/>
                                         <file name="heatmap.png" hash="d9490f7dd117377a7fda1449d35d0641"/>
-                                        <file name="help.gif" hash="7d8e5cfdcf2bebd4aad4e93e5d3e3049"/>
+                                        <file name="help.gif" hash="236227c82a7c2fd76881d32b89bd74d6"/>
                                         <file name="history.png" hash="1be43aa0ce88b2c116c799a84b63bce8"/>
                                         <file name="hpux.png" hash="06593f730a20adb88312e3bc924d90e6"/>
                                         <file name="hsv.png" hash="755f93cc017b8162d900a0f639bdab57"/>
@@ -545,7 +553,7 @@
                                         <file name="macos.png" hash="9b2a82a38f933f12b014728ed71a5e98"/>
                                         <file name="macosx.png" hash="8873f2472e1e7263ff7936930d5a952a"/>
                                         <file name="maemo.png" hash="9fd75a4b8c94ba486e4230771bf58f1f"/>
-                                        <file name="map_icon.gif" hash="9566ae2907ad9699bfe6112b3afc2838"/>
+                                        <file name="map_icon.gif" hash="352879137890d1c790dcad10524d55dd"/>
                                         <file name="meetup.png" hash="d81c9d2857b854ec85a61278d94775c4"/>
                                         <file name="minix.png" hash="2a535b7def3a59aa296459f744930c09"/>
                                         <file name="mobile.png" hash="d1ac27ed2454fdd3b0b93b0091581dbc"/>
@@ -556,7 +564,7 @@
                                         <file name="myspace.png" hash="dd97049e61340cc65b88b6d7dbb945e7"/>
                                         <file name="netbsd.png" hash="c44ea6b7e5a4a2fbbdd6094e16adddff"/>
                                         <file name="netware.png" hash="ca2dbf4117ec3b9b410d8f8f24cc4d70"/>
-                                        <file name="new.png" hash="bb8efa635cc6a76a14deac74db037b8d"/>
+                                        <file name="new.png" hash="7beaece607f82c9fbd409d75866679b7"/>
                                         <file name="nextstep.png" hash="8f9860ecb0236c842b49a5c61fff415a"/>
                                         <file name="ning.png" hash="cde93f147f2e0a60a613d3d7a92b9987"/>
                                         <file name="nintendo_ds.png" hash="b3d20268dcd5e72cefb8cb7b22b1e80d"/>
@@ -564,7 +572,7 @@
                                         <file name="online.png" hash="36df42a74eeb8bdfda96f591f4d9f73a"/>
                                         <file name="openbsd.png" hash="6b0a5ba14fa20b87ce1433ef3423f47d"/>
                                         <file name="openvms.png" hash="661d5f26cb0cbb65cdcda9ef846cd7dc"/>
-                                        <file name="opera.gif" hash="02f9063dfdea8fc6a7b655f3797885b5"/>
+                                        <file name="opera.gif" hash="03938ae76d2066fd5a4a9f50bb2fc46a"/>
                                         <file name="orkut.png" hash="a599f736f1644306b040ced1ad7d4675"/>
                                         <file name="os2.png" hash="c4ca5c596141513831587aabc0258f93"/>
                                         <file name="os2warp.png" hash="21a91776d851b34f3baacb3d6a10ff46"/>
@@ -575,12 +583,12 @@
                                         <file name="plan9.png" hash="6aa73fad1e95233714f26f06a192cbc1"/>
                                         <file name="playstation.png" hash="a277b19038afd06208f5d76df4cf2af9"/>
                                         <file name="print.gif" hash="9107aa42ca273ed777e6d855a6c77764"/>
-                                        <file name="progress_bar.gif" hash="2bc1b90d959fd6ff7a128e2cb02d233d"/>
+                                        <file name="progress_bar.gif" hash="9c15a21f30340e9658381fec162eb568"/>
                                         <file name="progress_bar_hits.gif" hash="b10c194f7ee6863595448d1415b00cda"/>
-                                        <file name="progress_bar_loads.gif" hash="8400c1e4eeb04e8d6137a37aa724364c"/>
+                                        <file name="progress_bar_loads.gif" hash="9c15a21f30340e9658381fec162eb568"/>
                                         <file name="progress_bar_search_engines.gif"
-                                              hash="325d527f8ce78c7da8c4ce5f3b346218"/>
-                                        <file name="progress_bar_unique.gif" hash="d58f27644e3af0f34989941357b41de6"/>
+                                              hash="c1370e47e02403712768316fa8654270"/>
+                                        <file name="progress_bar_unique.gif" hash="39dcd9a4e0505a870acabbc65887df3e"/>
                                         <file name="progress_bar_vertical.gif" hash="75f3a4c35e7d27fe5f24fdab6e60f096"/>
                                         <file name="progress_bar_vertical_faded.gif"
                                               hash="f823f7041ef55c8653b69be3b2b84671"/>
@@ -594,8 +602,17 @@
                                         <file name="reload.gif" hash="0fd67d66ec5f703b0915e5ccfd0d68fb"/>
                                         <file name="rim_os.png" hash="a60506dcf09f30503e836f24326345ef"/>
                                         <file name="riskos.png" hash="521084d756f6a89d055fb89ebec18732"/>
-                                        <file name="safari.gif" hash="8ab23a607bba531a1d065c0cb739dd87"/>
+                                        <file name="safari.gif" hash="7b11788ae7ce404f17f13d754c3e1085"/>
                                         <file name="sco.png" hash="2e39133fb9a1214fcbd455cf083ecb5a"/>
+                                        <file name="screenshot-clicks.png" hash="0b7adaacf3ae83b3132bab61102929d7"/>
+                                        <file name="screenshot-downloads.png" hash="0ca25f63e2084d3700d60e0e3eb55bbe"/>
+                                        <file name="screenshot-flow.png" hash="aa31c7e8f39db822604026219e33c60d"/>
+                                        <file name="screenshot-heatmap.png" hash="fb5bd28fb0867e8bc92eb34e805c3194"/>
+                                        <file name="screenshot-location.png" hash="745c87850f7e4fb623037c4aeaf4c0e1"/>
+                                        <file name="screenshot-seo.png" hash="7fec047949a067338cb4714f475e1c21"/>
+                                        <file name="screenshot-sizes.png" hash="44bfc40ef19755d3307a6049c8addd46"/>
+                                        <file name="screenshot-status.png" hash="612bbc17dcc042f8ce4f52cef8e6f155"/>
+                                        <file name="screenshot-users.png" hash="a6659d20bc8d1b606b5d5fa84085ef6a"/>
                                         <file name="seo-disabled.png" hash="a4ede20e99b2c214929b1457ec6bd0d6"/>
                                         <file name="seo.png" hash="1c5b31c11eece6cc8be4ff7684cb3533"/>
                                         <file name="settings.gif" hash="b8abcb87458021c6afc27c263ac6d2de"/>
@@ -609,21 +626,21 @@
                                         <file name="sun.gif" hash="451c422226376b008068a9464e342ef6"/>
                                         <file name="syllable.png" hash="06e31722ae4a37a3e92718ff287d7467"/>
                                         <file name="symbian.png" hash="2bd083f55823d437ad3a2ffc1eb13de0"/>
-                                        <file name="tab-none.gif" hash="8e504fd8b701da570fbce2c3725667f5"/>
-                                        <file name="tab-off.gif" hash="4e4e1cdcc0d473e77bf1a9af75148066"/>
-                                        <file name="tab-on.gif" hash="808ea51ca4cceeb775aa4eef6676e5c6"/>
+                                        <file name="tab-none.gif" hash="9ef6975b1848fb496d922c107e86f4a9"/>
+                                        <file name="tab-off.gif" hash="d52cf526dce8c7a13f4bcef3128a5343"/>
+                                        <file name="tab-on.gif" hash="a210986d90e7fbd4683c9408bde86ad5"/>
                                         <file name="tagged.png" hash="cb89e6de4a769ba82a6c9b4ca3c9fc93"/>
                                         <file name="tick.png" hash="d4f269e691d6b2bc1218e496f8fab77e"/>
                                         <file name="tizen.png" hash="2ffed99d9bb17179ec44a243afc627b8"/>
                                         <file name="trend_gray.gif" hash="623e345425079ea560f326b2376a573c"/>
-                                        <file name="trend_green.gif" hash="97b697f7bb2e2aec514fe12bc20beda1"/>
-                                        <file name="trend_icon.gif" hash="b6ec288ac4d4a0f1cb5931585b2f10fd"/>
+                                        <file name="trend_green.gif" hash="75cec4e128be68e777f57b60f419006f"/>
+                                        <file name="trend_icon.gif" hash="87537db56f1ccf809c39b90ef68daa73"/>
                                         <file name="trend_icon.png" hash="3c74fe9adc37ec0a2a04f1bb19407d5b"/>
-                                        <file name="trend_red.gif" hash="2d5eb83e5b2509b40a855343041fb198"/>
+                                        <file name="trend_red.gif" hash="b6a8b597add8d601d9e33172a74ec6d3"/>
                                         <file name="twitter.png" hash="9f907e6c9fda1c573ff1744fc6fc233f"/>
                                         <file name="unknown-os.gif" hash="eb89698d7ddd7425396163681695eb18"/>
                                         <file name="unknown.png" hash="3830be53ecd37f07fb220a6fc7186903"/>
-                                        <file name="unpublished.png" hash="a06fa4fad678a9237271dc1dfc1fcc0c"/>
+                                        <file name="unpublished.png" hash="5b876471316dae82009446b2cdd7904f"/>
                                         <file name="update.png" hash="1ad5cea5cad65610f832a4698cbe8ff4"/>
                                         <file name="users-disabled.png" hash="4ece8cdab41a2a3df834f73bd435adfb"/>
                                         <file name="users.png" hash="6d025b14848319a1d50cee5e51758c5e"/>
@@ -645,12 +662,13 @@
                                         <file name="windowsxp.gif" hash="12f6d0408fec43be6664e2c069d696e4"/>
                                         <file name="windowsxp.png" hash="9990faea3dc3b0aa59bce0ab08ec3d1c"/>
                                         <file name="yahoo.png" hash="f0528f1fb5fed7c3fd324979e7dcf882"/>
-                                        <file name=".htaccess" hash="7b15cb52f9b1c0fba36de3516aeec3bb"/>
                                     </dir>
                                     <file name="index.html" hash="0a01cc8d78a41d8f71fd171bd2a95406"/>
-                                    <file name="logo.png" hash="aedbb40c46692cdc41846945820dbca5"/>
+                                    <file name="logo.png" hash="36d853f6c36fc10aa535b527108f49ae"/>
+                                    <file name="popup.png" hash="175ea6bb4fb96772caf5f6c4585010ac"/>
+                                    <file name=".htaccess" hash="7b15cb52f9b1c0fba36de3516aeec3bb"/>
                                 </dir>
-                                <file name="includes.php" hash="c8c74873b853dfc3bbc3d8bdee4e08f5"/>
+                                <file name="includes.php" hash="b6067623a5b6f3a763e09be16304a26b"/>
                                 <file name="index.html" hash="0a01cc8d78a41d8f71fd171bd2a95406"/>
                                 <dir name="js">
                                     <dir name="OpenLayers">
@@ -677,111 +695,116 @@
                                             <file name="index.html" hash="0a01cc8d78a41d8f71fd171bd2a95406"/>
                                         </dir>
                                     </dir>
-                                    <file name="agent.js.php" hash="f7fcc55898cf1d01f4495a2d401cba54"/>
-                                    <file name="ajax-dynamic-content.js" hash="4874e6514ca4fa26da0d591ba7ee41ad"/>
+                                    <file name="agent.js.php" hash="c7a91aa18543a37d7d06da8d0fcefb3f"/>
+                                    <file name="ajax-dynamic-content.js" hash="1514b6a2e58c0c5c301e0924d09b8579"/>
                                     <file name="ajax.js" hash="8f94a6857ac748cbfeaa9b46f0b206b8"/>
+                                    <file name="bootstrap.js" hash="c1eff7b72ea8c15a787bd03b63d82f08"/>
+                                    <file name="bootstrap.min.js" hash="ba847811448ef90d98d272aeccef2a95"/>
                                     <file name="coda-slider.1.1.1.js" hash="7d4467aad3517021f7fac5e85320e5eb"/>
-                                    <file name="extrawatch.js.php" hash="b23d87b58f3b62d06b563d686ab999c4"/>
-                                    <file name="fade.js" hash="ba1571c690d0eb6689363218d4e23dd8"/>
+                                    <file name="extrawatch.js.php" hash="45c60346e4c287d6f59774b659ad8d35"/>
+                                    <file name="fade.js" hash="738dd5461e196a3b0995042b9af585db"/>
                                     <dir name="heatmap">
                                         <file name="heatmap.js" hash="22805326be75a2e2a6a93bd28648ee83"/>
                                         <file name="index.html" hash="0a01cc8d78a41d8f71fd171bd2a95406"/>
                                     </dir>
-                                    <file name="heatmap.js.php" hash="6c26dca18a96733358db127c955d87e9"/>
+                                    <file name="heatmap.js.php" hash="b92bc7c2b4d9caaf8201405b8fa4e428"/>
                                     <file name="index.html" hash="0a01cc8d78a41d8f71fd171bd2a95406"/>
-                                    <file name="jdownloadurl.js" hash="b8390a231df9aa9c09de31289af068e4"/>
-                                    <file name="jquery-1.4.2.min.js" hash="7cae83a5005e09883bfe5f1dd67ec013"/>
+                                    <file name="jdownloadurl.js" hash="fe8233f51b66641aea2dcedc12a26ee6"/>
+                                    <file name="jquery-1.11.0.min.js" hash="8fc25e27d42774aeae6edbc0a18b72aa"/>
                                     <file name="jquery-easing-compatibility.1.2.js"
                                           hash="249589630426d2250ead7587a390cd7d"/>
                                     <file name="jquery-easing.1.2.js" hash="0c7dc2699a97c5e1ea1b6c41bec52a01"/>
                                     <file name="jquery-latest.js" hash="a31f24610f2583bf156adc81cb151205"/>
                                     <file name="jquery-ui-1.8.1.custom.min.js" hash="f47b9c88937b869174301acf7209a0fb"/>
                                     <file name="jquery.js" hash="0ffc585d87092401e23a98fc2f128c68"/>
-                                    <file name="jquery.tablesorter.js" hash="338986ae320233de0c83c5673828f8ca"/>
+                                    <file name="jquery.tablesorter.js" hash="3c62974b1f8678eefb4b9516a13a0a37"/>
                                     <file name="jsapi.js" hash="07cdbc0052e1afb649eab7a442b49dd2"/>
                                     <file name="jxml.js" hash="abdd6c7757271cb36d277a090ca064b8"/>
-                                    <file name="maps.js.php" hash="7f37a981f6c2734c8202e4bc7e6eaeb7"/>
+                                    <file name="maps.js.php" hash="9b11c9ee547ab5bb80ea831b1c18c2c3"/>
+                                    <dir name="morris">
+                                        <file name="morris.min.js" hash="5649830733b2e70553af227f44b3cf2a"/>
+                                        <file name="raphael-2.1.0.min.js" hash="ffd330bd214b7b0a8e14e613765b606e"/>
+                                    </dir>
                                     <dir name="springy">
                                         <file name="LICENSE" hash="f754faa5d1acafc1016cd15f550394fa"/>
                                         <file name="index.html" hash="0a01cc8d78a41d8f71fd171bd2a95406"/>
                                         <file name="springy.js" hash="711d5174271f1567aaee56a62d953e4a"/>
                                         <file name="springyui.js" hash="b43ce397c03be5697ae7cc11a4a06def"/>
                                     </dir>
-                                    <file name=".htaccess" hash="7b15cb52f9b1c0fba36de3516aeec3bb"/>
                                 </dir>
                                 <dir name="lang">
-                                    <file name="addToAllFiles.bat" hash="1f4ec6c26173dc1b4c8d7d62737fe6aa"/>
-                                    <file name="albanian.php" hash="aff62773e273bf3f05e962702f192eb4"/>
-                                    <file name="arabic.utf-8.php" hash="f357eae3a4441103d100c9cadf26d486"/>
-                                    <file name="bengali.utf-8.php" hash="cc4d09a08b03f3b22268e17dadfc7241"/>
+                                    <file name="addToAllFiles.bat" hash="d8aa30251db2cf78580dc408781432aa"/>
+                                    <file name="albanian.php" hash="86b8731abf5b961884081a4f87902785"/>
+                                    <file name="arabic.utf-8.php" hash="06b94bb98fea93607ae7230b26556bee"/>
+                                    <file name="bengali.utf-8.php" hash="eb9ac66efdee72753c193d5a174186b7"/>
                                     <file name="brazilian.portuguese.utf-8.php"
-                                          hash="51144eacdd02f58912edd29ba69acffc"/>
-                                    <file name="bulgarian.iso8859-5.php" hash="625af03cee01bf3da73fc377c0ab13e5"/>
-                                    <file name="bulgarian.utf-8.php" hash="ebd6ac715ae921063fd3de5973e43797"/>
-                                    <file name="chinese-simplified.utf-8.php" hash="965dbfde15e5412f218e4d0ca66f66f5"/>
-                                    <file name="chinese-traditional.utf-8.php" hash="3d6849e55d2a855f537d99bbae986fec"/>
-                                    <file name="croatian.php" hash="843150951550cff012d1ffe210e00be3"/>
-                                    <file name="czech.utf-8.php" hash="652f21de78e09816ff177db59a6a27ac"/>
-                                    <file name="danish.utf-8.php" hash="2619d21d971a1c4ae2494791647d8466"/>
-                                    <file name="dutch.php" hash="d81fd9f70956440f38d652b35b511a07"/>
-                                    <file name="english.php" hash="9883926499fb2352e513fc64c51920b7"/>
-                                    <file name="estonian.php" hash="6738fd8397ff4714bb1b7f2621b6bb15"/>
-                                    <file name="estonian.utf-8.php" hash="bb773ae9ef22b0c8c7e6077f45eba7b0"/>
-                                    <file name="farsi.utf-8.php" hash="97833d6b2b7675f6a91089da4c03f863"/>
-                                    <file name="french.utf-8.php" hash="ce5ece2de5edbeb1101b7fe618c4df2e"/>
-                                    <file name="german.utf-8.php" hash="67f27ba8115ffa2413378ae8a069862e"/>
-                                    <file name="greek.utf-8.php" hash="25f870a0ddb7afcfa403d9f0e6625433"/>
-                                    <file name="hebrew.utf-8.php" hash="5a6ce68472e951e8958d48d342b868f1"/>
-                                    <file name="hindi.utf-8.php" hash="a86ca2a28a777acff106238f78f296e0"/>
-                                    <file name="hungarian.utf-8.php" hash="f11c45a3fa74a76a388972e672d1199a"/>
+                                          hash="2d30c8e911a71ad13c158c2e3af017b2"/>
+                                    <file name="bulgarian.iso8859-5.php" hash="5ce2fb02a5613fe0405d3b5deacecf39"/>
+                                    <file name="bulgarian.utf-8.php" hash="d13c67713ca8a0ceddf3b849e9336d9c"/>
+                                    <file name="chinese-simplified.utf-8.php" hash="e75b79087f3bd245f66a23bf8711e43f"/>
+                                    <file name="chinese-traditional.utf-8.php" hash="15efabaf7207de584e0b55d374958992"/>
+                                    <file name="croatian.php" hash="3a6a6b94b83d6d3902529c112e2700bd"/>
+                                    <file name="czech.utf-8.php" hash="03a3f7cf228340304d698f53429ee5b1"/>
+                                    <file name="danish.utf-8.php" hash="42dfaa08aa5215625096b3908cea5353"/>
+                                    <file name="dutch.php" hash="aa1f8de5e3d27298bc76aa1eee4a6ba1"/>
+                                    <file name="english.php" hash="863112467d426e23f0327e25d173bd65"/>
+                                    <file name="estonian.php" hash="d73a1fefd643ab5ea9dbe9e0cf9f2be8"/>
+                                    <file name="estonian.utf-8.php" hash="fe1f4e3948fac9b21817645ef1179912"/>
+                                    <file name="farsi.utf-8.php" hash="9f76fa719924d606fef8901870b222d2"/>
+                                    <file name="french.utf-8.php" hash="259c141fb857f419621e3a07ff806e25"/>
+                                    <file name="german.utf-8.php" hash="4911bf94ea61d42d93baaf5678bd550b"/>
+                                    <file name="greek.utf-8.php" hash="306757419c33194de9dbda8bb29941fb"/>
+                                    <file name="hebrew.utf-8.php" hash="3b06a58ef3b0c0acd4d148aa4105331f"/>
+                                    <file name="hindi.utf-8.php" hash="22d59234ef8b96d9bf15230141cf0c27"/>
+                                    <file name="hungarian.utf-8.php" hash="7de473636bc4dee7ce0a686c9f4f8c77"/>
                                     <file name="index.html" hash="0a01cc8d78a41d8f71fd171bd2a95406"/>
-                                    <file name="indonesian.php" hash="6eead4bcea7703cd7a0c4c03b65374ac"/>
-                                    <file name="italian.utf-8.php" hash="a20ce364f0bea57300aba30191911dd1"/>
-                                    <file name="japanese.utf-8.php" hash="a77089d6c1b253503c187b5e3e897534"/>
-                                    <file name="latvian.utf-8.php" hash="b16d1836482a4038a6c56a3d0aed831b"/>
-                                    <file name="linesToAdd.txt" hash="73b0ba834f50d97a7509b27d3fbde5be"/>
-                                    <file name="lithuanian.utf-8.php" hash="731e4204441f59d22026bbfa5658e13c"/>
-                                    <file name="macedonian.utf-8.php" hash="b4b3aa951867ab20eddf549c9889c729"/>
-                                    <file name="polish.utf-8.php" hash="0c8770e0caa9b7d2cde2f72c895cf82b"/>
-                                    <file name="romanian.utf-8.php" hash="303c2d68aa8b1b868317be7734226d7d"/>
-                                    <file name="russian.cp1251.php" hash="85b5a0be3933d5a5925c3f52d71d73c2"/>
-                                    <file name="russian.utf-8.php" hash="d1a33d855d01ca7bd16d4600ad99b39d"/>
-                                    <file name="serbian.utf-8.php" hash="29560aea9597d2426b0ed36ee41bb081"/>
-                                    <file name="slovak.iso8859-2.php" hash="260d81b1289a75caeec4dd62e94c56c9"/>
-                                    <file name="slovak.utf-8.php" hash="784486c8ad85e584edbfbf1ed7384d9e"/>
-                                    <file name="slovenian.utf-8.php" hash="d0203d50149e6a4c6c7f67be3477829e"/>
-                                    <file name="spanish.utf-8.php" hash="b496d886900dbb0706c8daa4ff9d0040"/>
-                                    <file name="swedish.utf-8.php" hash="6fd1f6ac57f045b6a835066f7d5d3927"/>
-                                    <file name="turkish.utf-8.php" hash="1765f5ee1ff593052815f01655da22ca"/>
-                                    <file name="ukrainian.cp1251.php" hash="4db3179652bd52ef2e6973ff55f813ac"/>
-                                    <file name="ukrainian.utf-8.php" hash="5ba23fd762c05022a1a0c8983ceaaf3a"/>
-                                    <file name="urdu.utf-8.php" hash="63f40697b4f0be9df6cfc0e3e716ba86"/>
-                                    <file name="vietnamese.utf-8.php" hash="7a396a1e592ef2c5f6040940cd7507f4"/>
+                                    <file name="indonesian.php" hash="ec739cf84121a6242e66d447f7e28b50"/>
+                                    <file name="italian.utf-8.php" hash="d2755cf06b01a82cfd092369830954b2"/>
+                                    <file name="japanese.utf-8.php" hash="3107aba74515654b4a706329f1fc9645"/>
+                                    <file name="latvian.utf-8.php" hash="be84475fd93d795c6836e958fd209526"/>
+                                    <file name="linesToAdd.txt" hash="b55d828e39669e38a0f564940abf21fe"/>
+                                    <file name="lithuanian.utf-8.php" hash="77df9bebbc14654436ff4c6eb5c58fc5"/>
+                                    <file name="macedonian.utf-8.php" hash="57d3d2cb8e5e86d0b505363c784aaedc"/>
+                                    <file name="polish.utf-8.php" hash="e9e62ed7e75bf0db6c20ae35fec00fbb"/>
+                                    <file name="romanian.utf-8.php" hash="6c8f5571179c12a6cfcce8347bd68f8e"/>
+                                    <file name="russian.cp1251.php" hash="1d60a33d9a8477083a2dec3b4f30776e"/>
+                                    <file name="russian.utf-8.php" hash="3346293d3e2d1e79d3088d416a6b1dcf"/>
+                                    <file name="serbian.utf-8.php" hash="6f9a185b0bce6e1d3071921567a10496"/>
+                                    <file name="slovak.iso8859-2.php" hash="e5cba67ef2ed67032f3959bf2b59e9ee"/>
+                                    <file name="slovak.utf-8.php" hash="d0eebe0dab336581719d095f6f87fcd2"/>
+                                    <file name="slovenian.utf-8.php" hash="b283d4049f362f421f42e4b49f7541ac"/>
+                                    <file name="spanish.utf-8.php" hash="a695bacaf40b4c53e28d7bfd57c0bf07"/>
+                                    <file name="swedish.utf-8.php" hash="d7f952d99054591d834f9b046b984602"/>
+                                    <file name="turkish.utf-8.php" hash="7df4e1f0a74795cfb6f6cd57dbdee973"/>
+                                    <file name="ukrainian.cp1251.php" hash="21e31bc60276f4e3d55be4501a5f8f20"/>
+                                    <file name="ukrainian.utf-8.php" hash="93bf20f78a1b35d6bfe1ad8ff98d6e5b"/>
+                                    <file name="urdu.utf-8.php" hash="a952c99bed0b34358cbc7c11403fb7db"/>
+                                    <file name="vietnamese.utf-8.php" hash="ad1bed2db4e67ff03ff53c98d97b9110"/>
                                 </dir>
                                 <dir name="lib">
                                     <file name="index.html" hash="0a01cc8d78a41d8f71fd171bd2a95406"/>
                                     <dir name="phpseclib">
                                         <dir name="Crypt">
-                                            <file name="Hash.php" hash="690b8398904173e70edf559da12e8dcc"/>
-                                            <file name="RSA.php" hash="bd0402efcbf7cdeb3e68205c77a88bc0"/>
-                                            <file name="Random.php" hash="abd00f946870edf2eb883705ed0bd911"/>
+                                            <file name="Hash.php" hash="b61fa459413859d6dd9037ec7326c10f"/>
+                                            <file name="RSA.php" hash="5c24d0c63f1de5952896f9315a313bf0"/>
+                                            <file name="Random.php" hash="a31faf2b1c840e0a8555638b3b378f09"/>
                                             <file name="index.html" hash="0a01cc8d78a41d8f71fd171bd2a95406"/>
                                         </dir>
                                         <dir name="Math">
-                                            <file name="BigInteger.php" hash="65cffbf884c1e88813bade968298a035"/>
+                                            <file name="BigInteger.php" hash="01538688855a65c399b8da0468afc241"/>
                                             <file name="index.html" hash="0a01cc8d78a41d8f71fd171bd2a95406"/>
                                         </dir>
                                         <file name="index.html" hash="0a01cc8d78a41d8f71fd171bd2a95406"/>
-                                        <file name="index.php" hash="a2f3cb5bafe3224eaa85f4f8aceeaaea"/>
+                                        <file name="index.php" hash="08d2f50d6d00e80d62ad33d3c72e6828"/>
                                     </dir>
                                 </dir>
                                 <dir name="log">
-                                    <file name="extrawatch.log.php" hash="8eb71590eeb394208ced6bec66a430c7"/>
+                                    <file name="extrawatch.log.php" hash="c875a2188665c319b852f4f33edb4212"/>
                                     <file name="index.html" hash="0a01cc8d78a41d8f71fd171bd2a95406"/>
                                 </dir>
-                                <file name="router.php" hash="265338526d7e087f3b8119398b063605"/>
+                                <file name="router.php" hash="5c25ac347f2ee89d54b785138a720d39"/>
                                 <dir name="sql">
-                                    <file name="csv2sql.php" hash="1a35464a42232d3f4557af3ade1b5774"/>
+                                    <file name="csv2sql.php" hash="17daea18b3a3b990b457e2bd141ffe20"/>
                                     <file name="extrawatch-1.sql" hash="93fa74798a5dee9dffe378093fecb193"/>
                                     <file name="extrawatch-10.sql" hash="22be76a2697b1c2dcdaa0d0a6dc9cffc"/>
                                     <file name="extrawatch-100.sql" hash="51a94b919a87a3f2506f949b528998a4"/>
@@ -1003,7 +1026,7 @@
                                     <file name="extrawatch-98.sql" hash="bd0f4c301e30612782e7ff07e7f95b29"/>
                                     <file name="extrawatch-99.sql" hash="43effda6f3b3389fad67f7c584f5bfff"/>
                                     <file name="index.html" hash="0a01cc8d78a41d8f71fd171bd2a95406"/>
-                                    <file name="install.mysql.utf8.sql" hash="fa833eeee4848e06bf61f54b50a86fa6"/>
+                                    <file name="install.mysql.utf8.sql" hash="5533d21de43f511d897417e58f7c35e4"/>
                                     <dir name="scripts">
                                         <file name="2013-06-22-download_monitor.sql"
                                               hash="d45200403ecdc29cb00cfff2f5ac8bfa"/>
@@ -1045,51 +1068,55 @@
                                               hash="16c815b7a52318196da8a02678a3f84c"/>
                                         <file name="2013-11-13-unique-blocked-ip.sql"
                                               hash="57548c0c39113a242a28517f06cab963"/>
+                                        <file name="2014-01-31-downloads-filepath-added-manually.sql"
+                                              hash="215092286aa6e208ffcd82d7f5349fd6"/>
+                                        <file name="2014-04-21-visits-added-lat-long-city.sql"
+                                              hash="f102b72d277de3aaae558e6b53fd03f1"/>
                                     </dir>
                                 </dir>
                                 <dir name="src">
-                                    <file name="class.extrawatch.block.php" hash="4dcf7e4c4260205f52d013cf9e209139"/>
-                                    <file name="class.extrawatch.cache.php" hash="86adcc69d3b1cf06cca552c2126a6567"/>
-                                    <file name="class.extrawatch.config.php" hash="6dcdeca6b2cd462ea53dbc230aa46767"/>
-                                    <file name="class.extrawatch.date.php" hash="e55a6e666580ccfb12c4e2d134b47705"/>
-                                    <file name="class.extrawatch.db.php" hash="4245a195d8d7b7ad04a40de15dfa2e05"/>
+                                    <file name="class.extrawatch.block.php" hash="d0496797ca115cff3862458ddd087a10"/>
+                                    <file name="class.extrawatch.cache.php" hash="a6b97c599d153205e9422fdf4ec8f402"/>
+                                    <file name="class.extrawatch.config.php" hash="6ce1bc6b2a1dd1e7a2c0d91de1901cbc"/>
+                                    <file name="class.extrawatch.date.php" hash="aa53f944b82c4e2160907b2d810a49ac"/>
+                                    <file name="class.extrawatch.db.php" hash="e27b5d3499924a85300cedca8551e79e"/>
                                     <file name="class.extrawatch.downloads.php"
-                                          hash="e02d740c8d8123da9d6ea46748b37e12"/>
+                                          hash="6696d3a91bd71a1ceb2c1478fced1088"/>
                                     <file name="class.extrawatch.exception.ipblocked.php"
-                                          hash="777903de998af17a46da2f6cfbf9d29a"/>
-                                    <file name="class.extrawatch.flow.php" hash="9dd87cc25d9eed85f0852f3d2afd5f67"/>
-                                    <file name="class.extrawatch.goal.php" hash="187d35fa8e5bced46572fddb12cdb9b5"/>
-                                    <file name="class.extrawatch.heatmap.php" hash="7529697b91160e614ac305a6e76f474c"/>
-                                    <file name="class.extrawatch.helper.php" hash="0184c4b152911d173cd947a07e2cd6b0"/>
-                                    <file name="class.extrawatch.log.php" hash="1b017993eead9f8d2969c9573b9f73ab"/>
-                                    <file name="class.extrawatch.php" hash="306c7b3d4a44dcc0bc280b3aa6dac242"/>
-                                    <file name="class.extrawatch.referers.php" hash="65521540cd147a1ed2158ae9a4cd22c8"/>
-                                    <file name="class.extrawatch.seo.php" hash="81320803a1b1720b9268fb6d86210257"/>
-                                    <file name="class.extrawatch.setup.php" hash="be19b777bf3d88bd54c6a5604e1953a1"/>
-                                    <file name="class.extrawatch.sizes.php" hash="253950c421bb0b4019a8baeef6827d2a"/>
-                                    <file name="class.extrawatch.stat.php" hash="f151d5da92698ea21464c2bb125ad275"/>
+                                          hash="c0ab3088d2214f39ab7af9c4895dff2d"/>
+                                    <file name="class.extrawatch.flow.php" hash="174614d7ad68de56d342f17c930432cb"/>
+                                    <file name="class.extrawatch.goal.php" hash="913e27dfe00a56c579e981ca540d4559"/>
+                                    <file name="class.extrawatch.heatmap.php" hash="f1ed2cd3a5501ce347cb4aed389482fd"/>
+                                    <file name="class.extrawatch.helper.php" hash="c66153febf983f7e6b21789b5e8d6d85"/>
+                                    <file name="class.extrawatch.log.php" hash="e83b14c11f7439361cb8f63285624768"/>
+                                    <file name="class.extrawatch.php" hash="ce176135ce7e7855847532e94ff83a83"/>
+                                    <file name="class.extrawatch.referers.php" hash="8d49f3951492797810df24732d0aadc4"/>
+                                    <file name="class.extrawatch.seo.php" hash="b07390738397290e94ec1ea39f7b9a3f"/>
+                                    <file name="class.extrawatch.setup.php" hash="4932cbb300b3983713eb35e58ac15941"/>
+                                    <file name="class.extrawatch.sizes.php" hash="fb634cd99bb92797b18c1c9319ec4107"/>
+                                    <file name="class.extrawatch.stat.php" hash="7e6eff24f56e146169f23e1c3f7520c6"/>
                                     <file name="class.extrawatch.uasparser.php"
-                                          hash="3704718de823d52c9eb7eadc71bab8fd"/>
-                                    <file name="class.extrawatch.user.php" hash="28438328e6e51438b0a490dc80eee894"/>
+                                          hash="9f8aa723fa5c1001ef74719c24a01a66"/>
+                                    <file name="class.extrawatch.user.php" hash="1a4b3a7bcd478250b76267d3d0047096"/>
                                     <file name="class.extrawatch.visit.history.php"
-                                          hash="4012da713208cf2f72c4900d2dccc57e"/>
-                                    <file name="class.extrawatch.visit.php" hash="3a6413c35e433d2ac8cf9eff3b93eef1"/>
-                                    <file name="class.ip2country.php" hash="0d9e57cc55f5a58565951dcdd12bdf19"/>
-                                    <file name="class.ipinfodb.php" hash="2d040c014b44ee7c68686a05e0d702ac"/>
+                                          hash="eb3214dacb6cc7a8f1b4740fa0c72bdb"/>
+                                    <file name="class.extrawatch.visit.php" hash="ddfbe826b60afa7ed8e888aec5247df5"/>
+                                    <file name="class.ip2country.php" hash="122bd237010d3aaffdf89cc4c329f156"/>
+                                    <file name="class.ipinfodb.php" hash="f79e3c856927bb5ffc6033daa6381a4e"/>
                                     <dir name="env">
                                         <file name="class.extrawatch.env.factory.php"
-                                              hash="e11d4ce5d40eff3cd3a06d7550cde243"/>
+                                              hash="d8564f674b4f66549767fdec941a2aec"/>
                                         <file name="class.extrawatch.env.request.php"
-                                              hash="0101d40ff236ce099aa57cfce714293c"/>
+                                              hash="e203c27db89a7e7482ea44d09d82732c"/>
                                         <dir name="drupal">
                                             <file name="class.extrawatch.db.drupal.php"
-                                                  hash="45ea219704bf1848321497d921972df3"/>
+                                                  hash="05d61024d2faa0d3752dc6dfea51fff7"/>
                                             <file name="class.extrawatch.env.drupal.php"
-                                                  hash="e230bd0526c835c9689b37935082a184"/>
+                                                  hash="8f2f6a30d4d4f9f45ba4c7ab8a70d32f"/>
                                             <file name="class.extrawatch.setup.drupal.php"
-                                                  hash="2cf036ebc2aea06c7f4a55e0e0e772d3"/>
+                                                  hash="8be531880664cabcf7f358242599f309"/>
                                             <file name="class.extrawatch.user.drupal.php"
-                                                  hash="977f9a4b4e4aee3b648712f2456d7965"/>
+                                                  hash="b8fd3bf183582cc0faacf7e47e41d5d0"/>
                                             <file name="extrawatch.admin.inc" hash="c5c06048ac3f440965ff03aa371f02a4"/>
                                             <file name="index.html" hash="0a01cc8d78a41d8f71fd171bd2a95406"/>
                                             <dir name="module">
@@ -1100,29 +1127,29 @@
                                         </dir>
                                         <file name="index.html" hash="0a01cc8d78a41d8f71fd171bd2a95406"/>
                                         <file name="interface.extrawatch.dbwrap.php"
-                                              hash="f483bc3a75434d16afa2e0086a59a034"/>
+                                              hash="977a25531d2339daf7d3b0fcbacc5a7a"/>
                                         <file name="interface.extrawatch.env.php"
-                                              hash="03ce20ecba56db41a7a81deb7ecc087d"/>
+                                              hash="6e327aca3b1eaff36f2d28b54b4612e1"/>
                                         <file name="interface.extrawatch.setup.php"
-                                              hash="4a99f0ecd54d783ff8d33b5f0962637b"/>
+                                              hash="06ddfbd7f89910f017ace8bd3bfa82f5"/>
                                         <dir name="joomla">
                                             <file name="class.extrawatch.db.joomla.php"
-                                                  hash="8cec0eb58c60606bec783452f1fb1f89"/>
+                                                  hash="1c8831ed7f9d4d711174c53c80ba6762"/>
                                             <file name="class.extrawatch.env.joomla.php"
-                                                  hash="f71224a2551281d76e6ff08cc1e7c5e6"/>
+                                                  hash="e8f171b7e2efb2370fdade89aa3f921f"/>
                                             <file name="class.extrawatch.setup.joomla.php"
-                                                  hash="a18de99f681dfd4e6cb2d9018805f0a0"/>
+                                                  hash="03941ce69914296bd29972a8cac2604a"/>
                                             <file name="index.html" hash="0a01cc8d78a41d8f71fd171bd2a95406"/>
                                         </dir>
                                         <dir name="magento">
                                             <file name="class.extrawatch.db.magento.php"
-                                                  hash="5f2bb47ae7340a6f32df2784ee3f703d"/>
+                                                  hash="518b43dca80d96d90cb7e38f776b820f"/>
                                             <file name="class.extrawatch.env.magento.php"
-                                                  hash="69f6aa060b2168d111cc8204bf10a9d8"/>
+                                                  hash="8196de3083e0f173ede2f32fa6a47107"/>
                                             <file name="class.extrawatch.setup.magento.php"
-                                                  hash="b4a8a115d94044f6f47cb8e5592a1c47"/>
+                                                  hash="7d144d06ca5bffa6d514795aa79da4eb"/>
                                             <file name="class.extrawatch.user.magento.php"
-                                                  hash="11dc3d246b7566f7a103947551aa5dd4"/>
+                                                  hash="332ceb357c4681eae16ca4285a623433"/>
                                             <file name="index.html" hash="0a01cc8d78a41d8f71fd171bd2a95406"/>
                                             <dir name="module">
                                                 <dir name="app">
@@ -1133,50 +1160,52 @@
                                                                     <dir name="Block">
                                                                         <dir name="Adminhtml">
                                                                             <file name="ExtraWatch.php"
-                                                                                  hash="9a74ba2565e894f5b2d1f85f20e728c0"/>
+                                                                                  hash="1e5d714008a8683465a9f9bec4aaffb9"/>
                                                                         </dir>
                                                                         <file name="ExtraWatch.php"
-                                                                              hash="3611fffdeab2af486b5c2feaf157ecdb"/>
+                                                                              hash="ef23c6497471b0d26670c414f3ba1842"/>
                                                                     </dir>
                                                                     <dir name="Helper">
                                                                         <file name="Data.php"
-                                                                              hash="82825ffa1ee783f7b0fca2c55669f035"/>
+                                                                              hash="4e98494a16062d7483468de3d6a8d551"/>
                                                                     </dir>
                                                                     <dir name="Model">
                                                                         <file name="ExtraWatch.php"
-                                                                              hash="8979acd7a4a2f7f2cbb9809a73e22ed1"/>
+                                                                              hash="97a154f7db643ae5583b3214e3e25336"/>
                                                                         <dir name="Mysql4">
                                                                             <dir name="ExtraWatch">
                                                                                 <file name="Collection.php"
-                                                                                      hash="53d39c16bf3a29940788f7047cb2c542"/>
+                                                                                      hash="4525a71406f176f1fc9a5717bf2116da"/>
                                                                             </dir>
                                                                             <file name="ExtraWatch.php"
-                                                                                  hash="77974e2bf1891e969625958407ac63e1"/>
+                                                                                  hash="2be63e242ffd8e22d8e298d842019ee4"/>
                                                                         </dir>
                                                                         <file name="Status.php"
-                                                                              hash="88417af3883757334a035151ed00e3dc"/>
+                                                                              hash="17d27344f0f9af41942104781032e443"/>
                                                                     </dir>
                                                                     <dir name="controllers">
                                                                         <dir name="Adminhtml">
                                                                             <file name="ExtrawatchController.php"
-                                                                                  hash="23bc9f3330700c35d5e98069b0f09769"/>
+                                                                                  hash="871b65fc63ffb9324c8718f67fcdf720"/>
                                                                         </dir>
                                                                         <file name="IndexController.php"
-                                                                              hash="28f4e9fae1f6a96e0781d07d6a5711f0"/>
+                                                                              hash="dbd43976927ad03edc8f761d21b1f5dc"/>
                                                                     </dir>
                                                                     <dir name="etc">
+                                                                        <file name="adminhtml.xml"
+                                                                              hash="d349cc11e99083d33099c9adf0b2dc48"/>
                                                                         <file name="config.xml"
-                                                                              hash="b5b1ba890aea4b8236d696de1295d791"/>
+                                                                              hash="fa45172356f22a8b40a0c6b24a7232c8"/>
                                                                     </dir>
                                                                     <dir name="sql">
                                                                         <dir name="extrawatch_setup">
                                                                             <file name="mysql4-install-0.1.0.php"
-                                                                                  hash="e50aeed1c3cfce9557ca5e8915f5d047"/>
+                                                                                  hash="c7c1865567345f63aabca7964a821ed5"/>
                                                                         </dir>
                                                                     </dir>
                                                                     <dir name="uninstall">
                                                                         <file name="uninstall.php"
-                                                                              hash="300707cfaf19ed84810442544bcfa1c7"/>
+                                                                              hash="44b5124860ea7a80d6294f34e3864938"/>
                                                                     </dir>
                                                                 </dir>
                                                                 <file name="index.html"
@@ -1199,7 +1228,7 @@
                                                                     <dir name="template">
                                                                         <dir name="extrawatch">
                                                                             <file name="extrawatch.phtml"
-                                                                                  hash="8f61cec1099a4fda420aa4650acf92c7"/>
+                                                                                  hash="9ec2e84409acd5b157b49ef344564218"/>
                                                                         </dir>
                                                                     </dir>
                                                                 </dir>
@@ -1215,9 +1244,9 @@
                                                                     <dir name="template">
                                                                         <dir name="extrawatch">
                                                                             <file name="extrawatch-agent.phtml"
-                                                                                  hash="45c4797b08caf021b8fdd3f47af11502"/>
+                                                                                  hash="3ee17fd4d26e5564463a6e9d47bed214"/>
                                                                             <file name="extrawatch.phtml"
-                                                                                  hash="15b7b7fb3de0fe9c8168d4353e16a6dd"/>
+                                                                                  hash="59aea59831340dc1c16bacf1a08e2127"/>
                                                                         </dir>
                                                                     </dir>
                                                                 </dir>
@@ -1231,9 +1260,9 @@
                                                                     <dir name="template">
                                                                         <dir name="extrawatch">
                                                                             <file name="extrawatch-agent.phtml"
-                                                                                  hash="340b0906049b11ece4af423af01da771"/>
+                                                                                  hash="4ba16e88c8597260638ebcfb2c251016"/>
                                                                             <file name="extrawatch.phtml"
-                                                                                  hash="15b7b7fb3de0fe9c8168d4353e16a6dd"/>
+                                                                                  hash="683a9daacc9d7b80f4dd8c36a5cf8125"/>
                                                                         </dir>
                                                                     </dir>
                                                                 </dir>
@@ -1255,79 +1284,120 @@
                                                     <file name="index.html" hash="0a01cc8d78a41d8f71fd171bd2a95406"/>
                                                 </dir>
                                                 <file name="index.html" hash="0a01cc8d78a41d8f71fd171bd2a95406"/>
-                                                <file name="package.xml" hash="b780b6d1cffe9890b2d516ee51f63268"/>
+                                                <file name="package.xml" hash="4c02556faacd1cd01d9a4ad72e7a9cf2"/>
                                             </dir>
                                         </dir>
                                         <dir name="nocms">
                                             <dir name="admin">
                                                 <file name="ClassMathGuard.php"
-                                                      hash="bfbc80c4bdd5c253ad178a5711670925"/>
-                                                <file name="agent.js.php" hash="aa02520af70412a62be0f52e00c4907c"/>
-                                                <file name="connection.php" hash="a2bef78449e8b4470d5ee3af883b78f9"/>
-                                                <file name="frontend.php" hash="2ccb700cb8aad645d47d0d4fc287cc06"/>
+                                                      hash="e753df1f37542d023cbd3f6f193fc128"/>
+                                                <file name="agent.js.php" hash="047171f34a862a625dda9ac445df7e4a"/>
+                                                <file name="connection.php" hash="b520d40d8dd07b7e0c71873fb7ff1e3f"/>
+                                                <file name="finishreg.php" hash="4f33dc5dfe87f31c2f531e484ae0227c"/>
+                                                <file name="frontend.php" hash="c029d635d51e318b43fffe7fd0dc0fe0"/>
                                                 <dir name="img">
                                                     <file name="backend.png" hash="6ec9c027012e28cf96fea29accc4b103"/>
+                                                    <file name="extrawatch-logo-sm.png"
+                                                          hash="659a5fd8afafa06717911b7799e28441"/>
                                                     <file name="extrawatch-logo.png"
-                                                          hash="4ac3d91d97e4f3fdf7263a8a7d92c141"/>
+                                                          hash="ed7776acd736907cda6c5e3c6a108c6e"/>
+                                                    <file name="facebook-icn.png"
+                                                          hash="91ff90dcaa02cc57e0925cf116ab56fa"/>
+                                                    <file name="trial-heatmap.png"
+                                                          hash="092467a408bd089361f4233621246dab"/>
+                                                    <file name="trial-visitors.png"
+                                                          hash="8f26468a373eda85cc793047741fb619"/>
+                                                    <file name="twitter-icn.png"
+                                                          hash="0ea5a844c453a44ed3e65004a6a3441d"/>
                                                 </dir>
                                                 <file name="index.html" hash="0a01cc8d78a41d8f71fd171bd2a95406"/>
-                                                <file name="index.php" hash="900723f9c7b93a3ba0f0f630c6a8c9af"/>
-                                                <file name="login.php" hash="98f03fe19f5b948efbe35bdb62cc3c48"/>
-                                                <file name="register.php" hash="318b1bb17394fc9d5301105ba068f5e2"/>
-                                                <file name="sendmail.php" hash="9b56abfc217ed85fd0c82f17162fc3d8"/>
+                                                <file name="index.php" hash="488bf79c4b62c4a062519da9de3516cb"/>
+                                                <file name="login.php" hash="213e35739c4960bbf18c600bd69aceac"/>
+                                                <file name="register.php" hash="4ac6f1c1d0e12973c9c5c3df8388379e"/>
+                                                <file name="sendmail.php" hash="b3944f642aed47b6ee1b6ec77a055636"/>
                                                 <dir name="sql">
                                                     <file name="install.sql" hash="660085d6a623e9faa0524823f5a813c0"/>
                                                 </dir>
                                                 <dir name="src">
                                                     <file name="class.extrawatch.project.php"
-                                                          hash="eca3c0b79accb07f968850c6e17323f4"/>
+                                                          hash="de9b117c1cbaf8081a07d99a6f42bcc5"/>
                                                 </dir>
                                                 <dir name="view">
-                                                    <file name="expired.php" hash="1c1cac06d1b12cc7ae49363372a470ca"/>
+                                                    <dir name="css">
+                                                        <file name="960.css" hash="a9f1208f96f9530bc144c51bf8013718"/>
+                                                        <file name="register-style.css"
+                                                              hash="932c5bcb95cda00666bf80478b56cbde"/>
+                                                        <file name="reset.css" hash="6382e9cfe04c85e2c64ef32feca137d4"/>
+                                                        <file name="text.css" hash="04f9298a9630cd00b77d8840ad8ee15d"/>
+                                                    </dir>
+                                                    <file name="email-generate-code.php"
+                                                          hash="15cd4733cf24fb09df47a3c908cff687"/>
+                                                    <file name="email-login-to-account.php"
+                                                          hash="9a637314efffcf87c5876d5c1903fd2b"/>
+                                                    <file name="expired.php" hash="5f995eb7f6b341cf02b2dd16cb31436d"/>
+                                                    <file name="finishreg.php" hash="80d37780819460e811ae3394f9c52ac5"/>
                                                     <file name="header.php" hash="5274b52063a701d214da03b1d8123efc"/>
                                                     <dir name="img">
+                                                        <file name="facebook.png"
+                                                              hash="cd421246257763af6fd4172d0362b1cb"/>
                                                         <file name="globe-top.png"
                                                               hash="03dc3bd00adcd347a1d6c1eea4a6ad07"/>
                                                         <file name="header_bg.jpg"
                                                               hash="fbda70b348b161aeaaea1eb83fe1f66a"/>
+                                                        <file name="input-bg.png"
+                                                              hash="035b3f7ef40a871f61c49ebfa1d4d818"/>
+                                                        <file name="logo-extra-watch.png"
+                                                              hash="609f5619129fc7f65291e6cae81c1c29"/>
                                                         <file name="logo.png" hash="aedbb40c46692cdc41846945820dbca5"/>
+                                                        <file name="noise-bg.gif"
+                                                              hash="6db2a070046360e27ab8ad36e1142685"/>
+                                                        <file name="register-steps.png"
+                                                              hash="3de0740a0b7bc345e6c16f0f989b3ced"/>
+                                                        <file name="sm-logo-extra-watch.png"
+                                                              hash="280564a3128565d251b10a6cae0a696a"/>
+                                                        <file name="twitter.png"
+                                                              hash="3a799229db26d87cfde30e0d3a63fa07"/>
                                                     </dir>
-                                                    <file name="livechat.php" hash="d3e8d18f893b738a524533ffc90facdc"/>
-                                                    <file name="subscribe.php" hash="5e8b266d1abeb197aad190b13a42624d"/>
+                                                    <file name="livechat.php" hash="6e4b3d07093da1f10fe66944a7ffea0f"/>
+                                                    <file name="loginform.php" hash="111343d3701bd824f7aa2754a16508fb"/>
+                                                    <file name="regform.php" hash="3121c026844c9ae7ef99adde18b4ce9a"/>
+                                                    <file name="register.php" hash="05ab92adcbfe1edee7bfc9eb06846622"/>
+                                                    <file name="subscribe.php" hash="82948166c833cdbc2e857fbac84c5b8d"/>
                                                     <file name="terms.html" hash="1bed3539cf75e07bd28d813ca5dddde3"/>
-                                                    <file name="thankyou.php" hash="8224ed4b6dcceed93d5991c572fbe370"/>
+                                                    <file name="thankyou.php" hash="41df684c59f74f8ce5d326e4fb387a49"/>
                                                 </dir>
                                             </dir>
                                             <file name="class.extrawatch.db.nocms.php"
-                                                  hash="2d80ca944d72c6421dad41d108264286"/>
+                                                  hash="3bc4e23dbe7a958bc11136d771f09564"/>
                                             <file name="class.extrawatch.env.nocms.php"
-                                                  hash="f36fe049cf228d64613bf92d6c3f0376"/>
+                                                  hash="b35a8947cb51a7d24b231f01044f4ee1"/>
                                             <file name="class.extrawatch.setup.nocms.php"
-                                                  hash="6e7b8b3320dad5202ef851dfa94afdb6"/>
+                                                  hash="c9da5f50c397b67b3bffd96bc8c0bb68"/>
                                             <file name="class.extrawatch.setup.wordpress.php"
-                                                  hash="b0aad7ad370aab53840633529eb7cf3e"/>
+                                                  hash="ac995c8835c33721f34ad07c339be0d9"/>
                                             <file name="class.extrawatch.user.nocms.php"
-                                                  hash="2e97fbd5aaba8f2f079b201a7d731fbf"/>
-                                            <file name="class.phpmailer.php" hash="66fe6e4539f25b94fdb3749cf46aceee"/>
+                                                  hash="3d03e037120ce0acbf34490983110ea7"/>
+                                            <file name="class.phpmailer.php" hash="d1edf6bd53b267ed0dcc80f992dabb9b"/>
+                                            <file name="class.smtp.php" hash="98de97ab3e288e61bde5fce43074c7f5"/>
                                             <file name="index.html" hash="0a01cc8d78a41d8f71fd171bd2a95406"/>
                                             <dir name="ipn">
-                                                <file name="index.php" hash="94da9e0e889241bcefe2f1b0d723f5f3"/>
+                                                <file name="index.php" hash="8b9a14ea3eed5e05ee90f47fd96c17db"/>
                                             </dir>
                                         </dir>
                                         <dir name="prestashop">
                                             <file name="class.extrawatch.db.prestashop.php"
-                                                  hash="78fbc54aa0946c02d7fa800cf08bbabf"/>
+                                                  hash="2b01683d08d9e596a20779319418f055"/>
                                             <file name="class.extrawatch.env.prestashop.php"
-                                                  hash="f531e51b429ea52bf913b286e8fc1824"/>
+                                                  hash="4223e474c0b9fe7301066862736bee4f"/>
                                             <file name="class.extrawatch.request.prestashop.php"
-                                                  hash="69a0b128931855a37bd65b945feabb9a"/>
+                                                  hash="d8342334ee74739948608ef7324c033a"/>
                                             <file name="class.extrawatch.setup.prestashop.php"
-                                                  hash="bcf88c78620dd65a0f197733d2a13d2f"/>
+                                                  hash="1139a151450a496c67447065102ac08b"/>
                                             <dir name="module">
                                                 <file name="ExtraWatchAdmin.php"
-                                                      hash="2d7c557e331c3e52b456482b3cc19eb6"/>
-                                                <file name="extrawatch.php" hash="8c9c539ad4fdeed519c7433f630ef882"/>
-                                                <file name="extrawatch.tpl" hash="4845e39f6cc43f92bd2e0dc92f137845"/>
+                                                      hash="0fb47517b495b2062c79d5e45f24d33b"/>
+                                                <file name="extrawatch.php" hash="9720272a3d6929216aba656cb8b7b377"/>
+                                                <file name="extrawatch.tpl" hash="316d1e49275a99f672554ff5f9d499bd"/>
                                                 <file name="index.html" hash="0a01cc8d78a41d8f71fd171bd2a95406"/>
                                                 <file name="logo.gif" hash="2e126025d2cead5cc40b54563c748fba"/>
                                                 <file name="logo.png" hash="5c35dc0ef9ddf57546347032629cce25"/>
@@ -1335,79 +1405,79 @@
                                         </dir>
                                         <dir name="wordpress">
                                             <file name="class.extrawatch.db.wordpress.php"
-                                                  hash="7d62bb48ac6c9606d840037a6405c884"/>
+                                                  hash="37a004bd0baa2c9d9e8eae8b76716590"/>
                                             <file name="class.extrawatch.env.wordpress.php"
-                                                  hash="9b53b1970f58984feb7a0ccbe5140601"/>
+                                                  hash="ee53038324c2103445a6ea1e59640335"/>
                                             <file name="class.extrawatch.setup.wordpress.php"
-                                                  hash="c929fd3d8c4d5a38b6523f01cf948f93"/>
-                                            <file name="extrawatch.php" hash="fd75d44a17d20ceb4d73c676623647a3"/>
+                                                  hash="aa92ec40ad43384c7c76886d214ff77e"/>
+                                            <file name="extrawatch.php" hash="770238be29735e7f184c0f35f1b407bb"/>
                                             <file name="index.html" hash="0a01cc8d78a41d8f71fd171bd2a95406"/>
-                                            <file name="readme.txt" hash="1c62b4fbf561a26dc3393321d5b62e04"/>
+                                            <file name="readme.txt" hash="c1ed80be93b3882c2d08d4c9f094887b"/>
                                             <dir name="widget">
                                                 <file name="class.extrawatch.agent.widget.php"
-                                                      hash="862171aef5105007f337d0eae36c8b7a"/>
+                                                      hash="4bdd90c7bc195f63c3ef246a48385ec1"/>
                                                 <file name="class.extrawatch.users.widget.php"
-                                                      hash="6ebfa8f76d1a0b75a7018e0b6b25d11d"/>
+                                                      hash="9fd6a051fd6b8c3298d37165b49780b0"/>
                                                 <file name="class.extrawatch.visitors.widget.php"
-                                                      hash="7b82294ab412c811cd8e5f955c6353bc"/>
+                                                      hash="b6b2d713898c2d7fd252e7072128a214"/>
                                             </dir>
                                         </dir>
                                     </dir>
                                     <dir name="html">
-                                        <file name="admin.extrawatch.html.php" hash="ecf8792312b46b3702a81debfd2ffde3"/>
+                                        <file name="admin.extrawatch.html.php" hash="690fd6689c243a2949af4334a2e7c5c7"/>
                                         <file name="class.extrawatch.block.html.php"
-                                              hash="13669849a14c92477950a34e9d4982f6"/>
+                                              hash="a236b221e91daec8454f37a187b42eac"/>
                                         <file name="class.extrawatch.downloads.html.php"
-                                              hash="d83bf246bcc30ed0e1754ebdd07409b7"/>
+                                              hash="e10f932923145741561a7a675e82f8e8"/>
                                         <file name="class.extrawatch.flow.html.php"
-                                              hash="e896eb5b7ee5ae0b8a7336c686e184d4"/>
+                                              hash="8275aa657c26152bec5c5759f7796f98"/>
                                         <file name="class.extrawatch.goal.html.php"
-                                              hash="6ee4833d4f7e660488c2548932684893"/>
+                                              hash="6a1e80a5c822d2a570f9f5e071eb75a1"/>
                                         <file name="class.extrawatch.heatmap.html.php"
-                                              hash="5291d1b237ad77027fc404a078f1bf23"/>
-                                        <file name="class.extrawatch.html.php" hash="1022117ca83c5c33f11a69b94efff8fc"/>
+                                              hash="a34d197cb6497774d8f8d43d6239f14c"/>
+                                        <file name="class.extrawatch.html.php" hash="9b6446188548a6240b2a5e1ca5056178"/>
                                         <file name="class.extrawatch.seo.html.php"
-                                              hash="460f38a8fed737486ecb6e3f90f434ac"/>
+                                              hash="2cbfe3349b80b165cb08cec4e7179307"/>
                                         <file name="class.extrawatch.stat.html.php"
-                                              hash="0096d77465124764fd94291e34747eba"/>
+                                              hash="16f164981a9be69638a4f1922e23d590"/>
                                         <file name="class.extrawatch.trend.html.php"
-                                              hash="aea19ba5b9e94b904eb741fb0bdedcbe"/>
+                                              hash="6abf94f3660c1fa3694501ff7d3fc7aa"/>
                                         <file name="class.extrawatch.user.html.php"
-                                              hash="900bca94fe9955a5f614ec39f31467c5"/>
+                                              hash="2369bd6927f1f7f037e2917e8e49eb99"/>
                                         <file name="class.extrawatch.visit.history.html.php"
-                                              hash="ec870dd105ecd334ef2f7c473ec19d71"/>
+                                              hash="fbce722fafd07a771b19607899e90cdb"/>
                                         <file name="class.extrawatch.visit.html.php"
-                                              hash="f9d762f003e5717db4574c47c740eb06"/>
+                                              hash="77202e792790015e11430829337cd753"/>
                                         <file name="index.html" hash="0a01cc8d78a41d8f71fd171bd2a95406"/>
                                     </dir>
-                                    <file name="inc.extrawatch.env.php" hash="5024b4e8b09d6accfcbc611639d71f64"/>
+                                    <file name="inc.extrawatch.env.php" hash="58c829ba4f10ccdc681ab03a8730d3e7"/>
                                     <file name="index.html" hash="0a01cc8d78a41d8f71fd171bd2a95406"/>
                                 </dir>
                                 <dir name="test">
                                     <dir name="gui">
-                                        <file name="ExtraWatchGUITestBase.php" hash="04f629be0583d025443cf4adb7380a8c"/>
+                                        <file name="ExtraWatchGUITestBase.php" hash="c8c0a62e64008700a409144a6d22600d"/>
                                         <dir name="install">
                                             <file name="ExtraWatchGUIInstallTest.php"
-                                                  hash="5a7eec21fdfbdc2b90004b7fa65d76ae"/>
+                                                  hash="421dbb2e85ad065822ff0e92ca8285c2"/>
                                             <dir name="joomla">
                                                 <file name="ExtraWatchInstallTest.php"
-                                                      hash="8e8f3aa1663160cb51bb58471c7fab89"/>
+                                                      hash="022cecde1dbc8f4adc347c22ee8525e8"/>
                                                 <file name="ExtraWatchLinksTest.php"
-                                                      hash="8affb79e86812d00a746acc516f059e3"/>
+                                                      hash="47fc088a3a91c31d13a3ea771d6fa7ac"/>
                                                 <file name="ExtraWatchLoginTest.php"
-                                                      hash="4f95005e7c6afd502284e90715e20c97"/>
+                                                      hash="6d1243836d4a10c624078dbb88306bb7"/>
                                             </dir>
                                             <dir name="prestashop">
                                                 <file name="ExtraWatchInstallTest.php"
-                                                      hash="95fc7b00f118f0917247b24d533f99a5"/>
+                                                      hash="5a24ce81b43a8ce64c956282997a13e5"/>
                                             </dir>
                                             <dir name="wordpress">
                                                 <file name="ExtraWatchInstallTest.php"
-                                                      hash="36fac8c6bd958bbeebdd54e571537aa6"/>
+                                                      hash="11cd4f2d3eb0c8808c2637a91810d31c"/>
                                                 <file name="ExtraWatchLinksTest.php"
-                                                      hash="06f2ef4de6489d61efee8870e4702ff6"/>
+                                                      hash="b768364284f687abdb6a650bbd0666e7"/>
                                                 <file name="ExtraWatchLoginTest.php"
-                                                      hash="fa4bd6a509a217d9d482245db3a5c3e8"/>
+                                                      hash="04765d094b011911f7b861fbd57e0913"/>
                                             </dir>
                                         </dir>
                                         <file name="prestashop-install-tc.html"
@@ -1415,123 +1485,152 @@
                                         <file name="prestashop-install.html" hash="3aabfe684ae0edc72c31a9f160d1f807"/>
                                     </dir>
                                     <dir name="unit">
-                                        <file name="ExtraWatchTestBase.php" hash="fc28f66273fa25bc107a333fb0fb32d4"/>
+                                        <file name="ExtraWatchTestBase.php" hash="ecced39b135053c307c18bee1a5da049"/>
                                         <dir name="downloads">
                                             <file name="ExtraWatchDownloadsTest.php"
-                                                  hash="7491987e430ef6e7707e0227607ff1e9"/>
+                                                  hash="1ced38bf32cd3cdd69a42acd15227e27"/>
                                         </dir>
                                         <dir name="flow">
                                             <file name="ExtraWatchFlowTest.php"
-                                                  hash="076e287c521ee216a1e3762c495fd7e6"/>
+                                                  hash="1485b61b2ab5edab2fe89ad56db7b810"/>
                                         </dir>
                                         <dir name="goals">
                                             <file name="ExtraWatchGoalsTest.php"
-                                                  hash="3749d093987759dea1c78104df1eefb0"/>
+                                                  hash="8bf661485079ee06d2e70ded1df78731"/>
                                         </dir>
                                         <dir name="keywords">
                                             <file name="ExtraWatchVisitsTest.php"
-                                                  hash="58f8f5f721bc27ad2f973ea62b53dc7c"/>
+                                                  hash="24ade298838dee302b51c6254c84c34d"/>
                                         </dir>
                                         <dir name="seo">
-                                            <file name="ExtraWatchSEOTest.php" hash="b9e3bf7aa125f6468dee54ece5f963f0"/>
+                                            <file name="ExtraWatchSEOTest.php" hash="9dd6b8ff7fc1e369b3ffb3f8175c5a29"/>
                                         </dir>
                                         <dir name="user">
                                             <file name="ExtraWatchUserTest.php"
-                                                  hash="2dfacf382a9989c824a9839fd581cb18"/>
+                                                  hash="08e577ea1b97cd8134efb09ba7e3d102"/>
                                         </dir>
                                     </dir>
                                 </dir>
-                                <file name="timezone.php" hash="a4c9b376f885297ec95bb5cc7f156fc4"/>
+                                <file name="timezone.php" hash="77d30b5b9c3bfbda540a13bbed0ad6c6"/>
                                 <dir name="view">
-                                    <file name="adminbody.php" hash="1774ccc304b29005758bff3afafbda37"/>
-                                    <file name="adminheader.php" hash="7da02bfe4ae71a2132eaf7726d9bcb52"/>
-                                    <file name="adminstyles.php" hash="f6b0e7e00454025ecd5967fb1e4bb0e8"/>
-                                    <file name="antispam.php" hash="24070dfc594a9d5b502dcf9ab29028ee"/>
-                                    <file name="clicks.php" hash="d78cd29b44cbfe0bca1f8ff9fcf20dde"/>
-                                    <file name="credits.php" hash="7d9d31fdfeeb2059b98d3acc8951f21a"/>
-                                    <file name="datecontrol.php" hash="e28923457ca16d35f6308b0ed817c29b"/>
-                                    <file name="datecontrolget.php" hash="500406bf72f755a6ef91de831c0f2412"/>
-                                    <file name="dm_add_ext.php" hash="e28300bcad7a3e6c71aebdbe82e019bd"/>
-                                    <file name="dm_add_filepath.php" hash="5e4355db6bf0122cf2714e686a97d20b"/>
-                                    <file name="dm_data.php" hash="a12f39322088f21125514a86e4bb9ca2"/>
-                                    <file name="dm_data_weekly.php" hash="1fec2569ba81f2abc4e528ef7656623f"/>
-                                    <file name="dm_download_log.php" hash="80b46d2b2ce1eb672f40722bd254eb84"/>
-                                    <file name="dm_downloads.php" hash="449466d042ec6bb9a93b19968f960920"/>
-                                    <file name="dm_edit_ext.php" hash="6856dd658fbbd4efeb89828f0ee0a10f"/>
-                                    <file name="dm_edit_filepath.php" hash="d85c252e29e32e5055d12da902c4a15c"/>
-                                    <file name="dm_table_extensions.php" hash="63b3d8ca1e4c13e8ba1390465cf21c61"/>
-                                    <file name="dm_table_filepath.php" hash="6637ab99e6cff341e7d1435eea00dd66"/>
-                                    <file name="dm_table_statistics.php" hash="2f34cd6c857f94b44a69316f39bd8395"/>
-                                    <file name="emails.php" hash="a66a485e698d8a64182e1e3e29315648"/>
-                                    <file name="exportxml.php" hash="2fe38ab5cc6b6a2cf3d0c6fc829ea15b"/>
-                                    <file name="flow.php" hash="de059ef263a222c73bd8655524a7a134"/>
-                                    <file name="frame.php" hash="95dc31536af7004b0ac32f3e0ca3f21c"/>
-                                    <file name="goal.php" hash="47305826ab18d8d0a13621a7474580ba"/>
-                                    <file name="goals.php" hash="b22fb30daf76876a5f6a22e049eae067"/>
-                                    <file name="heatmap.php" hash="10fbde53f8c6ca9c5d4d412130ee427c"/>
-                                    <file name="history.php" hash="a90960d53ea6e9dc8461f0d1599a7368"/>
-                                    <file name="importxml.php" hash="f215819040e957613524eb0b64d875c8"/>
+                                    <file name="adminbody.php" hash="ac659cff5c1de4443bcfd5f1ed2af687"/>
+                                    <file name="adminheader.php" hash="2ea29c6b5eaa7f1dd8d0e7270a463454"/>
+                                    <file name="adminstyles.php" hash="ff6db5457cba651b6d04a1400c399d09"/>
+                                    <file name="antispam.php" hash="3545314f342f5a0266abc7ecd10a730a"/>
+                                    <file name="clicks.php" hash="29589e7db9ce8523eac50dae89df0541"/>
+                                    <file name="credits.php" hash="aeaf73523d14df933a3cc89afe8cb991"/>
+                                    <file name="datecontrol.php" hash="d2ddd54a267a95b231480fe89b66bd4b"/>
+                                    <file name="datecontrolget.php" hash="ecae4ffa12c477ed87b916a9fab5134e"/>
+                                    <file name="dm_add_ext.php" hash="964a0eae216df14985f0f3f0a95a2ddc"/>
+                                    <file name="dm_add_filepath.php" hash="437fae4a2210feb6a8f4743adf6818f4"/>
+                                    <file name="dm_data.php" hash="beaa6eac35e8052a3c957178f747529e"/>
+                                    <file name="dm_data_weekly.php" hash="a7b2b39036eaa4f4ed59cd5b1ea9310a"/>
+                                    <file name="dm_download_log.php" hash="a58a421f5e272571747a3609ebbbed56"/>
+                                    <file name="dm_downloads.php" hash="1004482a72136d3dd9e58352cbf5cf7c"/>
+                                    <file name="dm_edit_ext.php" hash="484359ccbd0bdda9e95e7dc9ff1fe584"/>
+                                    <file name="dm_edit_filepath.php" hash="5a50abeb7a30e394f63cec5d81cec8b5"/>
+                                    <file name="dm_table_extensions.php" hash="76e915394f7278a525abd675055e06ac"/>
+                                    <file name="dm_table_filepath.php" hash="447898016a816f7366bd0b3e7664438f"/>
+                                    <file name="dm_table_statistics.php" hash="ea510bd981e966b855dc2b87a61e23ad"/>
+                                    <file name="emails.php" hash="c959eb6984d4c6f5842de4fc9c0c11ba"/>
+                                    <file name="expiration.php" hash="e7bd717b628e94e483cfff433fff8bef"/>
+                                    <file name="exportxml.php" hash="f86e1716c7acf61f9e0a0315138449ac"/>
+                                    <file name="flow.php" hash="1476de39ca11b9561250f7b5d24a85bd"/>
+                                    <file name="footer.php" hash="f5ba4269d316f0bd8619c62617f5b0c0"/>
+                                    <file name="frame.php" hash="069437ab1525ee5a4b4de3a0ef416233"/>
+                                    <file name="fullversion.php" hash="9b8e731317dafb70a56515d890aeeadb"/>
+                                    <file name="goal.php" hash="330c3c85c88433e57d2b02c9ecb7a3f4"/>
+                                    <file name="goals.php" hash="654f6f6aee5af9acbea681bcaff60b9f"/>
+                                    <file name="graphs.php" hash="f8dcf1c17154ea08bee29f10faf74c1e"/>
+                                    <file name="heatmap.php" hash="78aebed84e897ac19eab3dddcfef491d"/>
+                                    <file name="history.php" hash="897b257cd1446a3ef0f83a97a64ac4c0"/>
+                                    <file name="importxml.php" hash="2483e8e311678bcb7fd9c28927daacc7"/>
                                     <file name="index.html" hash="0a01cc8d78a41d8f71fd171bd2a95406"/>
-                                    <file name="lastvisitmap.php" hash="ee57b0e2911ca59717b47186b8652c28"/>
-                                    <file name="license-commercial.php" hash="a8805a4133edacfcfacb639440bbbc35"/>
-                                    <file name="license-free.php" hash="06100c9388299766aa5680bead258948"/>
-                                    <file name="license.php" hash="cab85c0bcfe17826ed049e0ad4988717"/>
-                                    <file name="menu.php" hash="d51cc90139fcbdcee97cacaa335e0e90"/>
-                                    <file name="navigation.php" hash="1dbbd434ea9ece708d1c4a01686700c3"/>
-                                    <file name="seo.php" hash="56d56d89f82df5e7924859645d3f578f"/>
-                                    <file name="settings.php" hash="b4303c772baf8ff98fce6d08b5c6f3bc"/>
-                                    <file name="sizecomponents.php" hash="f6f4f0310adb5808a59f43ac50952be9"/>
-                                    <file name="sizedatabase.php" hash="2f91602e69cdaabf65d615612344d060"/>
-                                    <file name="sizemodules.php" hash="43f5027ac26738e3226d6c98b4f92b6e"/>
-                                    <file name="sizes.php" hash="4c0167bb73f70ec49654fdfd2b12c6b1"/>
-                                    <file name="stats-footer.php" hash="24ea653a87332f8f6022690b68d3369a"/>
-                                    <file name="stats-header.php" hash="9c6f10f84920f7e032e7d33cb7ec8e94"/>
-                                    <file name="stats-today.php" hash="da7555e5022e56695e690315436387e0"/>
-                                    <file name="stats-total.php" hash="0f5a8e4eb77026e58fd8a83122eaaf7b"/>
-                                    <file name="status.php" hash="d0e8de5557977e9934bd1cf6b892bb05"/>
-                                    <file name="topkeyphrases.php" hash="89acce5588a4e8b5000f1acdf1c2f3e8"/>
-                                    <file name="toprefered.php" hash="00f5cc41a8a0e38461adaeb4e4cc1e92"/>
-                                    <file name="trendtooltip.php" hash="7a91c205d91d45bc6b43d28a0f2df38c"/>
-                                    <file name="update.php" hash="6b8cfd74ba47270b436bf35251808394"/>
-                                    <file name="users.php" hash="818f97bdf0a78dd00be74bb1143b87c2"/>
-                                    <file name="visits.php" hash="82013419f5facdcf2ab27173118c9b78"/>
+                                    <file name="license-commercial.php" hash="86a6ac69a734f071266c906ad2991c21"/>
+                                    <file name="license-free.php" hash="cdf502b1b91e5fde73bedc2081ad3573"/>
+                                    <file name="license.php" hash="ebdb8fb25d4c3c4504b7703fcb41d63f"/>
+                                    <file name="location.php" hash="a467a592db758accab4a8b7714a1e52a"/>
+                                    <file name="menu.php" hash="0ccea1f8687a8d7573ac88a2a0c4d20d"/>
+                                    <file name="navigation.php" hash="4f1037db7e74bafd8677ce8cc664cbbe"/>
+                                    <file name="seo.php" hash="06aef038e683378d82663a1c51356d89"/>
+                                    <file name="settings.php" hash="53f6418541106435ab8b28f2e39898d3"/>
+                                    <file name="sizecomponents.php" hash="f998ee27c1b3a8e18fd894464c67c76c"/>
+                                    <file name="sizedatabase.php" hash="f5e1ce2dfe29294efb845cf752d5c24a"/>
+                                    <file name="sizemodules.php" hash="1fe3afc1dceacacd3bb4c41eb71287db"/>
+                                    <file name="sizes.php" hash="1b142128e530c2d05f16078f7a59c85b"/>
+                                    <file name="stats-footer.php" hash="21b45d8de00a4df91ec826f99a93453f"/>
+                                    <file name="stats-header.php" hash="7086a08b21dbb1d6d9c2a9f37b718920"/>
+                                    <file name="stats-today.php" hash="93b131febbd7c96d7f30b38c7dd9abb1"/>
+                                    <file name="stats-total.php" hash="3387c67ee593954c166c872aa06bd9a3"/>
+                                    <file name="stats.php" hash="9cc4d580b40f21400bf54107623bd8c1"/>
+                                    <file name="status.php" hash="354ea30c79bb7065ef1a67498e0b3dc9"/>
+                                    <file name="topkeyphrases.php" hash="829232f87f3b2643b9004117037b64e1"/>
+                                    <file name="toprefered.php" hash="fe57e85f872aff2aa4157df136c3fb3c"/>
+                                    <file name="trendtooltip.php" hash="2078946727ff90f9c0bcbbe426a3fa2a"/>
+                                    <file name="update.php" hash="76e58616510f143e338f9106e6d2a332"/>
+                                    <file name="users.php" hash="105a860d4032471c7bd3536af9c51f7c"/>
+                                    <file name="visits.php" hash="46ec42e93d2b350d68fa02b92d34a661"/>
                                 </dir>
                                 <file name=".htaccess" hash="7b15cb52f9b1c0fba36de3516aeec3bb"/>
                             </dir>
                         </dir>
                         <file name="extrawatch.info" hash="5854decbb4ed8cb53ec2898ecccabc5d"/>
                         <file name="extrawatch.module" hash="50441ad9c7c65642ffbf566fb0e4db2b"/>
-                        <file name="extrawatch.php" hash="3077d04110b9bf93cfbca3f47de9c4c0"/>
+                        <file name="extrawatch.php" hash="12a85c5bc5cf6821271b4544913bc64b"/>
                         <dir name="modules">
                             <dir name="mod_extrawatch_agent">
+                                <file name="helper.php" hash="9122e6ffcde192958b5b0ef57148cd47"/>
                                 <file name="index.html" hash="0a01cc8d78a41d8f71fd171bd2a95406"/>
                                 <file name="mod_extrawatch_agent.j15.xml" hash="79f5718e02994f757cbe8d4c8bc3c3ff"/>
-                                <file name="mod_extrawatch_agent.php" hash="c51e00393f80a4b77401675e02cfc223"/>
-                                <file name="mod_extrawatch_agent.xml" hash="27085e18454014de205a72e56b71754f"/>
+                                <file name="mod_extrawatch_agent.php" hash="cfd7c7ee56789a4a913acbafa98d3dba"/>
+                                <file name="mod_extrawatch_agent.xml" hash="219061e7d3291324c20b6d6e89acd961"/>
                             </dir>
                             <dir name="mod_extrawatch_users">
                                 <file name="index.html" hash="0a01cc8d78a41d8f71fd171bd2a95406"/>
                                 <file name="mod_extrawatch_users.j15.xml" hash="fc5fdea7bb0a826fe715f8f33a135d51"/>
-                                <file name="mod_extrawatch_users.php" hash="19a4b2e47311218e0bf56cc8cbed26a4"/>
+                                <file name="mod_extrawatch_users.php" hash="6a87a39aad3615941408c24f98c618e0"/>
                                 <file name="mod_extrawatch_users.xml" hash="cd0cba6162a93a770c0749a009ff9209"/>
                             </dir>
                             <dir name="mod_extrawatch_visitors">
                                 <file name="index.html" hash="0a01cc8d78a41d8f71fd171bd2a95406"/>
                                 <file name="mod_extrawatch_visitors.j15.xml" hash="169b2d49b8de4c7b194cd451d76bebd0"/>
-                                <file name="mod_extrawatch_visitors.php" hash="73d8a03e37befc80ae95f8e16e775464"/>
+                                <file name="mod_extrawatch_visitors.php" hash="1426d9c21297334d0c15f6eea58f3b7b"/>
                                 <file name="mod_extrawatch_visitors.xml" hash="331d17fa13f52772c0535e93b7a96ddd"/>
                             </dir>
                         </dir>
                         <file name="readme.txt" hash="9258306201716a2a722639957e21903f"/>
-                        <file name="screenshot-1.png" hash="8a1c924daa7261f6d7bb219764062cd6"/>
-                        <file name="screenshot-2.png" hash="7162ab23b874e97b5208d4c752c86247"/>
-                        <file name="screenshot-3.png" hash="832fd77487e0887b28cee6661bb619ae"/>
-                        <file name="screenshot-4.png" hash="77e4b19cce8209d0c5de75f5a83fcfc5"/>
-                        <file name="screenshot-5.png" hash="c2e7dd724a861e3ee0006213a40e6177"/>
-                        <file name="screenshot-6.png" hash="86ea3330c357c00ee4e326bc3c8698fb"/>
-                        <file name="screenshot-7.png" hash="90c746f3aef671d00203613352c3195c"/>
-                        <file name="screenshot-8.png" hash="17a8a42739d00d481aff1be2b59a6e96"/>
-                        <file name="screenshot-9.png" hash="5efb92e88d3d3555e03082d8e0ece40b"/>
+                        <file name="screenshot-1.png" hash="1140371a18790bf018b7f663f173c041"/>
+                        <file name="screenshot-10.png" hash="66ba23b3e584c927397981670a728063"/>
+                        <file name="screenshot-11.png" hash="e410daa5935a247974768164437ef291"/>
+                        <file name="screenshot-12.png" hash="3ee69fc25639e7792b8240c2467445b3"/>
+                        <file name="screenshot-13.png" hash="7ee5f57e8ffb4c23dcd322bf9a7dcca7"/>
+                        <file name="screenshot-14.png" hash="696833f1fcb5f81faa6f2691c7d47453"/>
+                        <file name="screenshot-15.png" hash="13afef466eee08343add032e6b350798"/>
+                        <file name="screenshot-16.png" hash="cd35505be55c6b72742238ca8d96eacd"/>
+                        <file name="screenshot-17.png" hash="d4199d884a246fc6e3a1442f288b83a3"/>
+                        <file name="screenshot-18.png" hash="bc8a4627dd994650217d4dab5b9ebaf3"/>
+                        <file name="screenshot-2.png" hash="d702a6f9866b815b8e548a691ecd22ed"/>
+                        <file name="screenshot-3.png" hash="632df77e753f19bf6e33d5ddcb14c5d0"/>
+                        <file name="screenshot-4.png" hash="0e508b2d1490e96ca74af7cf1ac4d290"/>
+                        <file name="screenshot-5.png" hash="1d096cfed38b0745c21791efdadf9f2e"/>
+                        <file name="screenshot-6.png" hash="820c37f9753d4257b9f8352580d9da3e"/>
+                        <file name="screenshot-7.png" hash="1a56211d7281420726dc6d3c53b18b16"/>
+                        <file name="screenshot-8.png" hash="4b70c2d563143c9d1d28c34bdc2da514"/>
+                        <file name="screenshot-9.png" hash="7594b0dcc3e035b4882c769bfaeb77c8"/>
+                        <file name="search-rank-1.png" hash="9b5a0f30f51a8137208d22e16f782b41"/>
+                        <file name="search-rank-2.png" hash="331751a58621ad7ec3ada37f802d3dc2"/>
+                        <dir name=".idea">
+                            <file name="encodings.xml" hash="bbfed8a9adc106b97e3149400e5f242b"/>
+                            <file name="extrawatch.iml" hash="07b1dcc90395701344d49084b5166275"/>
+                            <file name="misc.xml" hash="05d50d2966290c277680de130d0330ae"/>
+                            <file name="modules.xml" hash="b87c1a7950f1aa3e5754ddf11e7fe99e"/>
+                            <dir name="scopes">
+                                <file name="scope_settings.xml" hash="95f1e22026cc07a685a2932349ceb6ca"/>
+                            </dir>
+                            <file name="vcs.xml" hash="1b98c7ba0081d2838b083adb56d0eea5"/>
+                            <file name="workspace.xml" hash="5eefc0cb9a5941733922eca8962ff81b"/>
+                            <file name=".name" hash="79fe4fbde4ec35730720bce877171a6d"/>
+                        </dir>
                     </dir>
                     <dir name="sql">
                         <dir name="extrawatch_setup">
@@ -1542,6 +1641,55 @@
                         <file name="uninstall.php" hash="300707cfaf19ed84810442544bcfa1c7"/>
                     </dir>
                 </dir>
+            </dir>
+        </target>
+       <target name="magedesign">
+            <dir name="adminhtml">
+                <dir name="default">
+                    <dir name="default">
+                        <dir name="layout">
+                            <file name="extrawatch.xml"/>
+                        </dir>
+                        <dir name="template">
+                            <dir name="extrawatch">
+                                <file name="extrawatch.phtml"/>
+                            </dir>
+                        </dir>
+                    </dir>
+                </dir>
+            </dir>
+            <dir name="frontend">
+                <dir name="base">
+                    <dir name="default">
+                        <dir name="layout">
+                            <file name="extrawatch.xml"/>
+                        </dir>
+                        <dir name="template">
+                            <dir name="extrawatch">
+                                <file name="extrawatch.phtml"/>
+                                <file name="extrawatch-agent.phtml"/>
+                            </dir>
+                        </dir>
+                    </dir>
+                </dir>
+                <dir name="default">
+                    <dir name="default">
+                        <dir name="layout">
+                            <file name="extrawatch.xml"/>
+                        </dir>
+                        <dir name="template">
+                            <dir name="extrawatch">
+                                <file name="extrawatch.phtml"/>
+                                <file name="extrawatch-agent.phtml"/>
+                            </dir>
+                        </dir>
+                    </dir>
+                </dir>
+            </dir>
+        </target>
+        <target name="mageetc">
+            <dir name="modules">
+                <file name="CodeGravity_ExtraWatch.xml"/>
             </dir>
         </target>
     </contents>

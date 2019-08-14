@@ -2,475 +2,485 @@
 
 /**
  * @file
- * ExtraWatch - A real-time ajax monitor and live stats
- * @package ExtraWatch
- * @version 2.2
- * @revision 1550
- * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
- * @copyright (C) 2014 by CodeGravity.com - All rights reserved!
- * @website http://www.extrawatch.com
+ * ExtraWatch - A real-time ajax monitor and live stats  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @package ExtraWatch  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @version 2.3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @revision 1918  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @copyright (C) 2014 by CodeGravity.com - All rights reserved!  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @website http://www.extrawatch.com  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  */
 
-defined('_JEXEC') or die('Restricted access');
+defined('_JEXEC') or die('Restricted access');  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
-class ExtraWatchVisitHTML
+class ExtraWatchVisitHTML  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 {
 
-  public $extraWatch;
+  public $extraWatch;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   public $heatmap;
-  public $heatmapHTML;
+  public $heatmapHTML;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
-  function __construct($extraWatch)
+  function __construct($extraWatch)  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   {
-    $this->extraWatch = $extraWatch;
-    $this->heatmap = new ExtraWatchHeatmap($this->extraWatch->database);
-    $this->heatmapHTML = new ExtraWatchHeatmapHtml($this->extraWatch->database);
+    $this->extraWatch = $extraWatch;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    $this->heatmap = new ExtraWatchHeatmap($this->extraWatch->database);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    $this->heatmapHTML = new ExtraWatchHeatmapHtml($this->extraWatch->database);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   }
 
-  function getJoinedURIRows($bots, $inactive, $ipFilter)
+  function getJoinedURIRows($bots, $inactive, $ipFilter)  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   {
-    return $this->extraWatch->visit->getJoinedURIRows($bots, $inactive, $ipFilter);
+    return $this->extraWatch->visit->getJoinedURIRows($bots, $inactive, $ipFilter);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   }
 
-  function renderGetVars($id)
+  function renderGetVars($id)  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   {
     $output = "";
 
-    $query = sprintf("select * from #__extrawatch_uri_post where `uriid` = '%d' and `type` = '2' ", (int) $id);
+    $query = sprintf("select * from #__extrawatch_uri_post where `uriid` = '%d' and `type` = '2' ", (int) $id);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
-    $rows = $this->extraWatch->visit->database->objectListQuery($query);
+    $rows = $this->extraWatch->visit->database->objectListQuery($query);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     if ($rows)
-      foreach ($rows as $row) {
-        $key = $row->key;
-        $value = $row->value;
+      foreach ($rows as $row) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        $key = $row->key;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        $value = $row->value;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
-        $output .= "<tr><td>" . ExtraWatchHelper::htmlspecialchars($key) . ": </td><td>" . ExtraWatchHelper::htmlspecialchars($value) . "</td><td>" .
-            "<a href='" . $this->extraWatch->config->renderLink("goals", "insert&id=" . $id . "&postid=" . $row->id) . "'
-                        title='" . _EW_GOAL_ADD_SUBMITTED_VALUE . "'><img src='" . $this->extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/img/icons/goal-add.gif' />" . _EW_VISIT_URL_PARAMETER_GOAL . "</a></td></tr>";
+        $output .= "<tr><td>" . ExtraWatchHelper::htmlspecialchars($key) . ": </td><td>" . ExtraWatchHelper::htmlspecialchars($value) . "</td><td>" .  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+            "<a href='" . $this->extraWatch->config->renderLink("goals", "insert&id=" . $id . "&postid=" . $row->id) . "'  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+                        title='" . _EW_GOAL_ADD_SUBMITTED_VALUE . "'><img src='" . $this->extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/img/icons/goal-add.gif' />" . _EW_VISIT_URL_PARAMETER_GOAL . "</a></td></tr>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
       }
 
     return $output;
   }
 
-
-  function renderPostVars($id)
+  function renderPostVars($id)  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   {
-    if ($this->extraWatch->config->isFree()) {
-      return "<tr><td><span class='jwDisabled'>" . _EW_ADMINHEADER_NA_IN_THIS_VERSION . "</span></td></tr>";
+    if ($this->extraWatch->config->isFree()) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+      return "<tr><td><span class='jwDisabled'>" . _EW_ADMINHEADER_NA_IN_THIS_VERSION . "</span></td></tr>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     }
     $output = "";
 
-    $query = sprintf("select * from #__extrawatch_uri_post where `uriid` = '%d' and `type` = '1' ", (int) $id);
+    $query = sprintf("select * from #__extrawatch_uri_post where `uriid` = '%d' and `type` = '1' ", (int) $id);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
-    $rows = $this->extraWatch->visit->database->objectListQuery($query);
+    $rows = $this->extraWatch->visit->database->objectListQuery($query);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     if ($rows)
-      foreach ($rows as $row) {
-        $key = $row->key;
-        $value = $row->value;
+      foreach ($rows as $row) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        $key = $row->key;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        $value = $row->value;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
-        $output .= "<tr><td>" . ExtraWatchHelper::htmlspecialchars($key) . ": </td><td>" . ExtraWatchHelper::htmlspecialchars($value) . "</td><td>" .
-            "<a href='" . $this->extraWatch->config->renderLink("goals", "insert&id=" . $id . "&postid=" . $row->id) . "' title='" . _EW_GOAL_ADD_SUBMITTED_VALUE . "'><img src='" . $this->extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/img/icons/goal-add.gif' />" . _EW_VISIT_SUBMITED_FROM_VARIABLE . "</a></td></tr>";
+        $output .= "<tr><td>" . ExtraWatchHelper::htmlspecialchars($key) . ": </td><td>" . ExtraWatchHelper::htmlspecialchars($value) . "</td><td>" .  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+            "<a href='" . $this->extraWatch->config->renderLink("goals", "insert&id=" . $id . "&postid=" . $row->id) . "' title='" . _EW_GOAL_ADD_SUBMITTED_VALUE . "'><img src='" . $this->extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/img/icons/goal-add.gif' />" . _EW_VISIT_SUBMITED_FROM_VARIABLE . "</a></td></tr>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
       }
 
     return $output;
   }
 
   /* visits */
-  function renderTable($bots = FALSE, $inactive, $ipFilter = FALSE, $renderAsEmail = FALSE)
+  function renderTable($bots = FALSE, $inactive, $ipFilter = FALSE, $renderAsEmail = FALSE, $renderedFromHistory = FALSE)
   {
     $output = "";
-    $rows = $this->getJoinedURIRows($bots, $inactive, $ipFilter);
-    $agentNotPublishedMessage = $this->extraWatch->env->getAgentNotPublishedMsg($this->extraWatch->database);
-	$downloadLog = $this->extraWatch->downloads->getDownloadLogIpTimestampPath();
-    $countryCodeToCountryNameArray =  $this->extraWatch->helper->countryCodeToCountryNameList();
+    $rows = $this->getJoinedURIRows($bots, $inactive, $ipFilter);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    $agentNotPublishedMessage = $this->extraWatch->env->getAgentNotPublishedMsg($this->extraWatch->database);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+	$downloadLog = $this->extraWatch->downloads->getDownloadLogIpTimestampPath();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    $countryCodeToCountryNameArray =  $this->extraWatch->helper->countryCodeToCountryNameList();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
-    if ($bots == FALSE && ($agentNotPublishedMessage != FALSE) && sizeof($rows) == 0 && $inactive == 0) {
-      $output .= "<tr><td colspan='10'><span style='color:red; font-weight: bold;'>".$agentNotPublishedMessage."</span></td></tr> ";
-      return $output;
+    if ($bots == FALSE && ($agentNotPublishedMessage != FALSE) && sizeof($rows) == 0 && $inactive == 0) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+      $output .= "<tr><td colspan='10'><span style='color:red; font-weight: bold;'>".$agentNotPublishedMessage."</span></td></tr> ";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+      return $output;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     } else {
     }
-        if (!$rows) {
+        if (!$rows) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
-            $noDataHTML = "";
-            if (!$bots && _EW_CLOUD_MODE) {
+            $noDataHTML = "";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+            if (!$bots && _EW_CLOUD_MODE && $inactive == FALSE && !$renderedFromHistory) {
+                $noDataHTML = "<h2 style='color: #e74c3c; font-weight: bold;'>You still haven't inserted the tracking code on web you want to track. Contact us via chat in lower right corner if you need help with it.</h2> <span style='color: #e74c3c; font-weight: bold;'>Please add the following HTML code snippet into every page you want to monitor:</span><br/><br/>";
+                $noDataHTML .= "<textarea cols='100' rows='6'>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+                $noDataHTML .= htmlentities($this->extraWatch->helper->renderHTMLCodeSnippet(_EW_PROJECT_ID));  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+                $noDataHTML .= "</textarea><br/><br/>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+                $noDataHTML .= "<b>To accomplish this, you need to have an FTP access to your website and edit your template file. <br/>Copy and paste the tracking code before the &lt;/body&gt; tag.<br/>There are several ways how to do it if you're using various CMS.<br/>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+                $noDataHTML .= "If you need any help with this, contact us via live chat in lower right corner</b><br/><br/>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
-                $noDataHTML = "<h2 style='color: red; font-weight: bold;'>Tracking is not active!</h2> <span style='color: red; font-weight: bold;'>Please add the following HTML code snippet into every page you want to monitor:</span><br/><br/>";
-                $noDataHTML .= "<textarea cols='100' rows='6'>";
-                $noDataHTML .= htmlentities($this->extraWatch->helper->renderHTMLCodeSnippet(_EW_PROJECT_ID));
-                $noDataHTML .= "</textarea><br/><br/>";
-                $noDataHTML .= "<b>To accomplish this, you need to have an FTP access to your website and edit your template file. <br/>Copy and paste the tracking code before the &lt;/body&gt; tag.<br/>There are several ways how to do it if you're using various CMS.<br/>";
-                $noDataHTML .= "If you need any help with this, contact us via live chat in lower right corner</b><br/><br/>";
+            } else if ($inactive == FALSE) {
 
+               $noDataHTML .= _EW_NO_DATA;
             }
 
-            $output .= "<tr><td colspan='5'>" . $noDataHTML . "</td></tr>";
+            $output .= "<tr><td colspan='5'>" . $noDataHTML . "</td></tr>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
-            return $output;
+            return $output;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         }
-    /** if visits are empty */
+    /** if visits are empty */  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
 
     //$output = "";
     $i = 0xFF;
 
-    $decrement = -1;
+    $decrement = -1;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
-    $lastIp = ""; //to be able to hide flags / address for same IP in next rows
-    $lastReferer = "";
-    $lastColor = "";
+    $lastIp = ""; //to be able to hide flags / address for same IP in next rows  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    $lastReferer = "";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    $lastColor = "";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     $rowNumber = 0;
 
-    $dateToday = $this->extraWatch->date->jwDateToday();
+    $dateToday = $this->extraWatch->date->jwDateToday();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
     
     
-	if (!$renderAsEmail) {
-		$liveSiteWithSuffix = $this->extraWatch->config->getLiveSiteWithSuffix();
+	if (!$renderAsEmail) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+		$liveSiteWithSuffix = $this->extraWatch->config->getLiveSiteWithSuffix();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 	} else {
-		$liveSiteWithSuffix = $this->extraWatch->config->getDomainFromLiveSite(_EW_PROJECT_ID).($this->extraWatch->config->getLiveSiteWithSuffix());
+		$liveSiteWithSuffix = $this->extraWatch->config->getDomainFromLiveSite(_EW_PROJECT_ID).($this->extraWatch->config->getLiveSiteWithSuffix());  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 	}
 
     if (@$rows)
-      foreach ($rows as $row) {
-        $rowNumber++;
+      foreach ($rows as $row) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        $rowNumber++;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
-        /* reset the values from previous iteration */
+        /* reset the values from previous iteration */  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
-        $country = "none";
-        $countryName = "";
-        $countryUpper = "";
-        $color = "";
+        $country = "none";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        $countryName = "";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        $countryUpper = "";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        $color = "";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
-		$inactiveClass = "";
-		$inactiveImageClass = "";
-        if ($row->inactive) {
-            $inactiveClass = "class='extraWatchInactiveVisit'";
-			$inactiveImageClass="class='extraWatchInactiveImage'";
+		$inactiveClass = "";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+		$inactiveImageClass = "";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        if ($row->inactive) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+            $inactiveClass = "class='extraWatchInactiveVisit'";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+			$inactiveImageClass="class='extraWatchInactiveImage'";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         }
 
 
-        $flag = "<img src='" . $liveSiteWithSuffix . "components/com_extrawatch/img/flags/$country.png' title='$countryName' alt='$countryName' $inactiveImageClass/>";
-        if ($this->extraWatch->block->getBlockedIp($row->ip)) //TODO optimize whole block
-          $ipString = "<s>" . ExtraWatchHelper::htmlspecialchars($row->ip) . "</s>";
+        $flag = "<img src='" . $liveSiteWithSuffix . "components/com_extrawatch/img/flags/$country.png' title='$countryName' alt='$countryName' $inactiveImageClass/>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        if ($this->extraWatch->block->getBlockedIp($row->ip)) //TODO optimize whole block  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+          $ipString = "<s>" . ExtraWatchHelper::htmlspecialchars($row->ip) . "</s>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         else
-          $ipString = ExtraWatchHelper::htmlspecialchars($row->ip);//TODO optimize whole block
+          $ipString = ExtraWatchHelper::htmlspecialchars($row->ip);//TODO optimize whole block  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
-        if ($i < 0xCC || $i <= 0x00) {
-          $decrement = $decrement * -1;
+        if ($i < 0xCC || $i <= 0x00) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+          $decrement = $decrement * -1;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         }
-        $i = $i + $decrement;
+        $i = $i + $decrement;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
-        $color = sprintf("%x", $i) . sprintf("%x", $i) . sprintf("%x", $i);
+        $color = sprintf("%x", $i) . sprintf("%x", $i) . sprintf("%x", $i);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
-        if ($bots == TRUE)
-          $color = "ffffff";
+        if ($bots == TRUE)  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+          $color = "ffffff";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
-        $country = $row->country;
+        $country = $row->country;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
-        if (!$country) {
-          $country = $this->extraWatch->helper->countryByIp($row->ip);    
-          $this->extraWatch->visit->updateCountryForIP($country, $row->ip);
+        if (!$country) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+          $country = $this->extraWatch->helper->countryByIp($row->ip);      	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+          $this->extraWatch->visit->updateCountryForIP($country, $row->ip);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         }
-        if (@ $country) {
-		  $countryName = @$countryCodeToCountryNameArray[$country];
-		  $this->extraWatch->helper->countryCodeToCountryName($country);//TODO optimize
-          $flag = "<img src='" . $liveSiteWithSuffix . "components/com_extrawatch/img/flags/$country.png' title='$countryName' alt='$countryName' $inactiveImageClass/>";
-          $countryUpper = strtoupper($country);
+        if (@ $country) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+		  $countryName = @$countryCodeToCountryNameArray[$country];  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+		  $this->extraWatch->helper->countryCodeToCountryName($country);//TODO optimize  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+          $flag = "<img src='" . $liveSiteWithSuffix . "components/com_extrawatch/img/flags/$country.png' title='$countryName' alt='$countryName' $inactiveImageClass/>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+          $countryUpper = strtoupper($country);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         }
 
-        $userAgent = ExtraWatchHelper::htmlspecialchars($row->browser);
+        $userAgent = ExtraWatchHelper::htmlspecialchars($row->browser);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
-        $browser = "";
+        $browser = "";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         $os = "";
-        $browserIcon = "";
-        $osIcon = "";
+        $browserIcon = "";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        $osIcon = "";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
-        if (@ $userAgent) {
-          $browser = $this->extraWatch->referer->identifyBrowser(@ $userAgent);
-          if (@ $browser)
-            $browserIcon = $liveSiteWithSuffix . "components/com_extrawatch/img/icons/" . strtolower($browser) . ".gif";
+        if (@ $userAgent) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+          $browser = $this->extraWatch->referer->identifyBrowser(@ $userAgent);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+          if (@ $browser)  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+            $browserIcon = $liveSiteWithSuffix . "components/com_extrawatch/img/icons/" . strtolower($browser) . ".gif";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
-          if (@ $browserIcon)
-            $browser = "<img src='$browserIcon' alt='$userAgent' title='$userAgent' $inactiveImageClass/>";
+          if (@ $browserIcon)  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+            $browser = "<img src='$browserIcon' alt='$userAgent' title='$userAgent' $inactiveImageClass/>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
-          $os = json_decode(@$this->extraWatch->referer->identifyOSAsJSON(@ $userAgent));
-          if (@ $os->name)
-            $osIcon = $liveSiteWithSuffix . "components/com_extrawatch/img/icons/" . strtolower($os->icon);
+          $os = json_decode(@$this->extraWatch->referer->identifyOSAsJSON(@ $userAgent));  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+          if (@ $os->name)  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+            $osIcon = $liveSiteWithSuffix . "components/com_extrawatch/img/icons/" . strtolower($os->icon);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
-          if (@ $osIcon)
-            $os = sprintf("<img src='%s' alt='%s' title='%s' $inactiveImageClass/>", $osIcon, $userAgent, $userAgent);
+          if (@ $osIcon)  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+            $os = sprintf("<img src='%s' alt='%s' title='%s' $inactiveImageClass/>", $osIcon, $userAgent, $userAgent);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         }
 		
 
 
-          //$output .= $rowNumber;
+          //$output .= $rowNumber;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
-        if ($bots == TRUE && $osIcon)
-          continue; // bot icon fix
-        if ($bots == TRUE) {
-          $osIcon = $liveSiteWithSuffix . "components/com_extrawatch/img/icons/blank.gif";
-          $browserIcon = $liveSiteWithSuffix . "components/com_extrawatch/img/icons/blank.gif";
-          $browser = sprintf("<img src='%s' alt='%s' title='%s' $inactiveImageClass/>", ExtraWatchHelper::htmlspecialchars($browserIcon), ExtraWatchHelper::htmlspecialchars($userAgent), ExtraWatchHelper::htmlspecialchars($userAgent));
-          $os = sprintf("<img src='%s' alt='%s' title='%s' $inactiveImageClass/>", ExtraWatchHelper::htmlspecialchars($osIcon), ExtraWatchHelper::htmlspecialchars($userAgent), ExtraWatchHelper::htmlspecialchars($userAgent));
+        if ($bots == TRUE && $osIcon)  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+          continue; // bot icon fix  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        if ($bots == TRUE) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+          $osIcon = $liveSiteWithSuffix . "components/com_extrawatch/img/icons/blank.gif";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+          $browserIcon = $liveSiteWithSuffix . "components/com_extrawatch/img/icons/blank.gif";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+          $browser = sprintf("<img src='%s' alt='%s' title='%s' $inactiveImageClass/>", ExtraWatchHelper::htmlspecialchars($browserIcon), ExtraWatchHelper::htmlspecialchars($userAgent), ExtraWatchHelper::htmlspecialchars($userAgent));  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+          $os = sprintf("<img src='%s' alt='%s' title='%s' $inactiveImageClass/>", ExtraWatchHelper::htmlspecialchars($osIcon), ExtraWatchHelper::htmlspecialchars($userAgent), ExtraWatchHelper::htmlspecialchars($userAgent));  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         }
 
 
 
-		  
 
-        $username = "";
-        if (@ $row->username) {
-          $username = "<br/><a href='" . $this->extraWatch->config->getAdministratorIndex() . "?option=com_users&task=view&filter_search=$row->username' style='color: black; text-decoration:none;'><i>" . @ ExtraWatchHelper::htmlspecialchars($row->username) . "</i></a>";
+
+        $username = "";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        if (@ $row->username) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+          $username = "<br/><a href='" . $this->extraWatch->config->getAdministratorIndex() . "?option=com_users&task=view&filter_search=$row->username' style='color: black; text-decoration:none;'><i>" . @ ExtraWatchHelper::htmlspecialchars($row->username) . "</i></a>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         }
-        $ipString = sprintf("<a id='%s' href='javascript:extrawatch_blockIpToggle(\"%s\");extrawatch_sendVisitsReq();' style='color:black;' $inactiveClass>%s</a>", ExtraWatchHelper::htmlspecialchars($row->ip), ExtraWatchHelper::htmlspecialchars($row->ip), $ipString);
+        $ipString = sprintf("<a id='%s' href='javascript:extrawatch_blockIpToggle(\"%s\");extrawatch_sendVisitsReq();' style='color:black;' $inactiveClass>%s</a>", ExtraWatchHelper::htmlspecialchars($row->ip), ExtraWatchHelper::htmlspecialchars($row->ip), $ipString);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
         
-        $mapsIcon = "<img src='" . $liveSiteWithSuffix . "components/com_extrawatch/img/icons/map_icon.gif' border='0' " .
-            $this->extraWatch->helper->getTooltipOnEvent() . "=\"ajax_showTooltip('" . $this->extraWatch->config->getLiveSite() . $this->extraWatch->env->getEnvironmentSuffix() .
-            $this->extraWatch->env->renderAjaxLink('ajax','tooltip')."&rand=".
-            $this->extraWatch->config->getRand() . "&ip=$row->ip&env=" .
-            $this->extraWatch->config->getEnvironment() . "&projectId="._EW_PROJECT_ID."',this);return FALSE\"/>";
+        $mapsIcon = "<img src='" . $liveSiteWithSuffix . "components/com_extrawatch/img/icons/map_icon.gif' border='0' " .  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+            $this->extraWatch->helper->getTooltipOnEvent() . "=\"ajax_showTooltip('" . $this->extraWatch->config->getLiveSite() . $this->extraWatch->env->getEnvironmentSuffix() .  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+            $this->extraWatch->env->renderAjaxLink('ajax','tooltip')."&rand=".  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+            $this->extraWatch->config->getRand() . "&ip=$row->ip&env=" .  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+            $this->extraWatch->config->getEnvironment() . "&projectId="._EW_PROJECT_ID."',this);return FALSE\"/>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
          $timeOfVisit = $this->extraWatch->helper->secondsToHumanFormat(@$row->timeDiff);
+		 $timeOfVisit = str_replace(" ","&nbsp;", $timeOfVisit);
 
-          $displayCountryFlag = FALSE;
-          if ($lastIp != $row->ip) {
-          $lastTimestamp = $row->timestamp;
-          $displayCountryFlag = TRUE;
-          $lastIp = $row->ip;
-          $rowNumber = 1;
+          $displayCountryFlag = FALSE;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+          if ($lastIp != $row->ip) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+          $lastTimestamp = $row->timestamp;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+          $displayCountryFlag = TRUE;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+          $lastIp = $row->ip;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+          $rowNumber = 1;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         } else {
-          $flag = ""; // do not display flag, ip if the IP is same sa previous
-          $ipString = "";
+          $flag = ""; // do not display flag, ip if the IP is same sa previous  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+          $ipString = "";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         }
 
-        if (!$displayCountryFlag) {
-          $username = "";
-          $browser = "";
+        if (!$displayCountryFlag) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+          $username = "";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+          $browser = "";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
           $os = "";
-          $mapsIcon = "";
-          $timeOfVisit = "";
+          $mapsIcon = "";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+          $timeOfVisit = "";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         }
 
-        if ($lastReferer != $row->referer) {
-          $output .= $this->renderRefererRow($lastReferer, $color);
-          $lastReferer = $row->referer;
-          $lastColor = $color;
+        if ($lastReferer != $row->referer) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+          $output .= $this->renderRefererRow($lastReferer, $color);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+          $lastReferer = $row->referer;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+          $lastColor = $color;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         }
-        $dateOfVisit = ExtraWatchDate::date("d.m.Y", $row->timestamp);
-        if (isset($this->lastDate) && $this->lastDate != $dateOfVisit && !(!$this->lastDate && $inactive)) {
-          $output .= "<tr><td style='background-color: #" . $color . ";'></td><td style='background-color: #" . $color . ";'></td><td style='background-color: #" . $color . ";'></td><td style='background-color: #" . $color . ";'><td style='background-color: #" . $color . ";'></td></td><td style='background-color: #" . $color . ";'></td><td style='background-color: #" . $color . ";'></td><td colspan='8' style='background-color: #" . $color . ";' colspan='3'><h3>$dateOfVisit</h3></td></tr>";
-          $this->lastDate = $dateOfVisit;
+        $dateOfVisit = ExtraWatchDate::date("d.m.Y", $row->timestamp);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        if (isset($this->lastDate) && $this->lastDate != $dateOfVisit && !(!$this->lastDate && $inactive)) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+          $output .= "<tr><td ></td><td ></td><td ></td><td ><td ></td></td><td ></td><td ></td><td ></td><td colspan='8'  colspan='3'><h3>$dateOfVisit</h3></td></tr>";
+          $this->lastDate = $dateOfVisit;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         }
-        $output .= "<tr><td valign='top' align='left' style='background-color: #$color'></td>
-																		<td valign='top' align='left' style='background-color: #$color;'>" . @ $mapsIcon . "</td><td valign='top' align='left' style='background-color: #$color; color: #999999;'>";
+        $output .= "<tr><td valign='top' align='left' ></td>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+																		<td valign='top' align='left' >" . @ $mapsIcon . "</td><td valign='top' align='left' >";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
 
-        if (!$countryUpper) {
-          $output .= "<a href='" . $this->extraWatch->config->renderLink("goals", "insert&country=" . @$countryUpper) . "' style='color: #999999;' title='" . _EW_VISITS_ADD_GOAL_COUNTRY . "'>" . @ $countryUpper . "</a>";
-        }
-
-
-        $onlineString = "";
-
-        if ($row->inactive == 0 && $ipString) {
-            $onlineString = "<img src='".$liveSiteWithSuffix."components/com_extrawatch/img/icons/online.png' valign='top' border='0'/>";
+        if (!$countryUpper) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+          $output .= "<a href='" . $this->extraWatch->config->renderLink("goals", "insert&country=" . @$countryUpper) . "' style='color: #999999;' title='" . _EW_VISITS_ADD_GOAL_COUNTRY . "'>" . @ $countryUpper . "</a>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         }
 
-        $output .= "</td><td valign='top' align='left' style='background-color: #$color;'>" . @ $flag . "</td>
-																		<td valign='top' align='left' style='background-color: #$color;'><span $inactiveClass>$ipString$onlineString</span>";
 
+        $onlineString = "";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
-          $output .= "$username</td>
-																		<td valign='top' align='left' style='background-color: #$color;'>" . @ $browser . "</td>
-																		<td valign='top' align='left' style='background-color: #$color;'>" . @ $os . "</td>
-																		<td valign='top' align='left' style='background-color: #$color;' width='100%'>";
+        if ($row->inactive == 0 && $ipString) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+            $onlineString = "<img src='".$liveSiteWithSuffix."components/com_extrawatch/img/icons/online.png' valign='top' border='0'/>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        }
 
-        $day = $this->extraWatch->date->jwDateFromTimestamp($row->timestamp);
+        $output .= "</td><td valign='top' align='left' >" . @ $flag . "</td>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+																		<td valign='top' align='left' ><span $inactiveClass>$ipString</span>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+          $output .= "$username</td>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+																		<td valign='top' align='left' >$onlineString</td>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+																		<td valign='top' align='left' >" . @ $browser . "</td>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+																		<td valign='top' align='left' >" . @ $os . "</td>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+																		<td valign='top' align='left'  width='80%'>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
-        $downloadsForIp = $this->extraWatch->downloads->getDownloadLogForIPBetweenTimestampsFromRef($downloadLog, $rowNumber, $row->ip, $lastTimestamp, $row->timestamp);//TODO optimize
+        $day = $this->extraWatch->date->jwDateFromTimestamp($row->timestamp);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+
+        $downloadsForIp = $this->extraWatch->downloads->getDownloadLogForIPBetweenTimestampsFromRef($downloadLog, $rowNumber, $row->ip, $lastTimestamp, $row->timestamp);//TODO optimize  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 		
 		
-        $timestampHumanReadable = ExtraWatchDate::date("H:i:s", $row->timestamp);
+        $timestampHumanReadable = ExtraWatchDate::date("H:i:s", $row->timestamp);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
-        $downloadIcon = "<img src='".$liveSiteWithSuffix."components/com_extrawatch/img/icons/downloads.png' $inactiveImageClass />";
-		if (@$downloadsForIp) {
-			foreach($downloadsForIp as $download) {
-				$downloadTimestampHumanReadable = ExtraWatchDate::date("H:i:s", $download['timestamp']);
-				$output .= "<span $inactiveClass>".$downloadTimestampHumanReadable." $downloadIcon ".$download['dname']."</span><br/>";
+        $downloadIcon = "<img src='".$liveSiteWithSuffix."components/com_extrawatch/img/icons/downloads.png' $inactiveImageClass />";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+		if (@$downloadsForIp) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+			foreach($downloadsForIp as $download) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+				$downloadTimestampHumanReadable = ExtraWatchDate::date("H:i:s", $download['timestamp']);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+				$output .= "<div $inactiveClass>".$downloadTimestampHumanReadable." $downloadIcon ".$download['dname']."</div><br/>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 			}
 		}
 
-          $goalsForIp = $this->extraWatch->goal->getGoalsForVisitIdBetweenTimestamps($row->visitId, $lastTimestamp, $row->timestamp);//TODO optimize
-          if (@$goalsForIp) {
-              foreach($goalsForIp as $goalForIp) {
-                  $goalTimestampHumanReadable = ExtraWatchDate::date("H:i:s", $goalForIp->timestamp);
+          $goalsForIp = $this->extraWatch->goal->getGoalsForVisitIdBetweenTimestamps($row->visitId, $lastTimestamp, $row->timestamp);//TODO optimize  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+          if (@$goalsForIp) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+              foreach($goalsForIp as $goalForIp) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+                  $goalTimestampHumanReadable = ExtraWatchDate::date("H:i:s", $goalForIp->timestamp);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
-                  $goalLink =  "<a href='" . $this->extraWatch->config->renderLink("goals", "edit&goalId=".((int)$goalForIp->goalId)."") . "' target='_blank'>".$goalForIp->name."</a>";
+                  $goalLink =  "<a href='" . $this->extraWatch->config->renderLink("goals", "edit&goalId=".((int)$goalForIp->goalId)."") . "' target='_blank'>".$goalForIp->name."</a>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
-                  $output .= "<span style='background-color: #FFEFA7' $inactiveClass>".$goalTimestampHumanReadable.sprintf(_EW_VISITS_GOAL_REACHED, $goalLink)."</span><br/>";
+                  $output .= "<div style='background-color: #FFF9E1;' $inactiveClass>".$goalTimestampHumanReadable.sprintf(_EW_VISITS_GOAL_REACHED, $goalLink)."</div><br/>";
               }
           }
-        $lastTimestamp = $row->timestamp;
+        $lastTimestamp = $row->timestamp;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
-		$trucateCharLimit = $this->extraWatch->config->getConfigValue('EXTRAWATCH_TRUNCATE_VISITS');
+		$trucateCharLimit = $this->extraWatch->config->getConfigValue('EXTRAWATCH_TRUNCATE_VISITS');  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 		  
-        $uriTruncated = $this->extraWatch->helper->truncate(urldecode($row->uri), $trucateCharLimit);
-        $titleOriginal = $row->title;
-        $row->title = $this->extraWatch->helper->truncate($row->title, $trucateCharLimit);
-        $row->title = $this->extraWatch->helper->removeRepetitiveTitle($row->title);
+        $uriTruncated = $this->extraWatch->helper->truncate(urldecode($row->uri), $trucateCharLimit);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        $titleOriginal = $row->title;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        $row->title = $this->extraWatch->helper->truncate($row->title, $trucateCharLimit);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        $row->title = $this->extraWatch->helper->removeRepetitiveTitle($row->title);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
-        $uri2titleId = $this->extraWatch->visit->getUri2TitleId($row->uri, $titleOriginal);//TODO optimize
-        $output .= ("<div id='id$row->id' style='text-decoration: none;' $inactiveClass onmouseout=\"toggleElementVisibility('goal_" . $row->id . "',0);\"  onmouseover=\"toggleDiv('".$row->id."','".$row->ip."',1, $uri2titleId, $day);\" style='background-color: #$color'>");
+        $uri2titleId = $this->extraWatch->visit->getUri2TitleId($row->uri, $titleOriginal);//TODO optimize  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        $output .= ("<div id='id$row->id' style='text-decoration: none;' $inactiveClass onmouseout=\"toggleElementVisibility('goal_" . $row->id . "',0);\"  onmouseover=\"toggleDiv('".$row->id."','".$row->ip."',1, ".((int)$uri2titleId).", $day);\" >");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
-		$projectSite = "";
-        if ($renderAsEmail) {
+        if (@_EW_CLOUD_MODE) {
 			$projectSite = $this->extraWatch->config->getDomainFromLiveSite(_EW_PROJECT_ID);
+            if (!ExtraWatchHelper::startsWith($projectSite, "http://")) {   //add http prefix
+                $projectSite = "http://".$projectSite;
+            }
 		}
-        $output .= ("$timestampHumanReadable <a href='".$projectSite.$row->uri."' target='_blank' $inactiveClass>$row->title</a> $uriTruncated");
+
+        if (!$row->title) {
+            $row->title = $uriTruncated;
+        }
+
+        $output .= ("$timestampHumanReadable <a href='".$projectSite.$row->uri."' target='_blank' $inactiveClass title='$uriTruncated'>$row->title</a>");
 
          
 
-        $clicks = @$uri2HeatmapClicksAssoc[$row->uri];
-        if (@$clicks) {
-          if (@$maxClicksOfDay) {
-            $ratio = $clicks / $maxClicksOfDay;
-            $color = ExtraWatchHelper::rgbFromRatio($ratio);
+        $clicks = @$uri2HeatmapClicksAssoc[$row->uri];  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        if (@$clicks) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+          if (@$maxClicksOfDay) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+            $ratio = $clicks / $maxClicksOfDay;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+            $color = ExtraWatchHelper::rgbFromRatio($ratio);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
           }
-          if ($userHeatmapClicks > 0) {
-            $output .= "&nbsp;" . _EW_HEATMAP_OF . "&nbsp;";
+          if ($userHeatmapClicks > 0) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+            $output .= "&nbsp;" . _EW_HEATMAP_OF . "&nbsp;";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
           }
-          $output .= $this->heatmapHTML->renderHeatmapLink($row->uri, $uri2titleId, $day, "&nbsp;<img src='" . $liveSiteWithSuffix . "components/com_extrawatch/img/icons/heatmap.png' title='" . _EW_HEATMAP_CLICK_OPEN . "'/> <span style='color: " . $color . "' title='" . _EW_HEATMAP_CLICK_OPEN . "'>$clicks</span>");
+          $heatmapLinkOutput = $this->heatmapHTML->renderHeatmapLink($row->uri, (int) $uri2titleId, $day, "<span style='color: " . $color . "' title='" . _EW_HEATMAP_CLICK_OPEN . "'>$clicks</span>");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         }
         
 
-        $paramData = $this->extraWatch->visit->areParamDataForUri($row->id);//TODO optimize
+        $paramData = $this->extraWatch->visit->areParamDataForUri($row->id);//TODO optimize  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
-        if ($paramData) {
-          $output .= "<img src='" . $liveSiteWithSuffix . "components/com_extrawatch/img/icons/submit.png' />";
+        if ($paramData) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+          $output .= "<img src='" . $liveSiteWithSuffix . "components/com_extrawatch/img/icons/submit.png' />";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         }
 
 
 
-		if (!$renderAsEmail) {
-			/* ad as goal link */
-			$output .= ("<div id='goal_" . $row->id . "' style='display: none; margin: 0px; padding: 2px; left: 40%;' class='uriDetailDiv'>" . _EW_STATS_LOADING);
-			$output .= ("</div>");
+		if (!$renderAsEmail) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+			/* ad as goal link */  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+			$output .= ("<div id='goal_" . $row->id . "' style='display: none; margin: 0px; padding: 2px; left: 40%;' class='uriDetailDiv'>" . _EW_STATS_LOADING);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+			$output .= ("</div>");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 		}
-        if ($timeOfVisit) {
-            $output .= "&nbsp;"._EW_TIME_BETWEEN_VISITS.":&nbsp;<img src='" . $liveSiteWithSuffix . "components/com_extrawatch/img/icons/clock.png' align='' $inactiveImageClass />&nbsp;$timeOfVisit";
+        if ($timeOfVisit) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         }
-	    $output .= ("</div>");
+        $output .= "<td>$heatmapLinkOutput</td>";
+        $output .= "<td>$timeOfVisit</td>";
+	    $output .= ("</div>");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
 
 
 
-        //TODO handle post data
-        if ($paramData) {
-          $postImage = "<div id='idp$row->id' onmouseout=\"toggleDiv('post_" . $row->id . "',0, $uri2titleId, $day);\" onmouseover=\"toggleDiv('post_" . $row->id . "',1, $uri2titleId, $day);\">";
+        //TODO handle post data  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        if ($paramData) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+          $postImage = "<div id='idp$row->id' onmouseout=\"toggleDiv('post_" . $row->id . "',0, ".((int)$uri2titleId).", $day);\" onmouseover=\"toggleDiv('post_" . $row->id . "',1, ".((int)$uri2titleId).", $day);\">";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         } else {
-          $postImage = "";
+          $postImage = "";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         }
 
-        $output .= $postImage;
+        $output .= $postImage;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
 
-        /* show only last URI, not all by user */
-        if ($this->extraWatch->config->getCheckboxValue('EXTRAWATCH_ONLY_LAST_URI')) {
+        /* show only last URI, not all by user */  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        if ($this->extraWatch->config->getCheckboxValue('EXTRAWATCH_ONLY_LAST_URI')) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
           break;
         }
 
-        $output .= ("</td>");
-        $output .= ("</tr>");
+        $output .= ("</td>");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        $output .= ("</tr>");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
       }
 
    
-    $output .= @$this->renderRefererRow($lastReferer, $lastColor);
+    $output .= @$this->renderRefererRow($lastReferer, $lastColor);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
-    unset($uri2HeatmapClicksAssoc);
-	unset($downloadLog);
-    unset($countryCodeToCountryNameArray);
+    unset($uri2HeatmapClicksAssoc);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+	unset($downloadLog);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    unset($countryCodeToCountryNameArray);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
     return $output;
   }
 
-  function renderRefererRow($referer, $color)
+  function renderRefererRow($referer, $color)  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   {
-    if (!$referer) {
+    if (!$referer) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
       return;
     }
     $output = "<tr>
-        <td style='background-color: #" . $color . "'></td>
-        <td style='background-color: #" . $color . "'></td>
-        <td style='background-color: #" . $color . "'></td>
-        <td style='background-color: #" . $color . "'></td>
-        <td style='background-color: #" . $color . "'></td>
-        <td style='background-color: #" . $color . "'></td>
-        <td style='background-color: #" . $color . "'></td>
-        <td style='background-color: #" . $color . "'>";
+        <td ></td>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        <td ></td>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        <td ></td>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        <td ></td>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        <td ></td>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        <td ></td>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        <td ></td>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        <td ></td>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        <td >";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
-    $refererTruncated = $this->extraWatch->helper->truncate(urldecode($referer));
-    $output .= sprintf("<i style='color: gray;'> " . _EW_VISITS_CAME_FROM . ": <a href='%s' target='_blank' style='color: gray;' title='%s'>%s</a></i>", ExtraWatchHelper::htmlspecialchars(urldecode($referer)), ExtraWatchHelper::htmlspecialchars(urldecode($referer)), $refererTruncated);
+    $refererTruncated = $this->extraWatch->helper->truncate(urldecode($referer));  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    $output .= sprintf("<i style='color: gray;'> " . _EW_VISITS_CAME_FROM . ": <a href='%s' target='_blank' style='color: #eee;' title='%s'>%s</a></i>", ExtraWatchHelper::htmlspecialchars(urldecode($referer)), ExtraWatchHelper::htmlspecialchars(urldecode($referer)), $refererTruncated);
 
      
     
 
-    $phrase = $this->extraWatch->visit->extractPhraseFromUrl($referer);
+    $phrase = $this->extraWatch->visit->extractPhraseFromUrl($referer);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     if (@$phrase) {
-      $hostname = $this->extraWatch->visit->extractHostnameFromUrl($referer);
-      $referer = $hostname . "/search?q=" . urlencode($phrase);
-      $output .= sprintf("<br/><i style='color: gray;'>" . _EW_VISITS_CAME_FROM_KEYWORDS . ": [<a href='%s' target='_blank' style='color: gray;' title='%s'>%s</a>]</i>", ExtraWatchHelper::htmlspecialchars($referer), ExtraWatchHelper::htmlspecialchars($referer), ExtraWatchHelper::htmlspecialchars(urldecode($phrase)));
+      $hostname = $this->extraWatch->visit->extractHostnameFromUrl($referer);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+      $referer = $hostname . "/search?q=" . urlencode($phrase);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+      $output .= sprintf("<br/><i style='color: gray;'>" . _EW_VISITS_CAME_FROM_KEYWORDS . ": [<a href='%s' target='_blank' style='color: #eee;' title='%s'>%s</a>]</i>", ExtraWatchHelper::htmlspecialchars($referer), ExtraWatchHelper::htmlspecialchars($referer), ExtraWatchHelper::htmlspecialchars(urldecode($phrase)));
     }
-    $output .= "</tr>";
+    $output .= "</tr>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
     return $output;
 
   }
 
 
-  function getVisitorsCached($inactive, $withoutReloading = FALSE) {
+  function getVisitorsCached($inactive, $withoutReloading = FALSE) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
-      $activeString = "ACTIVE";
-      if ($inactive) {
-          $activeString = "INACTIVE";
+      $activeString = "ACTIVE";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+      if ($inactive) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+          $activeString = "INACTIVE";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
       }
 
-      $uriCount = $this->extraWatch->visit->getTotalUriCount($inactive);
-      $countCached = $this->extraWatch->cache->getCachedItem("URI_COUNT_$activeString", FALSE);
+      $uriCount = $this->extraWatch->visit->getTotalUriCount($inactive);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+      $countCached = $this->extraWatch->cache->getCachedItem("URI_COUNT_$activeString", FALSE);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
       if ($countCached != $uriCount && !$withoutReloading) { //TODO optimize add 1 || to render it all the time
-          $visitorsOutput = $this->renderTable(FALSE, $inactive);
-          $this->extraWatch->cache->storeCachedItem("VISITORS_CONTENT_$activeString", $visitorsOutput);
-          $this->extraWatch->cache->storeCachedItem("URI_COUNT_$activeString", $uriCount);
+          $visitorsOutput = $this->renderTable(FALSE, $inactive);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+          $this->extraWatch->cache->storeCachedItem("VISITORS_CONTENT_$activeString", $visitorsOutput);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+          $this->extraWatch->cache->storeCachedItem("URI_COUNT_$activeString", $uriCount);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
       } else {
-          $visitorsOutput = stripslashes($this->extraWatch->cache->getCachedItem("VISITORS_CONTENT_$activeString", FALSE));
+          $visitorsOutput = stripslashes($this->extraWatch->cache->getCachedItem("VISITORS_CONTENT_$activeString", FALSE));  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
       }
-    return $visitorsOutput;
+    return $visitorsOutput;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   }
 
   /* visits */
-  function renderVisitors()
+  function renderVisitors()  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   {
-    $this->lastDate = "";
+    $this->lastDate = "";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
-    $activeVisitorsOutput = $this->getVisitorsCached(FALSE);
-    $inactiveVisitorsOutput = $this->getVisitorsCached(TRUE);
+    $activeVisitorsOutput = $this->getVisitorsCached(FALSE);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    $inactiveVisitorsOutput = $this->getVisitorsCached(TRUE);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
-    $output = $activeVisitorsOutput.$inactiveVisitorsOutput;
+    $output = $activeVisitorsOutput.$inactiveVisitorsOutput;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     if (!$output) {
-        $output = ExtraWatchHelper::renderNoData();
+        $output = ExtraWatchHelper::renderNoData();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     }
 
     return $output;
   }
 
   /* visits */
-  function renderBots()
+  function renderBots()  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   {
 
-    $this->lastDate = "";
-    $output = $this->renderTable(TRUE, 0);
-    $output .= $this->renderTable(TRUE, 1);
+    $this->lastDate = "";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    $output = $this->renderTable(TRUE, 0);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    $output .= $this->renderTable(TRUE, 1);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
     return $output;
   }

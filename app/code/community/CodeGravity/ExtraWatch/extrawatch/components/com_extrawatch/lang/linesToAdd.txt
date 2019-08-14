@@ -1,1 +1,2 @@
-DEFINE('_EW_DOWNLOADS_START_ADD_EXT', "No download statistics currently recorded. Start monitoring file downloads and");
+DEFINE('_EW_AVAILABLE_IN_FULL_VERSION', 'This feature is available in full version only');
+DEFINE('_EW_GET_FULL_VERSION',"Get the full version of ExtraWatch PRO");

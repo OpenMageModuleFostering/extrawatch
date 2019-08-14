@@ -14,7 +14,6 @@
   /* This div isn't entirely necessary but good for getting the side arrows vertically centered */
   margin: 0px 0;
   position: relative;
-  width: 1000px;
 }
 
 /* These 2 lines specify style applied while slider is loading */
@@ -38,7 +37,7 @@
   border: 1px solid #ddd; /* this is the border. should have the same value for the links */
   width: 1000px; /* Also specified in  .stripViewer .panelContainer .panel  below */
   height: auto;
-  clear: both;
+  //clear: both;
   background: #fff;
 }
 
@@ -83,7 +82,6 @@
 .stripNav a {
   /* The nav links */
   font-size: 12px;
-  font-family: arial;
   text-align: center;
   line-height: 20px;
   background: #aaa;
@@ -134,4 +132,8 @@
 .wrapper table td {
   padding: 4px;
 }
-		
+
+/* conflict with prestashop */
+#stripNavR0, .stripNavR0 {
+    display: none !important;
+}
