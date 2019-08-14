@@ -245,7 +245,7 @@ DEFINE('_EW_DESC_HISTORY_MAX_VALUES', "ইতিহাস ট্যাবের 
 DEFINE('_EW_DESC_ONLY_LAST_URI', "পরিদর্শনগুলিতে শুধু মাত্র শেষ যেই পৃষ্ঠা পরিদর্শনকরা হয়েছে সেগুলি দেখায়, সবগুলি নয়");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 DEFINE('_EW_DESC_HIDE_REPETITIVE_TITLE', "পরিদর্শনগুলিতে যে যে সাইট গুলি বারবার পরিদর্শন করা হয় সেগুলির পদবী পরিদর্শিত পদবীর ছক থেকে লুকিয়ে রাখা হয়।");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 DEFINE('_EW_DESC_HISTORY_MAX_DB_RECORDS', "পরিদর্শন ইতিহাসের ডাটাবেসে সবচেয়ে বেশি পরিদর্শকদের সংখ্যা সংরক্ষন করা হয়। এই ব্যবস্থাপনা সম্পর্কে সতর্ক থাকুন। আপনার সাইটে যদি উচ্চতর পরিদর্শক চলাচল থাকে, এটি খুব তাড়াতাড়ি বেড়ে যেতে পারে। সবসময় দেখে রাখুন, অবস্থানের জন্য ইতিহাস ছক কত বেশি তথ্য রাখছে।");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_DESC_UNINSTALL_KEEP_DATA', "ডাটাবেস ছকগুলি আনইন্সটলে রাখুন। আপনি যদি কোন আপগ্রেড করতে চান এবং আপনার তথ্য সংরক্ষন করতে চান তাহলে,এই বিকল্পটি দেখে রাখুন");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_DESC_UNINSTALL_KEEP_DATA', "<span style='color:red'>Backup your DB tables first if using this option!</span>ডাটাবেস ছকগুলি আনইন্সটলে রাখুন। আপনি যদি কোন আপগ্রেড করতে চান এবং আপনার তথ্য সংরক্ষন করতে চান তাহলে,এই বিকল্পটি দেখে রাখুন");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
 /* email reports */
 DEFINE('_EW_DESC_EMAIL_REPORTS_ENABLED', "আপনি রাতের ই-বার্তাগুলির সাথে গতকালের প্রতিবেদনগুলি পাবেন, যা আপনি সকালে পড়তে পারবেন।");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -660,3 +660,15 @@ DEFINE('_EW_BADGE_STATS',"Number of unique visits today");
 DEFINE('_EW_BADGE_ANTISPAM',"Number of blocked spam attempts");
 DEFINE('_EW_AVAILABLE_IN_FULL_VERSION', 'This feature is available in full version only');
 DEFINE('_EW_GET_FULL_VERSION',"Get the full version of ExtraWatch PRO");
+DEFINE('_EW_LIVE_STATS_SESSION_TIME', 'Time difference since user first visited your website');
+DEFINE('_EW_DOWNLOAD_MONITOR_HTACCESS_TXT', 'Warning - please change: htaccess.txt is present in your joomla root folder, please rename it to .htaccess first and make sure there is no htaccess.txt file anymore !');
+DEFINE('_EW_AGENT_NOT_PUBLISHED',"Agent module which gathers data is not published on frontend! - How to fix it?<br/><br/>
+<u>Joomla:</u><br/>
+1. Go to Extensions -> Module Manager -> find Agent module<br/>
+2. Change Position to some other value (choose some for which you already see some module in frontend - like 'footer'<br/>
+3. Save and refresh extrawatch back-end dashboard again<br/><br/>
+
+<u>Wordpress:</u><br/>
+1. Go to Apperance -> Widgets<br/>
+2. Drag and Drop ExtraWatch agent do placeholder on right to widget that it's already visible in frontend<br/>
+");

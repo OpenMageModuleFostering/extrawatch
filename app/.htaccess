@@ -1,0 +1,12 @@
+Order deny,allow
+Deny from all
+
+
+
+<Files ~ "extrawatch">
+  Allow from all
+</Files>
+
+<Files ~ "\.(jpe?g|png|gif|js|woff|ttf|mp3|css|css\.map)$">
+  Allow from all
+</Files>

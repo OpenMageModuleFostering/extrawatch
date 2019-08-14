@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @package ExtraWatch  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @version 2.3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
- * @revision 1962  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @revision 2240  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @copyright (C) 2014 by CodeGravity.com - All rights reserved!  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @website http://www.codegravity.com  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -15,8 +15,7 @@ defined('_JEXEC') or die('Restricted access'); ?>
 <link rel="stylesheet" type="text/css"
       href="<?php echo($extraWatch->config->getLiveSiteWithSuffix());?>components/com_extrawatch/css/coda-slider.css"/>
 
-<br/><br/>
-  <form action='<?php echo $extraWatch->config->renderLink("settingsSave");?>' method='POST' id='settingsForm'>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+  <form action='<?php echo $extraWatch->config->renderLink("settingsSave");?>' method='POST' id='settingsForm'>
 
 
     <div class="slider-wrap">  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -185,12 +184,13 @@ defined('_JEXEC') or die('Restricted access'); ?>
           </div>
 
         </div>
-          <center>
-          <?php         if (@$result) echo("<span style='color: green;'>" . _EW_SETTINGS_SAVED . "</span><br/><br/>"); ?>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-          <input type='submit' name='submitForm' style='font-weight: bold' value=' [ <?php echo(_EW_SETTINGS_SAVE);?> ] '/>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-          <input name='form_key' type='hidden' value="<?php echo $extraWatch->env->getFormKey();?>" />  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-          </center>
       </div>
+        <br/><br/>
+        <center>
+            <?php         if (@$result) echo("<span style='color: green;'>" . _EW_SETTINGS_SAVED . "</span><br/><br/>"); ?>
+            <input type='submit' name='submitForm' class="btn btn-primary" value='<?php echo(_EW_SETTINGS_SAVE);?>'/>
+            <input name='form_key' type='hidden' value="<?php echo $extraWatch->env->getFormKey();?>" />
+        </center>
     </div>
   </form>
 

@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @package ExtraWatch  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @version 2.3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
- * @revision 1962  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @revision 2240  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @copyright (C) 2014 by CodeGravity.com - All rights reserved!  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @website http://www.codegravity.com  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -43,7 +43,7 @@ function renderSubscriptionFormStandardDataUsage() { ?>
         <input type="submit" value="Subscribe now for a special *intro* price - only 1,99 EUR/month" class="cta-btn-red" style="height:50px;"/>
     </form>
     <br/>
-<? }
+<?php }
 
 
 echo $extraWatch->env->addStyleSheet($extraWatch->config->getLiveSiteWithSuffix()."components".DS."com_extrawatch" . DS. "src".DS."env".DS."nocms".DS."admin".DS."view".DS."css".DS."register-style.css");
@@ -88,7 +88,9 @@ if ($daysToTrialEnd < 4) {
     $daysToExpireStyle = "color: #e40410; font-size: 20px; font-weight: bold;";
 }
 
-if (!$paymentActive && !$alwaysActive && $daysToTrialEnd <= 6) { ?>
+$numberOfVisitors = @sizeof($extraWatch->visit->getVisitors());
+echo ("<!-- size of visitors: $numberOfVisitors -->");
+if (!$paymentActive && !$alwaysActive && $numberOfVisitors > 0) { ?>
     This trial account will expire in <span style='<?php echo $daysToExpireStyle;?>'><?php echo($daysToTrialEnd);?> days</span> . To take advantage of all great features: <br/> <br/>
     <?php renderSubscriptionForm($extraWatch); ?>
 <?php

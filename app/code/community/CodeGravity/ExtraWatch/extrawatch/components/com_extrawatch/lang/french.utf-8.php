@@ -243,7 +243,7 @@ DEFINE('_EW_DESC_HISTORY_MAX_VALUES', "Nombre de valeurs maximum dans l'onglet H
 DEFINE('_EW_DESC_ONLY_LAST_URI', "Cochez pour n'afficher que la dernière page ouverte pour chaque visiteur dans l'onglet Visites &amp; Statistiques.");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 DEFINE('_EW_DESC_HIDE_REPETITIVE_TITLE', "Cochez pour masquer le nom de domaine pour chaque page ouverte par les visiteurs dans l'onglet Visites &amp; Statistiques. Le nom de domaine est remplacé par /.");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 DEFINE('_EW_DESC_HISTORY_MAX_DB_RECORDS', "Nombre de visiteurs maximum à conserver dans l'historique des visites de la base de données. Maniez cette valeur avec précaution ! En effet, si le site génère beaucoup de trafic, la taille de la base de données peut considérablement augmenter. Vérifiez régulièrement la taile de celle-ci dans l'onglet Base de données.");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_DESC_UNINSTALL_KEEP_DATA', "Cochez pour conserver les tables de la base de données en cas de désinstallation de ExtraWatch. Cette option est utile lors d'une mise à jour pour ne pas perdre tout l'historique.");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_DESC_UNINSTALL_KEEP_DATA', "<span style='color:red'>Backup your DB tables first if using this option!</span>Cochez pour conserver les tables de la base de données en cas de désinstallation de ExtraWatch. Cette option est utile lors d'une mise à jour pour ne pas perdre tout l'historique.");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
 /* email reports */
 DEFINE('_EW_DESC_EMAIL_REPORTS_ENABLED', "Activer la réception de rapports par e-mail. L'envoi des e-mails est nocturne, ainsi vous pourrez les lire au matin.");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -629,3 +629,15 @@ DEFINE('_EW_BADGE_STATS',"Number of unique visits today");
 DEFINE('_EW_BADGE_ANTISPAM',"Number of blocked spam attempts");
 DEFINE('_EW_AVAILABLE_IN_FULL_VERSION', 'This feature is available in full version only');
 DEFINE('_EW_GET_FULL_VERSION',"Get the full version of ExtraWatch PRO");
+DEFINE('_EW_LIVE_STATS_SESSION_TIME', 'Time difference since user first visited your website');
+DEFINE('_EW_DOWNLOAD_MONITOR_HTACCESS_TXT', 'Warning - please change: htaccess.txt is present in your joomla root folder, please rename it to .htaccess first and make sure there is no htaccess.txt file anymore !');
+DEFINE('_EW_AGENT_NOT_PUBLISHED',"Agent module which gathers data is not published on frontend! - How to fix it?<br/><br/>
+<u>Joomla:</u><br/>
+1. Go to Extensions -> Module Manager -> find Agent module<br/>
+2. Change Position to some other value (choose some for which you already see some module in frontend - like 'footer'<br/>
+3. Save and refresh extrawatch back-end dashboard again<br/><br/>
+
+<u>Wordpress:</u><br/>
+1. Go to Apperance -> Widgets<br/>
+2. Drag and Drop ExtraWatch agent do placeholder on right to widget that it's already visible in frontend<br/>
+");

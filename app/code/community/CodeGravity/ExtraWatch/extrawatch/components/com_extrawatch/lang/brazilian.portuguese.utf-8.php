@@ -239,7 +239,7 @@ DEFINE('_EW_DESC_HISTORY_MAX_VALUES', "Maximum values in history tab (Example: <
 DEFINE('_EW_DESC_ONLY_LAST_URI', "In visits show only last page visited, not all");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 DEFINE('_EW_DESC_HIDE_REPETITIVE_TITLE', "In visits hide repetitive sitename in visited page title");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 DEFINE('_EW_DESC_HISTORY_MAX_DB_RECORDS', "Maximum nuber of visitors to keep in database for Visit History. Be careful with this setting, if you have high traffic, it can grow really fast. Always check how much data the history table contains in Status");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_DESC_UNINSTALL_KEEP_DATA', "Keep Database Tables on uninstall. Check this option before uninstall if you are doing an upgrade and want to keep your data.");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_DESC_UNINSTALL_KEEP_DATA', "<span style='color:red'>Backup your DB tables first if using this option!</span>Keep Database Tables on uninstall. Check this option before uninstall if you are doing an upgrade and want to keep your data.");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
 /* email reports */
 DEFINE('_EW_DESC_EMAIL_REPORTS_ENABLED', "You'll receive nightly emails with reports for previous day, which you can read in the morning");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -310,7 +310,14 @@ DEFINE('_EW_GOALS_USERNAME_INVERSED', "Username inversed condition");
 DEFINE('_EW_GOALS_CAME_FROM_INVERSED', "Came from inversed condition");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
 DEFINE('_EW_STATS_MAP', "Last Visit Map");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_STATS_MAP_ENTER_KEY', "Please enter <a href='http://www.ipinfodb.com/register.php' target='_blank'>ipinfodb.com</a> key to display last visit map:");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_STATS_MAP_ENTER_KEY', "<h2>Please enter ipinfodb API key to display last visit map below</h2> <br/>
+<u>Why this is needed?</u><br/>
+This is a 3rd party service which allows you to get more accurate location of your visitor.<br/><br/>
+1. Open the link <a href='http://www.ipinfodb.com/register.php' target='_blank'>ipinfodb.com</a><br/>
+2. Fill in the form on website<br/>
+3. You'll receive an email with the API key<br/>
+4. Enter this key into the box below: <br/>
+");
 DEFINE('_EW_STATS_MAP_STORE_KEY', "store key");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 DEFINE('_EW_STATS_MAP_INVALID_KEY', "Please enter valid ipinfodb key you obtained from: <a href='http://www.ipinfodb.com/register.php' target='_blank'>ipinfodb.com</a>");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
@@ -634,3 +641,15 @@ DEFINE('_EW_BADGE_STATS',"Number of unique visits today");
 DEFINE('_EW_BADGE_ANTISPAM',"Number of blocked spam attempts");
 DEFINE('_EW_AVAILABLE_IN_FULL_VERSION', 'This feature is available in full version only');
 DEFINE('_EW_GET_FULL_VERSION',"Get the full version of ExtraWatch PRO");
+DEFINE('_EW_LIVE_STATS_SESSION_TIME', 'Time difference since user first visited your website');
+DEFINE('_EW_DOWNLOAD_MONITOR_HTACCESS_TXT', 'Warning - please change: htaccess.txt is present in your joomla root folder, please rename it to .htaccess first and make sure there is no htaccess.txt file anymore !');
+DEFINE('_EW_AGENT_NOT_PUBLISHED',"Agent module which gathers data is not published on frontend! - How to fix it?<br/><br/>
+<u>Joomla:</u><br/>
+1. Go to Extensions -> Module Manager -> find Agent module<br/>
+2. Change Position to some other value (choose some for which you already see some module in frontend - like 'footer'<br/>
+3. Save and refresh extrawatch back-end dashboard again<br/><br/>
+
+<u>Wordpress:</u><br/>
+1. Go to Apperance -> Widgets<br/>
+2. Drag and Drop ExtraWatch agent do placeholder on right to widget that it's already visible in frontend<br/>
+");

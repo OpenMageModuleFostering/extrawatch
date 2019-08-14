@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @package ExtraWatch  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @version 2.3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
- * @revision 1962  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @revision 2240  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @copyright (C) 2014 by CodeGravity.com - All rights reserved!  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @website http://www.codegravity.com  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -51,7 +51,9 @@ $extraWatch = new ExtraWatchMain();
 $extraWatch->config->initializeTranslations();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 $extraWatchHTML = new ExtraWatchHTML();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 $extraWatch->block->checkPermissions();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-$env = @$_REQUEST['env'];  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+$env = @$_REQUEST['env'];  
+
+$liveSiteWithSuffix = $extraWatch->config->getLiveSiteWithSuffix();	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 ?>
 
 var rand = '<?php echo $extraWatch->config->getRand(); ?>';  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -112,7 +114,7 @@ function extrawatch_sendLastIdReq() {
         http4 = extrawatch_createRequestObject();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         http4.onreadystatechange = extrawatch_needLastIdRefresh;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         var newdate = new Date();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        var url = "<?php echo($extraWatch->config->getLiveSiteWithSuffix()); ?><?php echo $extraWatch->env->renderAjaxLink('ajax','last');?>&rand=" + rand + "&timeID=" + newdate.getTime() + "&traffic=" + traffic + "&env=<?php echo($env); ?>&projectId=<?php echo(_EW_PROJECT_ID);?>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        var url = "<?php echo($liveSiteWithSuffix); ?><?php echo $extraWatch->env->renderAjaxLink('ajax','last');?>&rand=" + rand + "&timeID=" + newdate.getTime() + "&traffic=" + traffic + "&env=<?php echo($env); ?>&projectId=<?php echo(_EW_PROJECT_ID);?>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         http4.open("GET", url, true);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         http4.send(null);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     } catch (err) {
@@ -124,7 +126,7 @@ function extrawatch_sendVisitsReq() {
         http = extrawatch_createRequestObject();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         http.onreadystatechange = needVisitsRefresh;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         var newdate = new Date();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        var url = "<?php echo($extraWatch->config->getLiveSiteWithSuffix()); ?><?php echo $extraWatch->env->renderAjaxLink('ajax','visits');?>&rand=" + rand + "&timeID=" + newdate.getTime() + "&traffic=" + traffic + "&env=<?php echo($env); ?>&projectId=<?php echo(_EW_PROJECT_ID);?>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        var url = "<?php echo($liveSiteWithSuffix); ?><?php echo $extraWatch->env->renderAjaxLink('ajax','visits');?>&rand=" + rand + "&timeID=" + newdate.getTime() + "&traffic=" + traffic + "&env=<?php echo($env); ?>&projectId=<?php echo(_EW_PROJECT_ID);?>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         http.open("GET", url, true);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         http.send(null);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     } catch (err) {
@@ -138,7 +140,7 @@ function extrawatch_sendStatsReq() {
         http2 = extrawatch_createRequestObject();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         http2.onreadystatechange = needStatsRefresh;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         var newdate = new Date();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        var url = "<?php echo($extraWatch->config->getLiveSiteWithSuffix()); ?><?php echo $extraWatch->env->renderAjaxLink('ajax','stats');?>&rand=" + rand + "&timeID=" + newdate.getTime() + "&env=<?php echo($env); ?>&projectId=<?php echo(_EW_PROJECT_ID);?>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        var url = "<?php echo($liveSiteWithSuffix); ?><?php echo $extraWatch->env->renderAjaxLink('ajax','stats');?>&rand=" + rand + "&timeID=" + newdate.getTime() + "&env=<?php echo($env); ?>&projectId=<?php echo(_EW_PROJECT_ID);?>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         if (day != 0) url += "&day=" + day;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         if (week != 0) url += "&week=" + week;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
@@ -173,7 +175,7 @@ function extrawatch_blockIpToggle(_ip) {
             http3 = extrawatch_createRequestObject();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
             http3.onreadystatechange = history.go(0);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
             var newdate = new Date();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-            var url3 = "<?php echo($extraWatch->config->getLiveSiteWithSuffix()); ?><?php echo $extraWatch->env->renderAjaxLink('ajax','block');?>&ip=" + _ip + "&rand=" + rand + "&timeID=" + newdate.getTime() + "&env=<?php echo($extraWatch->config->getEnvironment()); ?>&projectId=<?php echo(_EW_PROJECT_ID);?>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+            var url3 = "<?php echo($liveSiteWithSuffix); ?><?php echo $extraWatch->env->renderAjaxLink('ajax','block');?>&ip=" + _ip + "&rand=" + rand + "&timeID=" + newdate.getTime() + "&env=<?php echo($extraWatch->config->getEnvironment()); ?>&projectId=<?php echo(_EW_PROJECT_ID);?>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
             http3.open("GET", url3, false);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
             http3.send(null);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
             extrawatch_sendStatsReq();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -224,25 +226,16 @@ function needVisitsRefresh() {
             if (http.status == 200) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                 document.getElementById("visits").innerHTML = http.responseText;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
-                number = "";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                for (i = 0; i < 11; i++) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                    if (http.responseText.charAt(i) == '\n') break;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                    if (http.responseText.charAt(i) == '\r') break;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                    if (http.responseText.charAt(i) == ' ') break;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-
-                    number = number + http.responseText.charAt(i);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                }
-
-                number = number.replace(/(<([^>]+)>)/ig, "");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                parsedNumber = parseInt(number);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+                var numberRegexResult = http.responseText.match(/>(.*)</);
+                parsedNumber = parseInt(numberRegexResult[1]);
 
                 if (last != parsedNumber) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                     last = parsedNumber;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                     fade("id" + last);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                     ewPlayAudio();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+                    ewMakeNavDivSameHeight();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                 }
             }
-            /*       visitsTimeoutId = window.setTimeout("extrawatch_sendVisitsReq()",<?php echo($extraWatch->config->getConfigValue('EXTRAWATCH_UPDATE_TIME_VISITS')); ?>); */  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
             traffic += http.responseText.length;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
 
@@ -258,6 +251,7 @@ function needStatsRefresh() {
             if (http2.status == 200) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                 document.getElementById("stats").innerHTML = http2.responseText;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                 traffic += http2.responseText.length;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+				ewMakeNavDivSameHeight();
 
                 <?php  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                 if ($extraWatch->config->getConfigValue("EXTRAWATCH_IPINFODB_KEY")) { ?> <?php  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -272,7 +266,6 @@ function needStatsRefresh() {
                 } ?>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
             } else {}  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-            /*    if(statsType != "2")  statsTimeoutId = window.setTimeout("extrawatch_sendStatsReq()",<?php echo($extraWatch->config->getConfigValue('EXTRAWATCH_UPDATE_TIME_STATS')); ?>); */  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         }
     } catch (err) {
         //alert(err);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -420,7 +413,7 @@ function toggleDiv(id, ip, flagit, uri2titleId, day) {
     var divElementId = "goal_" + id;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
     if (flagit == "1") {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        var url = "<?php echo($extraWatch->config->getLiveSiteWithSuffix());?><?php echo $extraWatch->env->renderAjaxLink('ajax','vars');?>&rand=<?php echo($extraWatch->config->getRand());?>&uriId=" + id + "&ip=" + ip + "&env=<?php echo($env);?>&projectId=<?php echo(_EW_PROJECT_ID);?>&uri2titleId=" + uri2titleId + "&day=" + day;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        var url = "<?php echo($liveSiteWithSuffix);?><?php echo $extraWatch->env->renderAjaxLink('ajax','vars');?>&rand=<?php echo($extraWatch->config->getRand());?>&uriId=" + id + "&ip=" + ip + "&env=<?php echo($env);?>&projectId=<?php echo(_EW_PROJECT_ID);?>&uri2titleId=" + uri2titleId + "&day=" + day;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         jQuery.ajax({  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
             url: url,  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
             success: function (result) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -526,7 +519,7 @@ function extrawatch_sendLastClickIdReq() {
         http5 = extrawatch_createRequestObject();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         http5.onreadystatechange = extrawatch_needLastClickIdRefresh;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         var newdate = new Date();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        var url = "<?php echo($extraWatch->config->getLiveSiteWithSuffix()); ?><?php echo $extraWatch->env->renderAjaxLink('ajax','lastclick');?>&rand=" + rand + "&timeID=" + newdate.getTime() + "&traffic=" + traffic + "&env=<?php echo($env); ?>&projectId=<?php echo(_EW_PROJECT_ID);?>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        var url = "<?php echo($liveSiteWithSuffix); ?><?php echo $extraWatch->env->renderAjaxLink('ajax','lastclick');?>&rand=" + rand + "&timeID=" + newdate.getTime() + "&traffic=" + traffic + "&env=<?php echo($env); ?>&projectId=<?php echo(_EW_PROJECT_ID);?>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         http5.open("GET", url, true);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         http5.send(null);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     } catch (err) {
@@ -553,7 +546,7 @@ function extrawatch_sendClicksReq() {
         http6 = extrawatch_createRequestObject();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         http6.onreadystatechange = needClickRefresh;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         var newdate = new Date();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        var url = "<?php echo($extraWatch->config->getLiveSiteWithSuffix()); ?><?php echo $extraWatch->env->renderAjaxLink('ajax','clicks');?>&rand=" + rand + "&timeID=" + newdate.getTime() + "&traffic=" + traffic + "&env=<?php echo($env); ?>&projectId=<?php echo(_EW_PROJECT_ID);?>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        var url = "<?php echo($liveSiteWithSuffix); ?><?php echo $extraWatch->env->renderAjaxLink('ajax','clicks');?>&rand=" + rand + "&timeID=" + newdate.getTime() + "&traffic=" + traffic + "&env=<?php echo($env); ?>&projectId=<?php echo(_EW_PROJECT_ID);?>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         http6.open("GET", url, true);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         http6.send(null);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     } catch (err) {
@@ -570,6 +563,7 @@ function needClickRefresh() {
 
                 fade("heatmapTableRowId_" + lastClickId);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                 ewPlayAudio();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+				ewMakeNavDivSameHeight();
             }
             traffic += http6.responseText.length;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
@@ -591,7 +585,7 @@ function extrawatch_sendLastElementClickIdReq() {
         http7 = extrawatch_createRequestObject();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         http7.onreadystatechange = extrawatch_needLastElementClickIdRefresh;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         var newdate = new Date();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        var url = "<?php echo($extraWatch->config->getLiveSiteWithSuffix()); ?><?php echo $extraWatch->env->renderAjaxLink('ajax','lastclick');?>&rand=" + rand + "&timeID=" + newdate.getTime() + "&traffic=" + traffic + "&env=<?php echo($env); ?>&projectId=<?php echo(_EW_PROJECT_ID);?>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        var url = "<?php echo($liveSiteWithSuffix); ?><?php echo $extraWatch->env->renderAjaxLink('ajax','lastclick');?>&rand=" + rand + "&timeID=" + newdate.getTime() + "&traffic=" + traffic + "&env=<?php echo($env); ?>&projectId=<?php echo(_EW_PROJECT_ID);?>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         http7.open("GET", url, true);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         http7.send(null);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     } catch (err) {
@@ -618,7 +612,7 @@ function extrawatch_sendElementClicksReq() {
         http8 = extrawatch_createRequestObject();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         http8.onreadystatechange = needElementClickRefresh;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         var newdate = new Date();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        var url = "<?php echo($extraWatch->config->getLiveSiteWithSuffix()); ?><?php echo $extraWatch->env->renderAjaxLink('ajax','elementclicks');?>&rand=" + rand + "&timeID=" + newdate.getTime() + "&traffic=" + traffic + "&env=<?php echo($env); ?>&projectId=<?php echo(_EW_PROJECT_ID);?>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        var url = "<?php echo($liveSiteWithSuffix); ?><?php echo $extraWatch->env->renderAjaxLink('ajax','elementclicks');?>&rand=" + rand + "&timeID=" + newdate.getTime() + "&traffic=" + traffic + "&env=<?php echo($env); ?>&projectId=<?php echo(_EW_PROJECT_ID);?>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         http8.open("GET", url, true);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         http8.send(null);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     } catch (err) {
@@ -636,6 +630,7 @@ function needElementClickRefresh() {
 
                 fade("heatmapTableRowId_" + lastElementClickId);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                 ewPlayAudio();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+				ewMakeNavDivSameHeight();
             }
             traffic += http8.responseText.length;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
@@ -696,12 +691,11 @@ function insertAndExecute(id, text) {
     }
   }
 
-
-var flip = 0;
-
-window.addEventListener('load',function(){  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-	$( "sidebar" ).click(function() {
-		$( "p" ).toggle( flip++ % 2 === 0 );
-	});
-});
+function ewMakeNavDivSameHeight() {
+	var visitsDivHeight = document.getElementById('mainContent').clientHeight;
+	var sidebarDivHeightOffset = 150;
+	if (visitsDivHeight > 800) {	//only changing height if content of right div has a greater height
+		document.getElementById('sidebar').style.height = visitsDivHeight + sidebarDivHeightOffset + "px";
+	}
+}
 

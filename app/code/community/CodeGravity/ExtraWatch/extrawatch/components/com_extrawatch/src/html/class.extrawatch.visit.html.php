@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @package ExtraWatch  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @version 2.3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
- * @revision 1962  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @revision 2240  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @copyright (C) 2014 by CodeGravity.com - All rights reserved!  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @website http://www.extrawatch.com  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -92,19 +92,29 @@ class ExtraWatchVisitHTML
 
             $noDataHTML = "";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
             if (!$bots && _EW_CLOUD_MODE && $inactive == FALSE && !$renderedFromHistory) {
-                $noDataHTML = "<h2 style='color: #e74c3c; font-weight: bold;'>You still haven't inserted the tracking code on web you want to track. Contact us via chat in lower right corner if you need help with it.</h2> <span style='color: #e74c3c; font-weight: bold;'>Please add the following HTML code snippet into every page you want to monitor:</span><br/><br/>";
-                $noDataHTML .= "<textarea cols='100' rows='6'>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+                $noDataHTML = "<table><tr><td>";
+				$noDataHTML .= "<h2 style='color: #e74c3c; font-weight: bold;'>1. Select the HTML code below and copy it to a clipboard </h2>";
+                $noDataHTML .= "<i>(Click on text area below, Ctrl+A, Ctrl+C)</i><br/><br/>";
+                $noDataHTML .= "<textarea cols='90' rows='8'>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                 $noDataHTML .= htmlentities($this->extraWatch->helper->renderHTMLCodeSnippet(_EW_PROJECT_ID));  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                 $noDataHTML .= "</textarea><br/><br/>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                $noDataHTML .= "<b>To accomplish this, you need to have an FTP access to your website and edit your template file. <br/>Copy and paste the tracking code before the &lt;/body&gt; tag.<br/>There are several ways how to do it if you're using various CMS.<br/>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                $noDataHTML .= "If you need any help with this, contact us via live chat in lower right corner</b><br/><br/>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+                $noDataHTML .= "<h2 style='color: #e74c3c; font-weight: bold;'>2. Open editor of your website's front-end</h2><br/>";
+                $noDataHTML .= "This step may be different for every CMS. <br/>You need to find where's your website frontend saved as HTML and the modify that file. <br/><b>Or ask your webmaster do to it for you!</b>";
+                $noDataHTML .= "<h2 style='color: #e74c3c; font-weight: bold;'>3. Find the &lt;/body&gt; tag</h2>";
+                $noDataHTML .= "This is a footer of my website &copy;MyWebsite.com<br/><b>&lt;/body&gt;</b><br/>&lt;/html&gt;";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+                $noDataHTML .= "<h2 style='color: #e74c3c; font-weight: bold;'>4. Paste this code before the &lt;/body&gt; tag</h2>";
+                $noDataHTML .= "This is a footer of my website &copy;MyWebsite.com<br/><i>{code from clipboard}</i><br/><b>&lt;/body&gt;</b><br/>&lt;/html&gt;";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+                $noDataHTML .= "</td><td valign='top'>";
+                $noDataHTML .= "<h2 style='color: #e74c3c; font-weight: bold;'>.. Or Watch the video with instructions:</h2><br/><br/>";
+				$noDataHTML .= "<iframe width=\"640\" height=\"360\" src=\"//www.youtube.com/embed/tvHNg-X4d8o\" frameborder=\"0\" allowfullscreen></iframe>";
+                $noDataHTML .= "</td></tr></table>";
 
             } else if ($inactive == FALSE) {
 
                $noDataHTML .= _EW_NO_DATA;
             }
-
-            $output .= "<tr><td colspan='5'>" . $noDataHTML . "</td></tr>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+			
+		    $output .= "<tr><td colspan='5'>" . $noDataHTML . "</td></tr>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
             return $output;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         }
@@ -335,7 +345,7 @@ class ExtraWatchVisitHTML
             $row->title = $uriTruncated;
         }
 
-        $output .= ("$timestampHumanReadable <a href='".$projectSite.$row->uri."' target='_blank' $inactiveClass title='$uriTruncated'>$row->title</a>");
+        $output .= ("$timestampHumanReadable <a href='".@$projectSite.$row->uri."' target='_blank' $inactiveClass title='$uriTruncated'>$row->title</a>");
 
          
 
@@ -345,10 +355,7 @@ class ExtraWatchVisitHTML
             $ratio = $clicks / $maxClicksOfDay;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
             $color = ExtraWatchHelper::rgbFromRatio($ratio);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
           }
-          if ($userHeatmapClicks > 0) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-            $output .= "&nbsp;" . _EW_HEATMAP_OF . "&nbsp;";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-          }
-          $heatmapLinkOutput = $this->heatmapHTML->renderHeatmapLink($row->uri, (int) $uri2titleId, $day, "<span style='color: " . $color . "' title='" . _EW_HEATMAP_CLICK_OPEN . "'>$clicks</span>");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+          $heatmapLinkOutput = $this->heatmapHTML->renderHeatmapLink($row->uri, (int) $uri2titleId, $day, "<span style='color: " . $color . "' title='" . _EW_HEATMAP_CLICK_OPEN . "'>$clicks</span>");
         }
         
 
@@ -368,7 +375,12 @@ class ExtraWatchVisitHTML
         if ($timeOfVisit) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         }
         $output .= "<td>$heatmapLinkOutput</td>";
-        $output .= "<td>$timeOfVisit</td>";
+        $output .= "<td>";
+        if (@$timeOfVisit) {
+            $output .= "<td valign='top'><img src='" . $liveSiteWithSuffix . "components/com_extrawatch/img/icons/clock.png' title='"._EW_LIVE_STATS_SESSION_TIME."'/></td><td valign='top'  style='color: grey'>";
+            $output .= $timeOfVisit;
+        }
+        $output .= "</td>";
 	    $output .= ("</div>");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
 
@@ -421,7 +433,7 @@ class ExtraWatchVisitHTML
         <td >";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
     $refererTruncated = $this->extraWatch->helper->truncate(urldecode($referer));  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-    $output .= sprintf("<i style='color: gray;'> " . _EW_VISITS_CAME_FROM . ": <a href='%s' target='_blank' style='color: #eee;' title='%s'>%s</a></i>", ExtraWatchHelper::htmlspecialchars(urldecode($referer)), ExtraWatchHelper::htmlspecialchars(urldecode($referer)), $refererTruncated);
+    $output .= sprintf("<i style='color: gray;'> " . _EW_VISITS_CAME_FROM . ": <a href='%s' target='_blank' title='%s'>%s</a></i>", ExtraWatchHelper::htmlspecialchars(urldecode($referer)), ExtraWatchHelper::htmlspecialchars(urldecode($referer)), $refererTruncated);
 
      
     
@@ -447,6 +459,15 @@ class ExtraWatchVisitHTML
       }
 
       $uriCount = $this->extraWatch->visit->getTotalUriCount($inactive);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+	  if (!$inactive && !$uriCount) {
+	  
+		$host = "http://".$_SERVER['HTTP_HOST'].$this->extraWatch->config->getLiveSite();
+		$homepageContents = ExtraWatchHelper::getUrlContent($host);
+		if (@$homepageContents && strstr($homepageContents,"agent.js") === FALSE) {
+			echo("<span style='color: red; font-weight: bold;'>"._EW_AGENT_NOT_PUBLISHED."</span><br/><br/>");
+		}
+	}
+
       $countCached = $this->extraWatch->cache->getCachedItem("URI_COUNT_$activeString", FALSE);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
       if ($countCached != $uriCount && !$withoutReloading) { //TODO optimize add 1 || to render it all the time
           $visitorsOutput = $this->renderTable(FALSE, $inactive);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  

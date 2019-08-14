@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @package ExtraWatch  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @version 2.3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
- * @revision 1962  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @revision 2240  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @copyright (C) 2014 by CodeGravity.com - All rights reserved!  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @website http://www.extrawatch.com  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -61,9 +61,13 @@ class ExtraWatchVisit
    *
    * @return unknown  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
    */
-  function getLastVisitId()  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+  function getLastVisitId($onlyWithTitle = false)
   {
-    $query = sprintf("select #__extrawatch_uri.id as last from #__extrawatch left join #__extrawatch_uri on #__extrawatch.id = #__extrawatch_uri.fk where #__extrawatch.browser is not NULL order by #__extrawatch_uri.id desc limit 1");
+    $onlyWithTitleFilter = "";
+    if ($onlyWithTitle) {
+        $onlyWithTitleFilter = " and (title != '' or title is NULL) ";
+    }
+    $query = sprintf("select #__extrawatch_uri.id as last from #__extrawatch left join #__extrawatch_uri on #__extrawatch.id = #__extrawatch_uri.fk where #__extrawatch.browser is not NULL %s order by #__extrawatch_uri.id desc limit 1", $onlyWithTitleFilter);
     $last = $this->database->resultQuery($query);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     return $last;
   }
@@ -75,9 +79,9 @@ class ExtraWatchVisit
     return $last;
   }
 
-    function getLastActiveIpsWithLatLong()
+    function getLastActiveIpsWithLatLong($limit = 10)
     {
-        $query = sprintf("select ip,latitude,longitude,city from #__extrawatch where (browser is not NULL and browser != '') and inactive = 0 order by id desc");
+        $query = sprintf("select ip,latitude,longitude,city from #__extrawatch where (browser is not NULL and browser != '') order by id desc limit %d", (int) $limit);
         $lastIps = $this->database->objectListQuery($query);
         return $lastIps;
     }
@@ -161,6 +165,7 @@ class ExtraWatchVisit
   function deleteOldVisits()  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   {
 
+    $this->insertIntoHistory();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     $this->deleteObsoleteVisitRows();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     $this->deleteOldHeatmapEntries();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     $this->deleteOldVisitsAndKeepMax();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -407,6 +412,12 @@ class ExtraWatchVisit
    */
   function insertVisit()  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   {
+  
+  	  $redirectStatus = @$_SERVER['REDIRECT_STATUS'];
+	  if ($redirectStatus == "404") {	//prevent inserting not-found pages
+		return;
+	  }
+
       $this->config->initializeTranslations();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
       $ip = addslashes(strip_tags(@ $this->getRemoteIPAddress()));  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -432,12 +443,10 @@ class ExtraWatchVisit
       $uri = $this->helper->getURI();
 
       ExtraWatchLog::debug("Insert bot visit from insertVisit");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-	  $this->insertBotVisit($uri, $referrer, "", $ip);
+	  $this->insertBotVisit($uri, $referrer, "", $ip, $username);
 	  ExtraWatchLog::debug("Visit inserted: IP: $ip, ref: $referrer, live site: $liveSite");
 
-	  	
-
-      $this->goal->checkGoals("", $username, $ip, $referrer, $liveSite);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+      $this->goal->checkGoals("", $username, $ip, $referrer, $liveSite);
 
       /* execute on midnight */  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
       $this->runAtMidnight();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -696,17 +705,21 @@ function insertSearchResultPage($uri, $phrase, $referer, $title)
    */
   function  updateVisitByBrowser($uri, $referer, $title = null, $params = null)  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   {
+  
+  	  $referer = urldecode($referer);	// url comes url-encoded by default
+
       ExtraWatchLog::debug("updateVisitByBrowser - uri: $uri, referer: $referer, title: $title, params: ".print_r($params, true));
 
       if (@_EW_CLOUD_MODE) {
         $this->runAtMidnight();   //executing this again, but won't be called if it was already executed. Because of cloud version which doesn't call insertVisit
       }
 
-      $ip = addslashes(strip_tags(@ $this->getRemoteIPAddress()));  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+      $ip = addslashes(strip_tags(@ $this->getRemoteIPAddress()));
 
-      if (@_EW_CLOUD_MODE) {    //there's no insertVisit in cloud mode because of script  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-    	  ExtraWatchLog::debug("Insert bot visit in cloud mode: uri: $uri referer: $referer title: $title ip: $ip");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-          $this->insertBotVisit($uri, $referer, $title, $ip);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+      $isCachingEnabled = $this->env->isPHPCachingEnabled();
+      if (@_EW_CLOUD_MODE || $isCachingEnabled) {    //there's no insertVisit in cloud mode because of script
+    	  ExtraWatchLog::debug("Insert bot visit: uri: $uri referer: $referer title: $title ip: $ip");
+          $this->insertBotVisit($uri, $referer, $title, $ip);
       }
 
       $this->config->initializeTranslations();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -732,7 +745,7 @@ function insertSearchResultPage($uri, $phrase, $referer, $title)
       }
 
       if (@$title) {
-        $query = sprintf("update #__extrawatch_uri set `title` = '%s' where (uri = '%s' and title = '') ", $this->database->getEscaped($title), $this->database->getEscaped($uri));
+        $query = sprintf("update #__extrawatch_uri set `title` = '%s' where (uri = '%s' and (title = '' or title is NULL)) ", $this->database->getEscaped($title), $this->database->getEscaped(htmlentities($uri)));
         $this->database->executeQuery($query);
       }
 
@@ -745,7 +758,7 @@ function insertSearchResultPage($uri, $phrase, $referer, $title)
       $this->updateRefererForIP($referer, $ip);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
       $this->updateBrowserForIP($userAgent, $ip);
 
-      if (@$referer) { // check if there is referer, otherwise there's no point to execute the code in this block
+      if (@$referer) { // check if there is referer, otherwise there's no point to execute the code in this block  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
           //if (@ !$this->isVisitFromSameSite($referer))  {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 			$isSameSite = $this->isVisitFromSameSite($referer);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 			ExtraWatchLog::debug("referer: $referer, same site: ".(int) $isSameSite);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -860,13 +873,9 @@ function insertSearchResultPage($uri, $phrase, $referer, $title)
     $this->stat->increaseKeyValueInGroup(EW_DB_KEY_LOADS, EW_DB_KEY_LOADS);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
     //$referer = $this->getReferer();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-    if ($this->isVisitFromSameSite($referer)) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-      if (@ $lastUri) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        $this->flow->insertFlow($lastUri, $uri);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-      }
-    }
+    
 
-      if (time()%10 == 0) {
+//      if (time()%2 == 0) {
 	$query = sprintf("update #__extrawatch  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 						set inactive = 1 where id in (  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 							SELECT fk FROM (  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -879,7 +888,7 @@ function insertSearchResultPage($uri, $phrase, $referer, $title)
 						WHERE T.maxTimestamp < UNIX_TIMESTAMP( ) -600  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 					)");	//deactivate those which are on site longer than 10 minutes  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     @ $this->database->objectListQuery($query);
-      }
+//      }
 
 	
 
@@ -1431,14 +1440,14 @@ function insertSearchResultPage($uri, $phrase, $referer, $title)
      * @param $time
      * @return array  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
      */
-    public function insertBotVisit($uri, $referer, $title, $ip)  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    public function insertBotVisit($uri, $referer, $title, $ip, $username = "")
     {
 		ExtraWatchLog::debug("Insert bot visit: uri: $uri referer: $referer title: $title ip: $ip");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
         if (!$this->checkIfVisitAlreadyInserted($ip)) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
             $referer = strip_tags($referer);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
             $ip = strip_tags($ip);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-            $query = sprintf("insert into #__extrawatch (id, ip, country, browser, referer, inactive) values ('', '%s',  NULL, NULL, '%s', %d) ", $this->database->getEscaped($ip), $this->database->getEscaped($referer), 1);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+            $query = sprintf("insert into #__extrawatch (id, ip, country, browser, referer, username, inactive) values ('', '%s',  NULL, NULL, '%s', '%s', %d) ", $this->database->getEscaped($ip), $this->database->getEscaped($referer), $this->database->getEscaped($username), 1);
             $this->database->executeQuery($query);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         }
 
@@ -1449,7 +1458,11 @@ function insertSearchResultPage($uri, $phrase, $referer, $title)
 
         $time = $this->date->getUTCTimestamp();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         $query = sprintf("insert into #__extrawatch_uri (id, fk, timestamp, uri, title) values ('', '%d', '%d', '%s', '%s') ", (int)$id, (int)$time, $this->database->getEscaped($uri), $this->database->getEscaped($title));  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        $this->database->executeQuery($query);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        $this->database->executeQuery($query);
+
+        
+
+
     }
 
     /**
@@ -1554,9 +1567,21 @@ function insertSearchResultPage($uri, $phrase, $referer, $title)
     public function getUriIdByUri($uri)
     {
         $query = sprintf("select id from #__extrawatch_uri where uri = '%s' order by id desc limit 1",
-            $this->database->getEscaped($uri));
+            $this->database->getEscaped(htmlentities($uri)));
         $uriId = $this->database->resultQuery($query);
         return $uriId;
+    }
+
+    /**
+     * @param $uri
+     * @return $uriId
+     */
+    public function getLastUriForIp($ip)
+    {
+        $query = sprintf("select uri from #__extrawatch_uri join #__extrawatch on #__extrawatch_uri.fk = #__extrawatch.id where ip = '%s' order by #__extrawatch_uri.fk desc limit 1",
+        $this->database->getEscaped($ip));
+        $uri = $this->database->resultQuery($query);
+        return $uri;
     }
 
 }

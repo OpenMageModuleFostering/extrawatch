@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats
  * @package ExtraWatch
  * @version 2.3
- * @revision 1962
+ * @revision 2240
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3
  * @copyright (C) 2014 by CodeGravity.com - All rights reserved!
  * @website http://www.codegravity.com
@@ -14,7 +14,9 @@ defined('_JEXEC') or die('Restricted access'); ?>
 
 <?php echo $extraWatch->env->addScript($extraWatch->config->getLiveSiteWithSuffix()."components/com_extrawatch/js/ajax-dynamic-content.js");?>
 <?php echo $extraWatch->env->addScript($extraWatch->config->getLiveSiteWithSuffix()."components/com_extrawatch/js/ajax.js");?>
+
 <?php echo $extraWatch->env->addScript($extraWatch->config->getLiveSiteWithSuffix().$extraWatch->env->renderAjaxLink('js','extrawatch.js')."&rand=".$extraWatch->config->getRand()."&time=".time()."&env=".($extraWatch->config->getEnvironment())."&projectId="._EW_PROJECT_ID);?>
+
 <?php echo $extraWatch->env->addScript($extraWatch->config->getLiveSiteWithSuffix()."components/com_extrawatch/js/fade.js");?>
 
 <?php
@@ -25,7 +27,7 @@ defined('_JEXEC') or die('Restricted access'); ?>
 
 <?php 
 if (get_class($extraWatch->env) != "ExtraWatchWordpressEnv") {	//query is already initialized for wordpress and would cause conflict otherwise
-	$extraWatch->env->addScript($extraWatch->config->getLiveSiteWithSuffix()."components/com_extrawatch/js/jquery-1.11.0.min.js");
+	echo $extraWatch->env->addScript($extraWatch->config->getLiveSiteWithSuffix()."components/com_extrawatch/js/jquery-1.11.0.min.js");
 }
 ?>
 
@@ -39,13 +41,13 @@ if (get_class($extraWatch->env) != "ExtraWatchWordpressEnv") {	//query is alread
 $liveSite = $extraWatch->config->getLiveSiteWithSuffix();
 
 if (get_class($extraWatch->env) != "ExtraWatchWordpressEnv") {  //for wordpress we're loading this in module so it gets to header section
-    echo $extraWatch->env->addStyleSheet($liveSite."components/com_extrawatch/css/dashboard.css.php?env=".get_class($extraWatch->env));
+    echo $extraWatch->env->addStyleSheet($extraWatch->config->getLiveSiteWithSuffix().$extraWatch->env->renderAjaxLink('ajax','dashboard.css')."&env=".get_class($extraWatch->env));
 }
 ?>
 
 
 <?php echo $extraWatch->env->addScript($extraWatch->config->getLiveSiteWithSuffix()."components/com_extrawatch/js/jxml.js");?>
-<?php echo $extraWatch->env->addScript($extraWatch->config->getLiveSiteWithSuffix()."components/com_extrawatch/js/jdownloadurl.js");?>
+
 <?php echo $extraWatch->env->addScript($extraWatch->config->getLiveSiteWithSuffix()."components/com_extrawatch/js/morris/raphael-2.1.0.min.js");?>
 <?php echo $extraWatch->env->addScript($extraWatch->config->getLiveSiteWithSuffix()."components/com_extrawatch/js/morris/morris.min.js");?>
 
@@ -71,10 +73,13 @@ if (get_class($extraWatch->env) != "ExtraWatchWordpressEnv") {  //for wordpress 
     <?php require_once JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "view" . DS . "navigation.php"; ?>
 
 <!-- body start -->
-    <div class="col-md-offset-2 main">
-
+    <div class="col-md-offset-2 main" id="mainContent" style='overflow: hidden'>
+		<br/>
+		&nbsp;
+		<br/>
         <?php
         if (@_EW_CLOUD_MODE) {
             include(realpath(dirname(__FILE__)).DS."expiration.php");
         }
         ?>
+

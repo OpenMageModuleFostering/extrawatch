@@ -13,7 +13,7 @@
 
 class modExtraWatchAgentHelper {
 
-function getAjax()  {
+static function getAjax()  {
 
     if (@$_REQUEST["env"] == "ExtraWatchJoomlaEnv") {
         defined('_JEXEC') or die('Restricted access');

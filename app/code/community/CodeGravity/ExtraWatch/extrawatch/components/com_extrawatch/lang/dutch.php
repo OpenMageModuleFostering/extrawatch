@@ -242,7 +242,7 @@ DEFINE('_EW_DESC_HISTORY_MAX_VALUES', "Maximale waarden in de geschiedenis tab (
 DEFINE('_EW_DESC_ONLY_LAST_URI', "In het aantal bezoeken Toon alleen laatst bezochte pagina, niet alle");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 DEFINE('_EW_DESC_HIDE_REPETITIVE_TITLE', "In het aantal bezoeken, verberg zich herhalende sitenamen in de bezochte pagina titel");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 DEFINE('_EW_DESC_HISTORY_MAX_DB_RECORDS', "Maximaal aantal bezoekers te bewaren in de database voor Bezoekers Geschiedenis. Wees voorzichtig met deze instelling, als je veel verkeer genereerd, kan het echt snel groeien. Controleer altijd hoeveel gegevens de geschiedenis tabel bevat in Status.");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_DESC_UNINSTALL_KEEP_DATA', "Behoud Databasetabellen bij deïnstallatie. Vink deze optie aan voor het deïnstalleren als u een upgrade doet en u wilt uw gegevens te bewaren.");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_DESC_UNINSTALL_KEEP_DATA', "<span style='color:red'>Backup your DB tables first if using this option!</span>Behoud Databasetabellen bij deïnstallatie. Vink deze optie aan voor het deïnstalleren als u een upgrade doet en u wilt uw gegevens te bewaren.");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
 /* email reports */
 DEFINE('_EW_DESC_EMAIL_REPORTS_ENABLED', "U ontvangt nachtelijke e-mails met rapporten van de voorgaande dag, die u in de ochtend kunt lezen.");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -312,7 +312,14 @@ DEFINE('_EW_GOALS_USERNAME_INVERSED', "Username inversed condition");
 DEFINE('_EW_GOALS_CAME_FROM_INVERSED', "Came from inversed condition");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
 DEFINE('_EW_STATS_MAP', "Last Visit Map");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-DEFINE('_EW_STATS_MAP_ENTER_KEY', "Please enter <a href='http://www.ipinfodb.com/register.php' target='_blank'>ipinfodb.com</a> key to display last visit map:");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+DEFINE('_EW_STATS_MAP_ENTER_KEY', "<h2>Please enter ipinfodb API key to display last visit map below</h2> <br/>
+<u>Why this is needed?</u><br/>
+This is a 3rd party service which allows you to get more accurate location of your visitor.<br/><br/>
+1. Open the link <a href='http://www.ipinfodb.com/register.php' target='_blank'>ipinfodb.com</a><br/>
+2. Fill in the form on website<br/>
+3. You'll receive an email with the API key<br/>
+4. Enter this key into the box below: <br/>
+");
 DEFINE('_EW_STATS_MAP_STORE_KEY', "store key");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 DEFINE('_EW_STATS_MAP_INVALID_KEY', "Please enter valid ipinfodb key you obtained from: <a href='http://www.ipinfodb.com/register.php' target='_blank'>ipinfodb.com</a>");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
@@ -634,3 +641,15 @@ DEFINE('_EW_BADGE_STATS',"Number of unique visits today");
 DEFINE('_EW_BADGE_ANTISPAM',"Number of blocked spam attempts");
 DEFINE('_EW_AVAILABLE_IN_FULL_VERSION', 'This feature is available in full version only');
 DEFINE('_EW_GET_FULL_VERSION',"Get the full version of ExtraWatch PRO");
+DEFINE('_EW_LIVE_STATS_SESSION_TIME', 'Time difference since user first visited your website');
+DEFINE('_EW_DOWNLOAD_MONITOR_HTACCESS_TXT', 'Warning - please change: htaccess.txt is present in your joomla root folder, please rename it to .htaccess first and make sure there is no htaccess.txt file anymore !');
+DEFINE('_EW_AGENT_NOT_PUBLISHED',"Agent module which gathers data is not published on frontend! - How to fix it?<br/><br/>
+<u>Joomla:</u><br/>
+1. Go to Extensions -> Module Manager -> find Agent module<br/>
+2. Change Position to some other value (choose some for which you already see some module in frontend - like 'footer'<br/>
+3. Save and refresh extrawatch back-end dashboard again<br/><br/>
+
+<u>Wordpress:</u><br/>
+1. Go to Apperance -> Widgets<br/>
+2. Drag and Drop ExtraWatch agent do placeholder on right to widget that it's already visible in frontend<br/>
+");

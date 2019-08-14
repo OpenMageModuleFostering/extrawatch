@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @package ExtraWatch  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @version 2.3
- * @revision 1962
+ * @revision 2240
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @copyright (C) 2014 by CodeGravity.com - All rights reserved!
  * @website http://www.extrawatch.com  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -474,7 +474,7 @@ class ExtraWatchHTML
 
         $title=@constant("_EW_BADGE_".strtoupper($badgeForSection));
 
-        if ($badgeValue) {
+        if (@$badgeValue) {
             return "<span class=\"ew_badge\" title='$title''>&nbsp;".$badgeValue."&nbsp;</span>";
         }
 
@@ -487,8 +487,10 @@ class ExtraWatchHTML
     }
 
     function renderAvailableInFullVersion($featureName) {
-        $output = ExtraWatchHelper::get_include_contents(JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "view" . DS . "fullversion.php", array("extraWatch" => $this->extraWatch, "featureName" => $featureName));
-        return $output;
+        if (!$this->extraWatch->config->isAdFree()) {
+            $output = ExtraWatchHelper::get_include_contents(JPATH_BASE2 . DS . "components" . DS . "com_extrawatch" . DS . "view" . DS . "fullversion.php", array("extraWatch" => $this->extraWatch, "featureName" => $featureName));
+            return $output;
+        }
 
     }
 

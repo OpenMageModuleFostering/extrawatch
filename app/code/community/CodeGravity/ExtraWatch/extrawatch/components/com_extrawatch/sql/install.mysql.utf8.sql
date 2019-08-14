@@ -3,22 +3,22 @@
 
                 CREATE TABLE IF NOT EXISTS `#__extrawatch` (
                 `id` int unsigned auto_increment primary key,
-                `ip` varchar(255) default NULL,
-                `country` varchar(2) default NULL,
+                `ip` varchar(255) default NULL COLLATE utf8_general_ci,
+                `country` varchar(2) default NULL COLLATE utf8_general_ci,
                 `browser` varchar(255) default NULL COLLATE utf8_general_ci,
                 `referer` varchar(255) default NULL COLLATE utf8_general_ci,
                 `username` varchar(255) default NULL COLLATE utf8_general_ci,
 				  KEY `ip` (`ip`),
 				  KEY `browser` (`browser`),
 				  KEY `country` (`country`)
-                );
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8 DEFAULT COLLATE utf8_general_ci;
 
 
                 CREATE TABLE IF NOT EXISTS `#__extrawatch_config` (
                 `id` int unsigned auto_increment primary key,
                 `name` varchar(255) default NULL COLLATE utf8_general_ci,
                 `value` TEXT default NULL COLLATE utf8_general_ci
-				);
+				) ENGINE=InnoDB DEFAULT CHARSET=utf8 DEFAULT COLLATE utf8_general_ci;
 
   			    ALTER IGNORE TABLE #__extrawatch_config ADD UNIQUE INDEX(name);
 
@@ -31,7 +31,7 @@
 				  KEY `group` (`group`),
 				  KEY `name` (`name`),
 				  KEY `date` (`date`)
-                );
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8 DEFAULT COLLATE utf8_general_ci;
 
 
                 CREATE TABLE IF NOT EXISTS `#__extrawatch_ip2c` (
@@ -40,7 +40,7 @@
                 `country` char(2) NOT NULL default '',
 				  KEY `start` (`start`),
 				  KEY `end` (`end`)
-                );
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8 DEFAULT COLLATE utf8_general_ci;
 
 
                 CREATE TABLE IF NOT EXISTS `#__extrawatch_uri` (
@@ -51,49 +51,49 @@
                 `title` varchar(255) default NULL COLLATE utf8_general_ci,
 				  KEY `fk` (`fk`),
 				  KEY `timestamp` (`timestamp`)
-                );
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8 DEFAULT COLLATE utf8_general_ci;
 
 
 
                 CREATE TABLE IF NOT EXISTS `#__extrawatch_blocked` (
                 `id` int unsigned auto_increment primary key,
-                `ip` varchar(255) default NULL,
+                `ip` varchar(255) default NULL COLLATE utf8_general_ci,
                 `hits` int unsigned default NULL,
                 `date` int(5) default NULL,
                 `reason` varchar(255) default NULL COLLATE utf8_general_ci,
 				`country` char(2) DEFAULT NULL,
-				`badWord` varchar(255) NOT NULL,
+				`badWord` varchar(255) NOT NULL COLLATE utf8_general_ci,
 				  KEY `ip` (`ip`),
 				  KEY `date` (`date`)
-                );
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8 DEFAULT COLLATE utf8_general_ci;
 
 
                 CREATE TABLE IF NOT EXISTS `#__extrawatch_goals` (
                 `id` int(11) NOT NULL auto_increment primary key,
                 `name` varchar(255) default NULL COLLATE utf8_general_ci,
-                `username_inversed` varchar(3) DEFAULT NULL,
+                `username_inversed` varchar(3) DEFAULT NULL COLLATE utf8_general_ci,
                 `parentId` int(11) default NULL,
                 `uri_condition` varchar(255) default NULL COLLATE utf8_general_ci,
-                `uri_inversed` varchar(3) DEFAULT NULL,
+                `uri_inversed` varchar(3) DEFAULT NULL COLLATE utf8_general_ci,
                 `get_var` varchar(255) default NULL COLLATE utf8_general_ci,
                 `get_condition` varchar(255) default NULL COLLATE utf8_general_ci,
-                `get_inversed` varchar(3) DEFAULT NULL,
+                `get_inversed` varchar(3) DEFAULT NULL COLLATE utf8_general_ci,
                 `post_var` varchar(255) default NULL COLLATE utf8_general_ci,
                 `post_condition` varchar(255) default NULL COLLATE utf8_general_ci,
-                `post_inversed` varchar(3) DEFAULT NULL,
+                `post_inversed` varchar(3) DEFAULT NULL COLLATE utf8_general_ci,
                 `title_condition` varchar(255) default NULL COLLATE utf8_general_ci,
-                `title_inversed` varchar(3) DEFAULT NULL,
+                `title_inversed` varchar(3) DEFAULT NULL COLLATE utf8_general_ci,
                 `username_condition` varchar(255) default NULL COLLATE utf8_general_ci,
                 `ip_condition` varchar(255) default NULL COLLATE utf8_general_ci,
-                `ip_inversed` varchar(3) DEFAULT NULL,
+                `ip_inversed` varchar(3) DEFAULT NULL COLLATE utf8_general_ci,
                 `came_from_condition` varchar(255) default NULL COLLATE utf8_general_ci,
-                `came_from_inversed` varchar(3) DEFAULT NULL,
+                `came_from_inversed` varchar(3) DEFAULT NULL COLLATE utf8_general_ci,
                 `country_condition` varchar(255) default NULL COLLATE utf8_general_ci,
-                `country_inversed` varchar(3) DEFAULT NULL,
+                `country_inversed` varchar(3) DEFAULT NULL COLLATE utf8_general_ci,
                 `block` varchar(255) default NULL COLLATE utf8_general_ci,
                 `redirect` varchar(255) default NULL COLLATE utf8_general_ci,
                 `disabled` tinyint(1) default NULL
-                );
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8 DEFAULT COLLATE utf8_general_ci;
 
 
 
@@ -103,16 +103,16 @@
                 `lastUpdate` int(11) default NULL,
                 `cache` mediumtext COLLATE utf8_general_ci,
 				KEY `key` (`key`)
-                );
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8 DEFAULT COLLATE utf8_general_ci;
 
 
 
                 CREATE TABLE IF NOT EXISTS `#__extrawatch_cc2c` (
                 `id` tinyint(3) unsigned NOT NULL auto_increment primary key,
                 `cc` char(2) NOT NULL,
-                `country` varchar(50) NOT NULL,
+                `country` varchar(50) NOT NULL COLLATE utf8_general_ci,
 				KEY `cc` (`cc`)
-                );
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8 DEFAULT COLLATE utf8_general_ci;
 
 
 
@@ -363,7 +363,7 @@
                 `count` int(11) default 0,
                 `timestamp` int(11) default NULL,
 				KEY `uri` (`uri`)
-                );
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8 DEFAULT COLLATE utf8_general_ci;
 
                 ALTER IGNORE TABLE #__extrawatch_uri2title ADD UNIQUE INDEX(uri);
 
@@ -374,21 +374,21 @@
                 `timestamp` int(11) default NULL,
 				KEY `from` (`from`),
 				KEY `to` (`to`)
-                );
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8 DEFAULT COLLATE utf8_general_ci;
 
 
 
                 CREATE TABLE IF NOT EXISTS `#__extrawatch_history` (
                 `id` int unsigned auto_increment primary key,
-                `ip` varchar(255) default NULL,
-                `country` varchar(2) default NULL,
+                `ip` varchar(255) default NULL COLLATE utf8_general_ci,
+                `country` varchar(2) default NULL COLLATE utf8_general_ci,
                 `browser` varchar(255) default NULL COLLATE utf8_general_ci,
                 `referer` varchar(255) default NULL COLLATE utf8_general_ci,
                 `username` varchar(255) default NULL COLLATE utf8_general_ci,
 				  KEY `ip` (`ip`),
 				  KEY `browser` (`browser`),
 				  KEY `country` (`country`)
-                );
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8 DEFAULT COLLATE utf8_general_ci;
 
 
 
@@ -401,7 +401,7 @@
                 `title` varchar(255) default NULL COLLATE utf8_general_ci,
 				  KEY `fk` (`fk`),
 				  KEY `timestamp` (`timestamp`)
-                );
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8 DEFAULT COLLATE utf8_general_ci;
 
 
 
@@ -412,32 +412,32 @@
 				`count` int(11) default NULL,
                 KEY `from` (`from`),
                 KEY `to` (`to`)
-				);
+				) ENGINE=InnoDB DEFAULT CHARSET=utf8 DEFAULT COLLATE utf8_general_ci;
 
 
 				CREATE TABLE IF NOT EXISTS `#__extrawatch_uri_post` (
 				`id` int(11) NOT NULL auto_increment,
 				`uriid` int(11) NOT NULL,
-				`key` varchar(255) NOT NULL,
-				`value` varchar(255) NOT NULL,
+				`key` varchar(255) NOT NULL COLLATE utf8_general_ci,
+				`value` varchar(255) NOT NULL COLLATE utf8_general_ci,
 				`type` int(11) NOT NULL,
 				PRIMARY KEY  (`id`),
 				KEY `uriid` (`uriid`),
 				KEY `type` (`type`)
-				);
+				) ENGINE=InnoDB DEFAULT CHARSET=utf8 DEFAULT COLLATE utf8_general_ci;
 
 				CREATE TABLE IF NOT EXISTS `#__extrawatch_keyphrase` (
 				`id` int(11) NOT NULL AUTO_INCREMENT,
-				`name` varchar(255) DEFAULT NULL,
+				`name` varchar(255) DEFAULT NULL COLLATE utf8_general_ci,
 				PRIMARY KEY (`id`)
-				);
+				) ENGINE=InnoDB DEFAULT CHARSET=utf8 DEFAULT COLLATE utf8_general_ci;
 
 				CREATE TABLE IF NOT EXISTS `#__extrawatch_uri2keyphrase` (
 				`id` int(11) NOT NULL AUTO_INCREMENT,
 				`uri2titleId` int(11) NOT NULL,
 				`keyphraseId` int(11) NOT NULL,
 				PRIMARY KEY (`id`)
-				);
+				) ENGINE=InnoDB DEFAULT CHARSET=utf8 DEFAULT COLLATE utf8_general_ci;
 
 				CREATE TABLE IF NOT EXISTS `#__extrawatch_heatmap` (
 				  `id` int(11) NOT NULL auto_increment,
@@ -446,29 +446,29 @@
 				  `y` smallint(7) unsigned NOT NULL,
 				  `w` smallint(5) unsigned NOT NULL,
 				  `h` smallint(5) NOT NULL,
-				  `ip` varchar(255) NOT NULL,
+				  `ip` varchar(255) NOT NULL COLLATE utf8_general_ci,
 				  `day` int(11) default NULL,
 				  `timestamp` int(11) default NULL,
-				  `xpath` varchar(1024) NOT NULL,
+				  `xpath` varchar(1024) NOT NULL COLLATE utf8_general_ci,
 				  PRIMARY KEY  (`id`),
 				  KEY `uri2titleId` (`uri2titleId`),
 				  KEY `day` (`day`)
-				);
+				) ENGINE=InnoDB DEFAULT CHARSET=utf8 DEFAULT COLLATE utf8_general_ci;
 
 				CREATE TABLE IF NOT EXISTS `#__extrawatch_uri2keyphrase_pos` (
 				`id` int(11) NOT NULL auto_increment,
 				`uri2keyphraseId` int(11) default NULL,
 				`position` int(11) default NULL,
 				PRIMARY KEY  (`id`)
-				);
+				) ENGINE=InnoDB DEFAULT CHARSET=utf8 DEFAULT COLLATE utf8_general_ci;
 
 
 
 				CREATE TABLE IF NOT EXISTS `#__extrawatch_sql_scripts` (
 				`id` int(11) NOT NULL auto_increment,
-				`scriptname` varchar(255) default NULL,
+				`scriptname` varchar(255) default NULL COLLATE utf8_general_ci,
 				PRIMARY KEY  (`id`)
-				);
+				) ENGINE=InnoDB DEFAULT CHARSET=utf8 DEFAULT COLLATE utf8_general_ci;
 				
 				ALTER TABLE #__extrawatch_uri
 				ADD FOREIGN KEY (fk)

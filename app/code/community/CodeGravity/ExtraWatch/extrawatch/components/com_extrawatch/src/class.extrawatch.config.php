@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @package ExtraWatch  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @version 2.3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
- * @revision 1962  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @revision 2240  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @copyright (C) 2014 by CodeGravity.com - All rights reserved!  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @website http://www.extrawatch.com  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -145,6 +145,7 @@ class ExtraWatchConfig
     return $value;
   }
 
+
   /**
    * config
    */
@@ -168,7 +169,7 @@ class ExtraWatchConfig
    */
   function removeConfigValue($key, $value)  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   {
-    $query = sprintf("delete from #__extrawatch_config where name = '%s' limit 1", $this->database->getEscaped($key));  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    $query = sprintf("delete IGNORE from #__extrawatch_config where name = '%s' limit 1", $this->database->getEscaped($key));  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     $count = $this->database->resultQuery($query);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   }
 
@@ -410,11 +411,19 @@ class ExtraWatchConfig
    */
     function isAdFree()  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     {
-        $key = md5(strrev($this->getDomainFromLiveSite(_EW_PROJECT_ID)));  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        if ($key == $this->getConfigValue("EXTRAWATCH_ADFREE")) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-            return TRUE;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+		if (@$this->getConfigValue("EXTRAWATCH_MARKETPLACE")) {
+			return TRUE;
+		}
+	
+        $domain = @$this->getDomainFromLiveSite(_EW_PROJECT_ID);$key = md5(strrev($domain));
+
+        if ($key == @$this->getConfigValue("EXTRAWATCH_ADFREE")) {
+            return TRUE;
+        } else if ($key == @$this->getConfigValue("EXTRAWATCH_ADFREE_".$domain)){
+            return TRUE;
         }
-        return FALSE;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+
+        return FALSE;
         /*require_once(JPATH_BASE2.DS."components".DS."com_extrawatch".DS."lib".DS."phpseclib".DS."Crypt".DS."RSA.php");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         require_once(JPATH_BASE2.DS."components".DS."com_extrawatch".DS."lib".DS."phpseclib".DS."Math".DS."BigInteger.php");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
@@ -431,8 +440,9 @@ class ExtraWatchConfig
         */
     }
 	
-	function isUnregistered() {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        if (self::_EW_CONST_UNREGISTERED == $this->getConfigValue("EXTRAWATCH_ADFREE")) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+	function isUnregistered() {
+        $domain = $this->getDomainFromLiveSite(_EW_PROJECT_ID);
+        if (self::_EW_CONST_UNREGISTERED == $this->getConfigValue("EXTRAWATCH_ADFREE_".$domain)) {
 			return TRUE;
 		}
 		return FALSE;
@@ -455,7 +465,8 @@ class ExtraWatchConfig
   function activate($value)  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
   {
     if (@$value) {
-        $this->saveConfigValue('EXTRAWATCH_ADFREE', $this->database->getEscaped($value));  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        $domain = $this->getDomainFromLiveSite(_EW_PROJECT_ID);
+        $this->saveConfigValue('EXTRAWATCH_ADFREE_'.$domain, $this->database->getEscaped($value), true);
     } else {
         ExtraWatchLog::error("License activation value is empty!");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     }
@@ -464,10 +475,22 @@ class ExtraWatchConfig
     $this->saveConfigValue('EXTRAWATCH_FRONTEND_NO_BACKLINK', "on");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     if ($this->isAdFree()) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
       echo("<span style='color: green'>" . _EW_CONFIG_LICENSE_ACTIVATED . "</span>");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+      $ip = ExtraWatchVisit::getRemoteIPAddress();
+	  $market = @$this->getConfigValue("EXTRAWATCH_MARKETPLACE");
+	  echo("<iframe src='http://www.extrawatch.com/track/extrawatch/2.3/install/?domain=".$domain."&license=FREE&version=2.3.2240&ip=".$ip."&env=".get_class($this->env)."&key=".$value."&market=".@$market."' width='1px' frameborder='0' height='1px'>
+        </iframe>");			
       $this->saveConfigValue('EXTRAWATCH_FREE', 0);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     } else if (!$this->isUnregistered()){  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
       echo("<span style='color: red'>" . _EW_CONFIG_LICENCE_DONT_MATCH . "</span>");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     }
+	
+	$query = "DELETE IGNORE FROM #__extrawatch_config where name like 'rand' ";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+	$this->database->executeQuery(trim($query));  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+
+	$rand = rand();
+	$query = "INSERT IGNORE INTO #__extrawatch_config (id, name, value) values ('', 'rand', '$rand') ";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+	$this->database->executeQuery(trim($query));  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+
   }
 
 
@@ -579,6 +602,16 @@ class ExtraWatchConfig
             require $modulePath . DS . "lang" . DS . $this->getLanguage() . ".php";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         }
     }
+	
+	function setHtAccessPermissions() {
+
+		if (@get_class($this->env) == "ExtraWatchMagentoEnv")  {
+			$magentoAppHtAccessPath = realpath(dirname(__FILE__).DS."..".DS."..".DS."..".DS."..".DS."..".DS."..".DS."..".DS."..").DS.".htaccess";
+			$moduleAppHtAccessPath = realpath(dirname(__FILE__).DS."env".DS."magento".DS."module".DS."app".DS.".htaccess");
+			@copy($moduleAppHtAccessPath, $magentoAppHtAccessPath);
+		}
+		
+	}
 
 }
 

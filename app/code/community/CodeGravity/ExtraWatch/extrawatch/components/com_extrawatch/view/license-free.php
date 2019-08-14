@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @package ExtraWatch  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @version 2.3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
- * @revision 732
+ * @revision 2240
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @copyright (C) 2014 by CodeGravity.com - All rights reserved!  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @website http://www.codegravity.com  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -16,7 +16,9 @@ defined('_JEXEC') or die('Restricted access');
 function extrawatch_renderLicenseFree($extraWatch)  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 {
 
-  $output = "
+$output = "";
+
+  $output .= "
 
 <style>
     .row1 {
@@ -51,97 +53,31 @@ function extrawatch_renderLicenseFree($extraWatch)
         font-weight: normal;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     }
 </style>
-<h1>ExtraWatch 2.3.1962 FREE</h1>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+";
 
-<script type='text/javascript'>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-    function toggleNoKeyForm() {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        document.getElementById('nokey').style.display='';  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-    }
-</script>
-
-<h1 style='color: black'>Please enter the membership registration key to proceed</h1>
-
-<table width='100%' border='0'>
-<tr>
-    <td>
-        <table><tr><td>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-            &nbsp; your domain: <b/>" . $extraWatch->config->getDomainFromLiveSite(_EW_PROJECT_ID) . "</b><br/><br/>
-            <table>
-                <tr>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                    <td>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                        <form action='" . $extraWatch->config->renderLink("activate") . "' method='POST'>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                            <input type='text' name='key' size='50' style='font-size: 12px;'/>
-                            <input type='submit' value='activate' style='background-color: green; padding-left: 10px; padding-right: 10px; font-size: 12px;'/>
-                            <input type='hidden' name='option' value='com_extrawatch'/>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                            <input type='hidden' name='task' value='activate'/>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                            <input type='hidden' name='page' value='extrawatch'/>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                            <input type='hidden' name='form_key' value='".$extraWatch->env->getFormKey()."' />  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                        </form>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-
-                    </td>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                </tr>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-            </table>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-            <br/>
+$output .= "
+<h1>ExtraWatch 2.3.2240 FREE</h1>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+";
 
 
-            <div style='color: #FF8E3B; font-size: 12px; font-style: italic;'>
-                Notice: This is NOT the paypal transaction number of your purchase.<br/>
-                It's the registration key you received after you paired your domain with your membership after payment.<br/>
-                To check for your membership status, use the Customer Zone on <a href='http://www.extrawatch.com' style='color: #FF8E3B' target='_blank'>extrawatch.com</a><br/><br/>
-            </div>
+	$output .= "<h2>You are using FREE version with very basic features</h2>";
+	$output .= "
+						<form action='http://www.extrawatch.com/buy' method='GET'>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+                            <input type='submit' value='get a full version license' style='background-color: #DF3721; color: white; padding-left: 10px; padding-right: 10px; font-size: 12px; font-weight: bold'/>
+						</form>
+						<br/><br/>
+				";
+	$output .= "If you already bought a full version license, you must: <br/>
+		1. (Optional, but recommended) Create a backup of extrawatch tables *_extrawatch using PhpMyAdmin or other MySQL tool<br/>
+		2. Go to settings -> click UNINSTALL_KEEP_DATA to preserve data and save<br/>
+		3. Uninstall this free version and then <br/>
+		4. Install the full version package which is available in <a href='http://www.extrawatch.com/customer' target='_blank'>customer download zone</a><br/><br/>";
+	$output .= "<i>In case of any possible problems with your license, contact us via support chat on <a href='http://www.extrawatch.com' target='_blank'>extrawatch.com</a></i>";
+	
 
-            <h3>If you've purchased this item via some other marketplace, please contact us via livechat on extrawatch.com !</h3>
-            <br/>
-			
-			<a href='".$extraWatch->config->renderLink("continueUnregistered")."' style='color: #e74c3c; font-size: 12px;'>Continue with no membership, no support and no updates</a>
 
 
-            <div  id='nokey' style='border: 1px solid  rgb(255, 171, 41); width: 400px; padding: 10px; display:none;'>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                <h3>Request the correct activation key</h3>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                <form action='http://www.extrawatch.com/success/' method='GET'>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                    <table>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                        <tr><td>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                            domain  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                        </td>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                            <td>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                                <input name='url' type='text' value='" . $extraWatch->config->getDomainFromLiveSite(_EW_PROJECT_ID) . "' readonly>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        </td>
-        </tr>
-        <tr><td>
-            your email (from paypal receipt):  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        </td>
-            <td>
-                <input name='email' type='text' value='@'/><span style='color: red'>*</span>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-            </td>
-        </tr>
-        <tr><td>
-            paypal transaction number:  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        </td>
-            <td>
-                <input name='paypal' type='text' value=''/><span style='color: red'>*</span>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-            </td>
-        </tr>
-        <tr><td colspan='2'>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-            <br/>
-            <input type='submit' value='Request correct key'/>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        </td></tr>
 
-        </table>
-        <input name='requestKey' type='hidden' value='1'/>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        </form>
-        </div><br/>
-        </td>
-        </tr>
-        </table>
-        <br/><br/>
-        </td>
-        </tr>
-
-        <tr><td valign='top' colspan='2'>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-
-            <iframe src='http://www.extrawatch.com/demo/extrawatch/2.3/".strtolower($extraWatch->env->getEnvironmentName())."/' width='1100' height='768'>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-            </iframe>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-			";
 			
 		// this code here is due to the fact that this component is being used illegally on pirate websites in uncontrolled way  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 		// helps us to send email to domain owners who should remove it and buy a license instead to support development. Thank you for your understanding  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -159,7 +95,7 @@ function extrawatch_renderLicenseFree($extraWatch)
 
 		$env = @get_class($extraWatch->env);
 		
-		$output .= "<iframe src='http://www.extrawatch.com/track/extrawatch/2.3/install/?domain=".$domain."&license=FREE&version=2.3.1962&ip=".$ip."&env=".$env."&market=codecanyon.net' width='1px' frameborder='0' height='1px'>
+		$output .= "<iframe src='http://www.extrawatch.com/track/extrawatch/2.3/install/?domain=".$domain."&license=FREE&version=2.3.2240&ip=".$ip."&env=".$env."' width='1px' frameborder='0' height='1px'>
         </iframe>";			
 
 		$output .= "		

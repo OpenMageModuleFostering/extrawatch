@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @package ExtraWatch  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @version 2.3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
- * @revision 1962  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @revision 2240  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @copyright (C) 2014 by CodeGravity.com - All rights reserved!  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @website http://www.extrawatch.com  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -179,7 +179,12 @@ class ExtraWatchHelper
     function countryByIpCached($ip)  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     {
         $query = sprintf("select countryCode from #__extrawatch_ip2c_cache where (ip = '%s') limit 1", $this->database->getEscaped($ip));  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        return $this->database->resultQuery($query);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        $countryCode = $this->database->resultQuery($query);
+		if (!@$countryCode) {
+			$countryCode = $this->countryByIp($ip);
+			$this->insertCountryByIpCached($ip, $countryCode);
+		}
+		return $countryCode;
     }
 
     function insertCountryByIpCached($ip, $countryCode)  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -188,10 +193,20 @@ class ExtraWatchHelper
         return $this->database->executeQuery($query);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     }
 
+
+    function countryByIp($ip) {
+
+        $geoIpFilePath = realpath(realpath(dirname(__FILE__)).DS."..".DS."data".DS."geoip".DS."geoip.dat");
+        $gi = geoip_open($geoIpFilePath, GEOIP_STANDARD);
+        $country_code = geoip_country_code_by_addr($gi, $ip);
+        geoip_close($gi);
+        return strtolower($country_code);
+    }
+
     /**
      * helper
      */
-    function countryByIp($ip)  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+  /*  function countryByIp($ip)
     {
 
         if ($ip == '127.0.0.1') {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -232,7 +247,7 @@ class ExtraWatchHelper
         }
 
         return @ $country;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-    }
+    }*/
 
     /**
      * helper
@@ -333,7 +348,7 @@ class ExtraWatchHelper
      * @param  $body  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
      * @return void
      */
-    function sendEmail(&$env, $recipient, $sender, $subject, $body, $bcc = "")  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    static function sendEmail(&$env, $recipient, $sender, $subject, $body, $bcc = "")
     {
         $body = ("<html><body>" . $body . "</body></html>");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         $cc = $bcc = $attachment = $replyto = $replytoname = "";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -529,17 +544,30 @@ function renderHTMLCodeSnippet($projectId) {
         $output .= ("</script>\n");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     } else {
         $liveSite = $this->config->getLiveSiteWithSuffix();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+		echo $this->env->addScript($liveSite."components/com_extrawatch/js/jdownloadurl.js");
+
+		if (@get_class($extraWatch->env) != "ExtraWatchWordpressEnv") {	//query is already initialized for wordpress and would cause conflict otherwise 
+			echo $this->env->addScript($liveSite."components/com_extrawatch/js/extrawatch.js");
+		}
+		
 		$output = "";
-		$title = "Visitor counter, Heat Map, Conversion tracking, Search Rank";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+		$title = "Visitor heat map tracker, live visitor tracking, real time visitor counter";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
 			$output .= "<a href='http://www.extrawatch.com'><img src='".$liveSite."components/com_extrawatch/img/icons/extrawatch-logo-16x16.gif' alt='$title' title='$title' border='0' target='_blank'/></a>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
-        $output .= ("<script type=\"text/javascript\">\n");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        $output .= ("<!--\n");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        $output .= ("document.write(\"");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        $output .= ("<script src='".$liveSite.$this->env->renderAjaxLink('js','agent.js'."&env=".get_class($this->env)."&rand=".rand())."' type='text/javascript'><\/script>\");\n");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        $output .= ("-->\n");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        $output .= ("</script>\n");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+
+		$agentLink = $liveSite."components/com_extrawatch/js/agent.js?env=".get_class($this->env);
+        $output .= "<script type=\"text/javascript\" id=\"extraWatchAgent\">\n
+		var extraWatchAjaxLink = \"".urlencode($liveSite.$this->env->renderAjaxLink('ajax',''))."\";\n
+		var extraWatchEnv = \"".get_class($this->env)."\";\n
+        (function() {\n
+        var ew = document.createElement('script');
+        ew.type = 'text/javascript'; ew.async = true;\n
+        ew.src = \"".$agentLink."&rand=\"+ Math.random();
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ew, s);\n
+        })();\n
+        </script>
+        ";
 
     }
 
@@ -643,8 +671,9 @@ static function getTimezoneOffsetByTimezoneName($userTimezoneName){
 
 
 	static function getUrlQueryParams() {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-		$url = ExtraWatchHelper::getProtocol()."://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-		$query_str = parse_url($url, PHP_URL_QUERY);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+		$url = ExtraWatchHelper::getProtocol()."://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+        $url = str_replace("&amp;","&",$url);
+		$query_str = parse_url($url, PHP_URL_QUERY);
 		parse_str($query_str, $query_params);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 		return $query_params;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 	}
@@ -722,6 +751,30 @@ static function getTimezoneOffsetByTimezoneName($userTimezoneName){
             return $result[0];
         }
     }
+
+    /**
+     * send X-Robots-Tag: noindex to prevent indexing pages by google
+     */
+    function setNoindexHttpHeaders() {
+        $this->env->setHttpHeader("X-Robots-Tag: noindex, nofollow");
+    }
+
+	static function getUrlContent($url) {	
+		if (@function_exists("curl_init")) {
+			$ch = curl_init();
+		
+			curl_setopt_array(
+				$ch, array(
+				CURLOPT_URL => $url,
+				CURLOPT_RETURNTRANSFER => true
+			));
+	
+			$content = curl_exec($ch);
+ 
+			curl_close($ch);
+			return $content;
+		}
+	}
 
 
 }

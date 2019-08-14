@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @package ExtraWatch  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @version 2.3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
- * @revision 1962  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @revision 2240  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @copyright (C) 2014 by CodeGravity.com - All rights reserved!  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @website http://www.extrawatch.com  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -112,7 +112,7 @@ class ExtraWatchBlockHTML
           $lastDate = $row->date;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         }
 
-        $output .= "<tr class='tableRow" . ($i++ % 2) . "'><td align='center'>" . $mapsIcon . "</td><td align='center' title='$row->reason'>" . $icon . "</td><td align='left' title='$row->reason'>" . $row->ip . "</td><td align='center' title='$row->reason'>" . $row->hits . "</td>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        $output .= "<tr class='tableRow" . ($i++ % 2) . "'><td class='ewCentered'>" . $mapsIcon . "</td><td class='ewCentered' title='$row->reason'>" . $icon . "</td><td align='left' title='$row->reason'>" . $row->ip . "</td><td class='ewCentered' title='$row->reason'>" . $row->hits . "</td>";
 
         if (!$displayedInStats) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
           if (!$row->badWord) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -122,7 +122,7 @@ class ExtraWatchBlockHTML
               $row->badWord = $spamWordAffected;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
             }
           }
-          $output .= "<td align='center' title='" . $row->badWord . "'>" . ExtraWatchHelper::truncate($row->badWord, 10) . "</td>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+          $output .= "<td class='ewCentered' title='" . $row->badWord . "'>" . ExtraWatchHelper::truncate($row->badWord, 10) . "</td>";
           $output .= "<td title=\"" . ExtraWatchHelper::htmlspecialchars($row->reason) . "\">" . $this->highlightSpamWord($row->badWord, $row->reason) . "</td>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         }
 

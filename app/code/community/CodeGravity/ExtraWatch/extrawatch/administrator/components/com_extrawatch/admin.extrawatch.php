@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @package ExtraWatch  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @version 2.3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
- * @revision 1909  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @revision 2240  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @copyright (C) 2014 by CodeGravity.com - All rights reserved!  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @website http://www.extrawatch.com  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -89,6 +89,9 @@ function extrawatch_mainController($task = "") {
     if (!$extraWatch->config->getLiveSite()) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         $extraWatch->config->setLiveSite($env->getRootSite());  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     }
+	
+    $extraWatch->setup->runAdditionalSQLScripts(); 
+
 
     switch ($task) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
@@ -128,6 +131,9 @@ function extrawatch_mainController($task = "") {
                 case "activate" :  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                     {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                     $output .= $extraWatchHTML->renderAdminStyles($extraWatch);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+					if ($action == "codecanyon") {
+	                    $extraWatch->config->saveConfigValue("EXTRAWATCH_MARKETPLACE", $action);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+					}
                     $extraWatch->config->activate(ExtraWatchHelper::requestGet('key'));  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                     $extraWatch->config->saveVersionIntoDatabase();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                     $extraWatch->config->setLiveSite($env->getRootSite());  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -149,6 +155,7 @@ function extrawatch_mainController($task = "") {
             {
             $extraWatch->config->setLiveSite($env->getRootSite());  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
             $extraWatch->config->setLicenseAccepted();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+            $extraWatch->config->setHtAccessPermissions();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
             $extraWatch->config->saveVersionIntoDatabase();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
             break;
             }
@@ -160,14 +167,17 @@ function extrawatch_mainController($task = "") {
             break;
             }
     }
+
     if (!_EW_CLOUD_MODE && !$extraWatch->config->checkLicenseAccepted()) {//remove check license accepted if cloud mode
         $output .= $extraWatchHTML->renderAdminStyles($extraWatch);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        $output .= $extraWatchHTML->renderHeader($extraWatch);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         $output .= $extraWatchHTML->renderAcceptLicense();  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         return $output;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     } else {
 
         
         
+
 
         switch ($task) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
@@ -702,7 +712,6 @@ function extrawatch_mainController($task = "") {
             }
 
             default :
-                $extraWatch->setup->runAdditionalSQLScripts();  //only run those update scripts when live stats are opene
                 $output .= $extraWatchHTML->renderAdminStyles($extraWatch);
                 $output .= $extraWatchHTML->renderHeader($extraWatch);
                 $output .= $extraWatchHTML->renderBody($option);
@@ -719,12 +728,14 @@ function extrawatch_mainController($task = "") {
 $isAllowedRequest = ( @ ExtraWatchHelper::request('task') == "js" || @ ExtraWatchHelper::request('task') == "ajax");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
 if (
-        (!_EW_CLOUD_MODE && (get_class($env) == "ExtraWatchWordpressEnv" && $isAllowedRequest))  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        (!_EW_CLOUD_MODE && (get_class($env) == "ExtraWatchDrupalEnv" && $isAllowedRequest))
+    ||
+        (!_EW_CLOUD_MODE && (get_class($env) == "ExtraWatchWordpressEnv" && $isAllowedRequest))
     ||
         (!_EW_CLOUD_MODE && (get_class($env) == "ExtraWatchMagentoEnv" && $isAllowedRequest))  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
     ||
 
-        (get_class($env) != "ExtraWatchWordpressEnv") && (get_class($env) != "ExtraWatchMagentoEnv")  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        (get_class($env) != "ExtraWatchWordpressEnv") && (get_class($env) != "ExtraWatchMagentoEnv" && (get_class($env) != "ExtraWatchDrupalEnv"))
     )	//just a temporary fix, should be removed or refactored  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 	{
 	if (@_EW_CLOUD_MODE) {

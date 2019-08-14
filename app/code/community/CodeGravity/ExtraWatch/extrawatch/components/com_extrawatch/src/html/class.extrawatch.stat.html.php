@@ -5,7 +5,7 @@
  * ExtraWatch - A real-time ajax monitor and live stats  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @package ExtraWatch  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @version 2.3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
- * @revision 1962  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+ * @revision 2240  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @license http://www.gnu.org/licenses/gpl-3.0.txt     GNU General Public License v3  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @copyright (C) 2014 by CodeGravity.com - All rights reserved!  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
  * @website http://www.extrawatch.com  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -345,11 +345,11 @@ class ExtraWatchStatHTML
 
 
 
-          $output .= "<tr><td>" . @ $icon . "&nbsp;" . $name . "</td><td align='right'><table><tr><td align='right'>" . $row->value . "</td></tr></table></td><td> <table><tr><td>" . @ $diffOutput . "</td><td>" . @ $trendsIcon . "</td><td><img src='$progressBarIcon' class='extraWatchBarImg' width='" . $imgWidth . "' style='height:10px' /></td><td align='left'>$percent%</td></tr></table></td></tr>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+          $output .= "<tr><td align='right'><table><tr><td align='left'>" . $row->value . "</td></tr></table></td><td> <table><tr><td>" . @ $diffOutput . "</td><td>" . @ $trendsIcon . "</td><td><img src='$progressBarIcon' class='extraWatchBarImg' width='" . $imgWidth . "' style='height:10px' /></td><td align='left'>$percent%</td></tr></table></td><td width='100%' style='text-align: left'>" . @ $icon . "&nbsp;" . $name . "</td></tr>";
 
         } else {
           if (!@ $frontend) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-            $output .= "<tr><td align='left' style='background-color: " . "#" . $color . ";'>" . @ $icon . "&nbsp;" . $name . "</td><td style='background-color: #" . $color . ";' align='right'>" . $row->value . "</td><td style='background-color: #" . $color . ";' style='text-align: right;'> <table><tr><td><img src='$progressBarIcon' class='extraWatchBarImg' width='" . $imgWidth . "' style='height:10px; text-align: right;' /></td>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+            $output .= "<tr><td style='background-color: #" . $color . ";' align='right'>" . $row->value . "</td><td style='background-color: #" . $color . ";' style='text-align: right;'> <table><tr><td><img src='$progressBarIcon' class='extraWatchBarImg' width='" . $imgWidth . "' style='height:10px; text-align: right;' /><td align='left' width='100%' style='text-align: left; background-color: " . "#" . $color . ";'>" . @ $icon . "&nbsp;" . $name . "</td></td>
                         <td " . $this->extraWatch->helper->getTooltipOnEvent() . "=\"ajax_showTooltip('" . $this->extraWatch->config->getLiveSiteWithSuffix() . $this->extraWatch->env->renderAjaxLink('ajax','trendtooltip')."&rand=" . $this->extraWatch->config->getRand() . "&group=$group&name=" . urlencode($origName) . "&date=$date&env=".$this->extraWatch->config->getEnvironment()."&projectId="._EW_PROJECT_ID."',this);return FALSE\" style='width: 20px;'>$percent%</td>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
                         </tr></table></td></tr>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
           } else {
@@ -488,7 +488,7 @@ class ExtraWatchStatHTML
     }
 
     $output = "<table>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-    $output .= "<tr><td><h3></h3></td><td align='center'>&nbsp;<u>" . _EW_EMAIL_REPORTS_VALUE . "</u></td><td align='center'>&nbsp;<u>" . _EW_EMAIL_REPORTS_PERCENT . "</u></td><td align='center'>&nbsp;<u>" . _EW_EMAIL_REPORTS_1DAY_CHANGE . "</u></td><td align='center'>&nbsp;<u>" . _EW_EMAIL_REPORTS_7DAY_CHANGE . "</u></td><td align='center'>&nbsp;<u>" . _EW_EMAIL_REPORTS_28DAY_CHANGE . "</u></td></tr>\r\n";
+    $output .= "<tr><td><h3></h3></td><td class='ewCentered'>&nbsp;<u>" . _EW_EMAIL_REPORTS_VALUE . "</u></td><td class='ewCentered'>&nbsp;<u>" . _EW_EMAIL_REPORTS_PERCENT . "</u></td><td class='ewCentered'>&nbsp;<u>" . _EW_EMAIL_REPORTS_1DAY_CHANGE . "</u></td><td class='ewCentered'>&nbsp;<u>" . _EW_EMAIL_REPORTS_7DAY_CHANGE . "</u></td><td class='ewCentered'>&nbsp;<u>" . _EW_EMAIL_REPORTS_28DAY_CHANGE . "</u></td></tr>\r\n";
     $output .= "<tr><td>" . _EW_STATS_UNIQUE . "</td><td align='right'>" . $this->extraWatch->stat->getCountByKeyAndDate(EW_DB_KEY_UNIQUE, $day - 1) . "</td><td></td>" . $this->renderDiffTableCellsAndIcon(EW_DB_KEY_UNIQUE, EW_DB_KEY_UNIQUE, $day - 1, TRUE) . "</td></tr>\r\n";
     $output .= "<tr><td>" . _EW_STATS_LOADS . "</td><td align='right'>" . $this->extraWatch->stat->getCountByKeyAndDate(EW_DB_KEY_LOADS, $day - 1) . "</td><td></td>" . $this->renderDiffTableCellsAndIcon(EW_DB_KEY_LOADS, EW_DB_KEY_LOADS, $day - 1, TRUE) . "</td></tr>\r\n";
     $output .= "<tr><td>" . _EW_STATS_HITS . "</td><td align='right'>" . $this->extraWatch->stat->getCountByKeyAndDate(EW_DB_KEY_HITS, $day - 1) . "</td><td></td>" . $this->renderDiffTableCellsAndIcon(EW_DB_KEY_HITS, EW_DB_KEY_HITS, $day - 1, TRUE) . "</td></tr>\r\n";
@@ -690,7 +690,7 @@ class ExtraWatchStatHTML
       }
 
     if ($j) {
-      $output = "<tr><td><h3>$groupTranslated</h3></td><td align='center'>&nbsp;<u>" . _EW_EMAIL_REPORTS_VALUE . "</u></td><td align='center'>&nbsp;<u>" . _EW_EMAIL_REPORTS_PERCENT . "</u></td><td align='center'>&nbsp;<u>" . _EW_EMAIL_REPORTS_1DAY_CHANGE . "</u></td><td align='center'>&nbsp;<u>" . _EW_EMAIL_REPORTS_7DAY_CHANGE . "</u></td><td align='center'>&nbsp;<u>" . _EW_EMAIL_REPORTS_28DAY_CHANGE . "</u></td></tr>" . $output;  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+      $output = "<tr><td><h3>$groupTranslated</h3></td><td class='ewCentered'>&nbsp;<u>" . _EW_EMAIL_REPORTS_VALUE . "</u></td><td class='ewCentered'>&nbsp;<u>" . _EW_EMAIL_REPORTS_PERCENT . "</u></td><td class='ewCentered'>&nbsp;<u>" . _EW_EMAIL_REPORTS_1DAY_CHANGE . "</u></td><td class='ewCentered'>&nbsp;<u>" . _EW_EMAIL_REPORTS_7DAY_CHANGE . "</u></td><td class='ewCentered'>&nbsp;<u>" . _EW_EMAIL_REPORTS_28DAY_CHANGE . "</u></td></tr>" . $output;
     }
 
     return $output;
@@ -1023,15 +1023,25 @@ class ExtraWatchStatHTML
       $output .= "<table class='extraWatch'><tr><td><u>" . _EW_FRONTEND_USERS_MOST . " $count:</u></td></tr><tr><td>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
       $link = $this->extraWatch->config->getConfigValue('EXTRAWATCH_FRONTEND_USER_LINK');  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
+	  $renderRealName = @$this->extraWatch->config->getConfigValue('EXTRAWATCH_FRONTEND_USER_RENDER_REAL_NAME');
+
       $i = 0;
       $userSize = sizeof($users);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
       foreach ($users as $user) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         $i++;
+		if (@$renderRealName) {
+            $usersArray = $this->extraWatch->env->getAllUsersAsIdToUsernameArray($this->extraWatch->database);
+            $userId = array_search($user->name, $usersArray);
+			$userInfoRendered = $this->extraWatch->env->getUserRealNameById($userId);
+		} else {
+			$userInfoRendered = $user->name;
+		}
+		
         if (@$link) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-          $linkOutput = str_replace("{user}", $user->name, $link);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+          $linkOutput = str_replace("{user}", $userInfoRendered, $link);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
           $output .= "<a href='" . $linkOutput . "'>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         }
-        $output .= ExtraWatchHelper::htmlspecialchars($user->name);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+        $output .= ExtraWatchHelper::htmlspecialchars($userInfoRendered);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         if (@$link) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
           $output .= "</a>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
         }
@@ -1124,7 +1134,7 @@ class ExtraWatchStatHTML
           $trendsIcon = "<img src='" . $this->extraWatch->config->getLiveSiteWithSuffix() . "components/com_extrawatch/img/icons/trend_icon.gif' border='0'  " . $this->extraWatch->helper->getTooltipOnEvent() . "=\"ajax_showTooltip('" . $this->extraWatch->config->getLiveSiteWithSuffix() . $this->extraWatch->env->renderAjaxLink('ajax','trendtooltip')."&rand=" . $this->extraWatch->config->getRand() . "&group=$group&name=" . urlencode($origName) . "&date=$day&env=".$this->extraWatch->config->getEnvironment()."&projectId="._EW_PROJECT_ID."',this);return false;\"/>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
           $output .= ("<tr><td title='" . ExtraWatchHelper::htmlspecialchars($keyphrase->name) . "'><a href='http://www.google.com/search?q=" . ExtraWatchHelper::htmlspecialchars(urlencode($keyphrase->name)) . "'>" . ExtraWatchHelper::htmlspecialchars(ExtraWatchHelper::truncate($keyphrase->name, 100)) . "</a></td>  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-                    <td style='width: 30px;' align='right'>" . ExtraWatchHelper::htmlspecialchars($keyphrase->value) . "</td><td style='width: 20px' align='right'>$percent</td><td  align='center'>$oneDayDiffRendered</td><td align='center'>$sevenDayDiffRendered</td><td align='center'>$twentyEightDayDiffRendered</td>");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+                    <td style='width: 30px;' align='right'>" . ExtraWatchHelper::htmlspecialchars($keyphrase->value) . "</td><td style='width: 20px' align='right'>$percent</td><td  align='center'>$oneDayDiffRendered</td><td class='ewCentered'>$sevenDayDiffRendered</td><td class='ewCentered'>$twentyEightDayDiffRendered</td>");
 
           if (!$renderAsEmail) {  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
             $output .= "<td>" . $trendsIcon . "</td>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
@@ -1171,11 +1181,11 @@ class ExtraWatchStatHTML
 
     $trendsIcon = $this->renderTrendsIcon($group, $origName, $day);  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
 
-    $output = ("<td align='center'>$oneDayDiffRendered</td>" .  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        "<td align='center'>$sevenDayDiffRendered</td>" .  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
-        "<td align='center'>$twentyEightDayDiffRendered</td>");  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+    $output = ("<td class='ewCentered'>$oneDayDiffRendered</td>" .
+        "<td class='ewCentered'>$sevenDayDiffRendered</td>" .
+        "<td class='ewCentered'>$twentyEightDayDiffRendered</td>");
     if (!$noIcon) {
-      $output .= "<td align='center'>$trendsIcon</td>";  	 	    	    		  	 	  	 	  		 	 		    	 			 	   		  	 	 		 	 	   	      	  	 		 		 				 			 		  		    	 		 		  
+      $output .= "<td class='ewCentered'>$trendsIcon</td>";
     }
     return $output;
   }
