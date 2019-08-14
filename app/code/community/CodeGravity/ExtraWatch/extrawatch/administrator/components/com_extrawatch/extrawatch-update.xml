@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<updates>
+   <update>
+      <name>ExtraWatch</name>
+      <description>ExtraWatch</description>
+      <element>com_extrawatch</element>
+      <type>component</type>
+      <version>2.2.1550 FREE</version>
+       <infourl title="ExtraWatch URL">http://www.extrawatch.com</infourl>
+      <downloads>
+         <downloadurl type="full" format="gz">http://www.extrawatch.com/update/extrawatch/2.2/FREE/com_extrawatch.zip</downloadurl>
+      </downloads>
+      <maintainer>extrawatch.com</maintainer>
+      <maintainerurl>http://www.extrawatch.com</maintainerurl>
+      <targetplatform name="joomla" version="1.6" />
+   </update>
+   <update>
+      <name>ExtraWatch</name>
+      <description>ExtraWatch</description>
+      <element>com_extrawatch</element>
+      <type>component</type>
+      <version>2.2.1550 FREE</version>
+       <infourl title="ExtraWatch URL">http://www.extrawatch.com</infourl>
+      <downloads>
+         <downloadurl type="full" format="gz">http://www.extrawatch.com/update/extrawatch/2.2/FREE/com_extrawatch.zip</downloadurl>
+      </downloads>
+      <maintainer>extrawatch.com</maintainer>
+      <maintainerurl>http://www.extrawatch.com</maintainerurl>
+      <targetplatform name="joomla" version="1.7" />
+   </update>
+   <update>
+      <name>ExtraWatch</name>
+      <description>ExtraWatch</description>
+      <element>com_extrawatch</element>
+      <type>component</type>
+      <version>2.2.1550 FREE</version>
+       <infourl title="ExtraWatch URL">http://www.extrawatch.com</infourl>
+      <downloads>
+         <downloadurl type="full" format="gz">http://www.extrawatch.com/update/extrawatch/2.2/FREE/com_extrawatch.zip</downloadurl>
+      </downloads>
+      <maintainer>extrawatch.com</maintainer>
+      <maintainerurl>http://www.extrawatch.com</maintainerurl>
+      <targetplatform name="joomla" version="2.5" />
+   </update>
+   <update>
+      <name>ExtraWatch</name>
+      <description>ExtraWatch</description>
+      <element>com_extrawatch</element>
+      <type>component</type>
+      <version>2.2.1550 FREE</version>
+       <infourl title="ExtraWatch URL">http://www.extrawatch.com</infourl>
+      <downloads>
+         <downloadurl type="full" format="gz">http://www.extrawatch.com/update/extrawatch/2.2/FREE/com_extrawatch.zip</downloadurl>
+      </downloads>
+      <maintainer>extrawatch.com</maintainer>
+      <maintainerurl>http://www.extrawatch.com</maintainerurl>
+      <targetplatform name="joomla" version="3.0" />
+   </update>
+
+    <!-- agent module -->
+    <update>
+        <name>ExtraWatch</name>
+        <description>ExtraWatch</description>
+        <element>com_extrawatch</element>
+        <type>module</type>
+        <version>2.2.1550 FREE</version>
+        <infourl title="ExtraWatch URL">http://www.extrawatch.com</infourl>
+        <downloads>
+            <downloadurl type="full" format="gz">http://www.extrawatch.com/update/extrawatch/2.2/FREE/mod_extrawatch_agent.zip</downloadurl>
+        </downloads>
+        <maintainer>extrawatch.com</maintainer>
+        <maintainerurl>http://www.extrawatch.com</maintainerurl>
+        <targetplatform name="joomla" version="1.6" />
+    </update>
+    <update>
+        <name>ExtraWatch</name>
+        <description>ExtraWatch</description>
+        <element>com_extrawatch</element>
+        <type>module</type>
+        <version>2.2.1550 FREE</version>
+        <infourl title="ExtraWatch URL">http://www.extrawatch.com</infourl>
+        <downloads>
+            <downloadurl type="full" format="gz">http://www.extrawatch.com/update/extrawatch/2.2/FREE/mod_extrawatch_agent.zip</downloadurl>
+        </downloads>
+        <maintainer>extrawatch.com</maintainer>
+        <maintainerurl>http://www.extrawatch.com</maintainerurl>
+        <targetplatform name="joomla" version="1.7" />
+    </update>
+    <update>
+        <name>ExtraWatch</name>
+        <description>ExtraWatch</description>
+        <element>com_extrawatch</element>
+        <type>module</type>
+        <version>2.2.1550 FREE</version>
+        <infourl title="ExtraWatch URL">http://www.extrawatch.com</infourl>
+        <downloads>
+            <downloadurl type="full" format="gz">http://www.extrawatch.com/update/extrawatch/2.2/FREE/mod_extrawatch_agent.zip</downloadurl>
+        </downloads>
+        <maintainer>extrawatch.com</maintainer>
+        <maintainerurl>http://www.extrawatch.com</maintainerurl>
+        <targetplatform name="joomla" version="2.5" />
+    </update>
+    <update>
+        <name>ExtraWatch</name>
+        <description>ExtraWatch</description>
+        <element>com_extrawatch</element>
+        <type>module</type>
+        <version>2.2.1550 FREE</version>
+        <infourl title="ExtraWatch URL">http://www.extrawatch.com</infourl>
+        <downloads>
+            <downloadurl type="full" format="gz">http://www.extrawatch.com/update/extrawatch/2.2/FREE/mod_extrawatch_agent.zip</downloadurl>
+        </downloads>
+        <maintainer>extrawatch.com</maintainer>
+        <maintainerurl>http://www.extrawatch.com</maintainerurl>
+        <targetplatform name="joomla" version="3.0" />
+    </update>
+
+
+    <!-- users module -->
+    <update>
+        <name>ExtraWatch</name>
+        <description>ExtraWatch</description>
+        <element>com_extrawatch</element>
+        <type>module</type>
+        <version>2.2.1550 FREE</version>
+        <infourl title="ExtraWatch URL">http://www.extrawatch.com</infourl>
+        <downloads>
+            <downloadurl type="full" format="gz">http://www.extrawatch.com/update/extrawatch/2.2/FREE/mod_extrawatch_users.zip</downloadurl>
+        </downloads>
+        <maintainer>extrawatch.com</maintainer>
+        <maintainerurl>http://www.extrawatch.com</maintainerurl>
+        <targetplatform name="joomla" version="1.6" />
+    </update>
+    <update>
+        <name>ExtraWatch</name>
+        <description>ExtraWatch</description>
+        <element>com_extrawatch</element>
+        <type>module</type>
+        <version>2.2.1550 FREE</version>
+        <infourl title="ExtraWatch URL">http://www.extrawatch.com</infourl>
+        <downloads>
+            <downloadurl type="full" format="gz">http://www.extrawatch.com/update/extrawatch/2.2/FREE/mod_extrawatch_users.zip</downloadurl>
+        </downloads>
+        <maintainer>extrawatch.com</maintainer>
+        <maintainerurl>http://www.extrawatch.com</maintainerurl>
+        <targetplatform name="joomla" version="1.7" />
+    </update>
+    <update>
+        <name>ExtraWatch</name>
+        <description>ExtraWatch</description>
+        <element>com_extrawatch</element>
+        <type>module</type>
+        <version>2.2.1550 FREE</version>
+        <infourl title="ExtraWatch URL">http://www.extrawatch.com</infourl>
+        <downloads>
+            <downloadurl type="full" format="gz">http://www.extrawatch.com/update/extrawatch/2.2/FREE/mod_extrawatch_users.zip</downloadurl>
+        </downloads>
+        <maintainer>extrawatch.com</maintainer>
+        <maintainerurl>http://www.extrawatch.com</maintainerurl>
+        <targetplatform name="joomla" version="2.5" />
+    </update>
+    <update>
+        <name>ExtraWatch</name>
+        <description>ExtraWatch</description>
+        <element>com_extrawatch</element>
+        <type>module</type>
+        <version>2.2.1550 FREE</version>
+        <infourl title="ExtraWatch URL">http://www.extrawatch.com</infourl>
+        <downloads>
+            <downloadurl type="full" format="gz">http://www.extrawatch.com/update/extrawatch/2.2/FREE/mod_extrawatch_users.zip</downloadurl>
+        </downloads>
+        <maintainer>extrawatch.com</maintainer>
+        <maintainerurl>http://www.extrawatch.com</maintainerurl>
+        <targetplatform name="joomla" version="3.0" />
+    </update>
+
+
+    <!-- visitors module -->
+    <update>
+        <name>ExtraWatch</name>
+        <description>ExtraWatch</description>
+        <element>com_extrawatch</element>
+        <type>module</type>
+        <version>2.2.1550 FREE</version>
+        <infourl title="ExtraWatch URL">http://www.extrawatch.com</infourl>
+        <downloads>
+            <downloadurl type="full" format="gz">http://www.extrawatch.com/update/extrawatch/2.2/FREE/mod_extrawatch_visitors.zip</downloadurl>
+        </downloads>
+        <maintainer>extrawatch.com</maintainer>
+        <maintainerurl>http://www.extrawatch.com</maintainerurl>
+        <targetplatform name="joomla" version="1.6" />
+    </update>
+    <update>
+        <name>ExtraWatch</name>
+        <description>ExtraWatch</description>
+        <element>com_extrawatch</element>
+        <type>module</type>
+        <version>2.2.1550 FREE</version>
+        <infourl title="ExtraWatch URL">http://www.extrawatch.com</infourl>
+        <downloads>
+            <downloadurl type="full" format="gz">http://www.extrawatch.com/update/extrawatch/2.2/FREE/mod_extrawatch_visitors.zip</downloadurl>
+        </downloads>
+        <maintainer>extrawatch.com</maintainer>
+        <maintainerurl>http://www.extrawatch.com</maintainerurl>
+        <targetplatform name="joomla" version="1.7" />
+    </update>
+    <update>
+        <name>ExtraWatch</name>
+        <description>ExtraWatch</description>
+        <element>com_extrawatch</element>
+        <type>module</type>
+        <version>2.2.1550 FREE</version>
+        <infourl title="ExtraWatch URL">http://www.extrawatch.com</infourl>
+        <downloads>
+            <downloadurl type="full" format="gz">http://www.extrawatch.com/update/extrawatch/2.2/FREE/mod_extrawatch_visitors.zip</downloadurl>
+        </downloads>
+        <maintainer>extrawatch.com</maintainer>
+        <maintainerurl>http://www.extrawatch.com</maintainerurl>
+        <targetplatform name="joomla" version="2.5" />
+    </update>
+    <update>
+        <name>ExtraWatch</name>
+        <description>ExtraWatch</description>
+        <element>com_extrawatch</element>
+        <type>module</type>
+        <version>2.2.1550 FREE</version>
+        <infourl title="ExtraWatch URL">http://www.extrawatch.com</infourl>
+        <downloads>
+            <downloadurl type="full" format="gz">http://www.extrawatch.com/update/extrawatch/2.2/FREE/mod_extrawatch_visitors.zip</downloadurl>
+        </downloads>
+        <maintainer>extrawatch.com</maintainer>
+        <maintainerurl>http://www.extrawatch.com</maintainerurl>
+        <targetplatform name="joomla" version="3.0" />
+    </update>
+
+
+
+</updates>
