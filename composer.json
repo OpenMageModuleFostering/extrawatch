@@ -1,18 +1,19 @@
 {
-    "name": "OpenMageModuleFostering/ExtraWatch",
+    "name": "OpenMageModuleFostering\/ExtraWatch",
     "type": "magento-module",
     "license": "GPL",
     "homepage": "",
-    "description": "
-        ExtraWatch is a module ported from Joomla CMS that allows you to monitor your visitors in real-time.
-    ",
+    "description": "\n        ExtraWatch is a module ported from Joomla CMS that allows you to monitor your visitors in real-time.\n    ",
     "authors": [
-    {
-        "name": "Matto",
-        "email": "support@extrawatch.com"
-    }
-],
+        {
+            "name": "Matto",
+            "email": "support@extrawatch.com"
+        }
+    ],
     "suggest": {
-        "magento-hackathon/magento-composer-installer": "*"
-    }
+        "magento-hackathon\/magento-composer-installer": "*"
+    },
+    "keywords": [
+        "openmage-module"
+    ]
 }
